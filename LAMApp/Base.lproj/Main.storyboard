@@ -35,7 +35,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="NA8-yh-toC"/>
+                                    <segue destination="dc6-pe-lUo" kind="show" id="LjK-tt-Nkp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teO-GY-p4h">
@@ -65,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NhQ-Et-1lE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52" y="163.26836581709148"/>
+            <point key="canvasLocation" x="-994" y="163"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -178,7 +178,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRv-gz-vmt">
-                                                    <rect key="frame" x="29" y="7" width="317" height="504"/>
+                                                    <rect key="frame" x="29" y="16" width="317" height="504"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0039215686269999999" green="0.4941176471" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <mutableString key="text">Lors de la première manche, tu peux dire tout ce que tu souhaites, sauf le mot à faire découvrir, sa traduction dans une autre langue et les mots ayant la même racine. Lors de la seconde manche, tu as le droit de ne dire qu'un seul mot. Lors de la troisième manche, tu dois mimer le mot sans faire de bruit.                                                              A chaque tour, un nouveau joueur fait deviner les mots, en alternant à chaque fois d'équipe. A la fin, le nombre de mots trouvés est redistribué en Lamas à l'équipe adverse. Les Lamas étant l'unité de point du jeu, que l'on peut interpréter comme on le souhaite. Une fois que tous les mots ont été trouvé la manche est terminée et l'équipe ayant récoltés le moins de Lamas la remporte.</mutableString>
@@ -224,7 +224,65 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2Y-GH-34B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-84" y="985.45727136431788"/>
+            <point key="canvasLocation" x="-994" y="949"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MWX-Jd-KJa">
+            <objects>
+                <viewController id="dc6-pe-lUo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0tr-zV-M5w"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Sw-j2-hch"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3aP-bJ-703">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pE-MB-HIV">
+                                <rect key="frame" x="58" y="193" width="258" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="39"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Facile">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nb7-DH-uyD">
+                                <rect key="frame" x="58" y="316" width="258" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="39"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Intermédiaire">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMU-nK-RqR">
+                                <rect key="frame" x="58" y="438" width="258" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="39"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Difficile">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Choisissez votre niveau :" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLL-un-gU0">
+                                <rect key="frame" x="42" y="59" width="291" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0039215686269999999" green="0.4941176471" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0039215686269999999" green="0.4941176471" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Chd-2S-Opo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-297" y="162"/>
         </scene>
     </scenes>
     <resources>
