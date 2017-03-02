@@ -311,6 +311,7 @@
 				ACA89FDF1E68354F00AE700D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
