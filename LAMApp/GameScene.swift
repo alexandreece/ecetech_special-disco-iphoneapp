@@ -123,10 +123,14 @@ class GameScene: SKScene
         
         //timer lancé
         //var count: Int = 60
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
-            { (timer) in
-                self.updateTime()
-        })
+        if #available(iOS 10.0, *) {
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
+                { (timer) in
+                    self.updateTime()
+            })
+        } else {
+            // Fallback on earlier versions
+        }
         timer.fire()
         
     }
