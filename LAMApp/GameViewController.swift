@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+/*
     @IBOutlet weak var RoundText: UILabel!
     @IBOutlet weak var PlayerNameText: UILabel!
     @IBOutlet weak var TeamNameText: UILabel!
@@ -26,17 +26,22 @@ class GameViewController: UIViewController {
     var WordList = ["Chien","Chat","Lion","Tigre","Souris","Rat","Elephant", "Hippopotame"]
     var Point = 0
     var i = 0
-    
+    */
+    @IBOutlet weak var RoundText: UILabel!
+    @IBOutlet weak var PlayerNameText: UILabel!
+    @IBOutlet weak var TeamNameText: UILabel!
+    @IBOutlet weak var CurrentWordText: UILabel!
+    @IBOutlet weak var ScoreTexr: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
         self.RoundText.text = CurrentRound
         self.PlayerNameText.text = PlayerName
         self.TeamNameText.text = TeamName
         self.CurrentWordText.text = WordList[0]
         self.ScoreText.text = "\(Point)/\(WordList.count)"
-        
+        */
     }
     
     override var shouldAutorotate: Bool {
@@ -46,7 +51,7 @@ class GameViewController: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscapeLeft
     }
-    
+    /*
     @IBAction func TEST(_ sender: UIButton) {
         if Point < WordList.count {
             
@@ -64,7 +69,7 @@ class GameViewController: UIViewController {
             // Aller à la view suivante --> Fin de manche
         }
     }
-    /*
+    
     @IBAction func ValidateWord(_ sender: UIButton) {
         
         if Point < WordList.count {
@@ -83,7 +88,7 @@ class GameViewController: UIViewController {
             // Aller à la view suivante --> Fin de manche
         }
     }
-    */
+    
     @IBAction func TESTO(_ sender: UIButton) {
         if i < WordList.count {
             i = i + 1
@@ -94,7 +99,7 @@ class GameViewController: UIViewController {
         }
         
     }
-    /*
+    
     @IBAction func ActualizeWord(_ sender: UIButton) {
     
         if i < WordList.count {
