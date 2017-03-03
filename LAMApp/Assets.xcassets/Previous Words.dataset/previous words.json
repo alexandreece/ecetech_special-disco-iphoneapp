@@ -1,0 +1,39 @@
+{
+    "type": "database",
+    "name": "LAMapp",
+    "objects": [
+        {
+            "type": "table",
+            "database": null,
+            "name": "PreviousWords",
+            "withoutRowId": true,
+            "ddl": "CREATE TABLE `PreviousWords` (\n\t`idPreviousWords`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,\n\t`previousWord`\tTEXT\n)",
+            "columns": [
+                {
+                    "name": "idPreviousWords",
+                    "type": "INTEGER",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                },
+                {
+                    "name": "previousWord",
+                    "type": "TEXT"
+                }
+            ],
+            "rows": [
+            ]
+        }
+    ]
+}

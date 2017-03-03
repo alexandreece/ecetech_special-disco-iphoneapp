@@ -1,0 +1,73 @@
+//
+//  DataBase.swift
+//  LAMApp
+//
+//  Created by Alexandre on 03/03/2017.
+//  Copyright © 2017 LAMA. All rights reserved.
+//
+
+import UIKit
+
+protocol DataBaseDelegate {
+    func didLoadData()
+    func didLoadDataAtIndex( index : Int)
+}
+
+class PreviousWord : NSObject, NSCoding {
+    
+    var idPreviousWord = Int()
+    var previousWord = String()
+    
+    static let KeyIdPreviousWord = "KeyIdPreviousWord"
+    static let KeyPreviousWord = "KeyPreviousWord"
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(idPreviousWord, forKey: PreviousWord.KeyIdPreviousWord)
+        aCoder.encode(previousWord, forKey:PreviousWord.KeyPreviousWord)
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        if let value = aDecoder.decodeObject(forKey: PreviousWord.KeyIdPreviousWord) as? Int {
+            self.idPreviousWord = value
+        }
+        if let value = aDecoder.decodeObject(forKey: PreviousWord.KeyPreviousWord) as? String {
+            self.previousWord = value
+        }
+    }
+}
+
+class Word: NSObject, NSCoding {
+    var idWord = Int()
+    var category = String()
+    var word = String()
+    
+    static let KeyIdWord = "KeyIdWord"
+    static let KeyCatagory = "KeyCategory"
+    static let KeyWord = "KeyWord"
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(idWord, forKey: Word.KeyIdWord)
+        aCoder.encode(category, forKey: Word.KeyCatagory)
+        aCoder.encode(word, forKey: Word.KeyWord)
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        if let value = aDecoder.decodeObject(forKey: Word.KeyIdWord) as? Int {
+            self.idWord = value
+        }
+        if let value = aDecoder.decodeObject(forKey: Word.KeyCatagory) as? String {
+            self.category = value
+        }
+        if let value = aDecoder.decodeObject(forKey: Word.KeyWord) as? String {
+            self.word = value
+        }
+    }
+}
