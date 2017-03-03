@@ -18,9 +18,12 @@ class GameScene: SKScene
     var groupe1 : SKNode?
     var groupe2 : SKNode?
     var groupe3 : SKNode?
+    var groupeJeux : SKNode?
+    var chrono : SKLabelNode?
     let pointZero = CGPoint(x: 0, y: 0)
     var nextButton : SKNode?
     
+    var timer = Timer()
     
     
     override func didMove(to view: SKView)
@@ -39,6 +42,16 @@ class GameScene: SKScene
         {
             groupe3 = g3
         }
+        if let gJeux = childNode(withName: "//ElementJeux")
+        {
+            groupeJeux = gJeux
+        }
+        if let ch = childNode(withName: "//Time") as? SKLabelNode
+        {
+            chrono = ch
+        }
+        
+        groupeJeux?.isHidden = true
         
         
         
@@ -57,7 +70,8 @@ class GameScene: SKScene
         
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
         
     }
     
@@ -67,11 +81,9 @@ class GameScene: SKScene
             groupe1?.run(SKAction.moveTo(y: -1900, duration: 0.5), completion:
                 {
                     print("Premiere manche")
+                    self.jeux()
             })
-            groupe2?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
-                {
-                    print("Deuxieme manche")
-            })
+            
         }
         
         if (groupe2?.position == pointZero){
@@ -94,4 +106,30 @@ class GameScene: SKScene
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
+    
+    func jeux()
+    {
+        groupeJeux?.isHidden = false
+        var count: Int = 60
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
+            { (timer) in
+                
+                if(count > 0)
+                {
+                    
+                    count -= 1
+                    self.chrono!.text = String (count)
+                } else {
+                    timer.invalidate()
+                }
+            //self.updateTime()
+        })
+        timer.fire()
+        
+    }
+    
+    func updateTime(){
+        
+}
+
 }
