@@ -65,7 +65,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NhQ-Et-1lE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-994" y="163"/>
+            <point key="canvasLocation" x="-2252" y="161"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rDt-Zr-3E2">
+            <objects>
+                <viewController id="1WH-Pq-Zcg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6cO-XN-9K9"/>
+                        <viewControllerLayoutGuide type="bottom" id="9fb-ke-6qT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1jM-Yc-AsY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0039215686269999999" green="0.4941176471" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="clT-oC-4YG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-812" y="161"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -181,7 +199,7 @@
                                                     <rect key="frame" x="29" y="16" width="317" height="504"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0039215686269999999" green="0.4941176471" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <mutableString key="text">Lors de la première manche, tu peux dire tout ce que tu souhaites, sauf le mot à faire découvrir, sa traduction dans une autre langue et les mots ayant la même racine. Lors de la seconde manche, tu as le droit de ne dire qu'un seul mot. Lors de la troisième manche, tu dois mimer le mot sans faire de bruit.                                                              A chaque tour, un nouveau joueur fait deviner les mots, en alternant à chaque fois d'équipe. A la fin, le nombre de mots trouvés est redistribué en Lamas à l'équipe adverse. Les Lamas étant l'unité de point du jeu, que l'on peut interpréter comme on le souhaite. Une fois que tous les mots ont été trouvé la manche est terminée et l'équipe ayant récoltés le moins de Lamas la remporte.</mutableString>
+                                                    <string key="text">Lors de la première manche, tu peux dire tout ce que tu souhaites, sauf le mot à faire découvrir, sa traduction dans une autre langue et les mots ayant la même racine. Lors de la seconde manche, tu as le droit de ne dire qu'un seul mot. Lors de la troisième manche, tu dois mimer le mot sans faire de bruit.                                                              A chaque tour, un nouveau joueur fait deviner les mots, en alternant à chaque fois d'équipe. A la fin, le nombre de mots trouvés est redistribué en Lamas à l'équipe adverse. Les Lamas étant l'unité de point du jeu, que l'on peut interpréter comme on le souhaite. Une fois que tous les mots ont été trouvé la manche est terminée et l'équipe ayant récoltés le moins de Lamas la remporte.</string>
                                                     <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -224,7 +242,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2Y-GH-34B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-994" y="949"/>
+            <point key="canvasLocation" x="-2252" y="920"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="MWX-Jd-KJa">
@@ -282,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Chd-2S-Opo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-297" y="162"/>
+            <point key="canvasLocation" x="-1546" y="161"/>
         </scene>
     </scenes>
     <resources>
