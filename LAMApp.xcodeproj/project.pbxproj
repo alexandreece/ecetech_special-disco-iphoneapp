@@ -105,6 +105,7 @@
 				TargetAttributes = {
 					ACA89FC41E68354F00AE700D = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3LDB7QR9F9;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -272,9 +273,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3LDB7QR9F9;
 				INFOPLIST_FILE = LAMApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lama.LAMApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LAMA.LAMApp.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -284,9 +286,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3LDB7QR9F9;
 				INFOPLIST_FILE = LAMApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lama.LAMApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LAMA.LAMApp.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
