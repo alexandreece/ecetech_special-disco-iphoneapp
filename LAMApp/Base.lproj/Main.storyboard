@@ -22,11 +22,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LAMApp_LOGO_Whie_1000x14000" translatesAutoresizingMaskIntoConstraints="NO" id="vdq-Nh-zIZ">
-                                <rect key="frame" x="115" y="28" width="145" height="216"/>
+                                <rect key="frame" x="115" y="72" width="145" height="216"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Uq-Bd-MHC">
-                                <rect key="frame" x="58" y="290" width="258" height="73"/>
+                                <rect key="frame" x="58" y="334" width="258" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="39"/>
@@ -39,7 +39,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teO-GY-p4h">
-                                <rect key="frame" x="96" y="436" width="182" height="63"/>
+                                <rect key="frame" x="96" y="480" width="182" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
@@ -48,7 +48,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I77-pJ-5KX">
-                                <rect key="frame" x="96" y="525" width="182" height="63"/>
+                                <rect key="frame" x="96" y="569" width="182" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
@@ -73,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="292" y="160.56971514242881"/>
         </scene>
-        <!--View Controller-->
+        <!--Nb Joueurs Collection View Controller-->
         <scene sceneID="rDt-Zr-3E2">
             <objects>
-                <viewController id="1WH-Pq-Zcg" sceneMemberID="viewController">
+                <viewController id="1WH-Pq-Zcg" customClass="NbJoueursCollectionViewController" customModule="LAMApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6cO-XN-9K9"/>
                         <viewControllerLayoutGuide type="bottom" id="9fb-ke-6qT"/>
@@ -153,10 +153,10 @@
             </objects>
             <point key="canvasLocation" x="1917.5999999999999" y="162.3688155922039"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Noms Joueurs Table View Controller-->
         <scene sceneID="vpS-6E-rHx">
             <objects>
-                <tableViewController id="zb3-mp-nAJ" sceneMemberID="viewController">
+                <tableViewController id="zb3-mp-nAJ" customClass="NomsJoueursTableViewController" customModule="LAMApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BHx-1F-V48">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -478,10 +478,10 @@
             </objects>
             <point key="canvasLocation" x="292" y="958"/>
         </scene>
-        <!--View Controller-->
+        <!--Niveau Jeu Collection View Controller-->
         <scene sceneID="MWX-Jd-KJa">
             <objects>
-                <viewController id="dc6-pe-lUo" sceneMemberID="viewController">
+                <viewController id="dc6-pe-lUo" customClass="NiveauJeuCollectionViewController" customModule="LAMApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0tr-zV-M5w"/>
                         <viewControllerLayoutGuide type="bottom" id="1Sw-j2-hch"/>
