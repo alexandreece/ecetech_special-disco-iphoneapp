@@ -11,12 +11,28 @@ import GameplayKit
 
 class GameScene: SKScene
 {
+    //constantes
+    let pointZero = CGPoint(x: 0, y: 0)
+    var mots = ["papillon","voiture","George Cloney","Obama", "Trump", "Donald Duck"]
+    //let nbMot = self.mots.counts
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-    
+    //node des vues
     var groupe1 : SKNode?
     var groupe2 : SKNode?
+    var groupe3 : SKNode?
+    
+    //node groupe jeux
+    var groupeJeux : SKNode?
+    var chrono : SKLabelNode?
+    var nextButton : SKNode?
+    
+    
+    
+    //variable pour le chrono
+    var timer = Timer()
+    var count: Int = 60
+    
+    
     
     override func didMove(to view: SKView)
     {
@@ -30,34 +46,107 @@ class GameScene: SKScene
             groupe2 = g2
         }
         
-        groupe1?.isHidden = false
-        groupe2?.isHidden = true
+        if let g3 = childNode(withName: "//TroisiemeManche")
+        {
+            groupe3 = g3
+        }
+        if let gJeux = childNode(withName: "//ElementJeux")
+        {
+            groupeJeux = gJeux
+        }
+        if let ch = childNode(withName: "//Time") as? SKLabelNode
+        {
+            chrono = ch
+        }
+        
+        groupeJeux?.isHidden = true
+        
+        
+        
+        
+        
+        nextButton = childNode(withName: "//NextButton")
+        
+        //nextButton = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
     }
     
     
-
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-
+        
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        groupe1?.isHidden = !groupe1!.isHidden
-        groupe2?.isHidden = !groupe2!.isHidden
+        if (groupe1?.position == pointZero){
+            groupe1?.run(SKAction.moveTo(y: -1900, duration: 0.5), completion:
+                {
+                    print("Premiere manche")
+                    
+                    print("Shuffled: \(self.randomArray(array: self.mots))")
+                    //self.jeux()
+            })
+            
+        }
+        
+        if (groupe2?.position == pointZero){
+            groupe2?.run(SKAction.moveTo(y: -1900, duration: 0.5), completion:
+                {
+                    print("Deuxieme manche")
+            })
+            groupe3?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
+                {
+                    print("Troisieme manche")
+            })
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+        
     }
     
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
+    
+    func jeux()
+    {
+        groupeJeux?.isHidden = false
+        
+        //timer lancé
+        //var count: Int = 60
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
+            { (timer) in
+                self.updateTime()
+        })
+        timer.fire()
+        
+    }
+    //met a jour la variable count
+    func updateTime(){
+        
+        if(count > 0)
+        {
+            
+            count -= 1
+            self.chrono!.text = String (count)
+        } else {
+            timer.invalidate()
+            count = 60
+        }
+    }
+    //melange la liste de mot
+    func randomArray(array : [String]) -> [String]{
+      return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: array) as! [String]
+    }
 }
+
+
