@@ -11,19 +11,27 @@ import GameplayKit
 
 class GameScene: SKScene
 {
+    //constantes
+    let pointZero = CGPoint(x: 0, y: 0)
+    var mots = ["papillon","voiture","George Cloney","Obama", "Trump", "Donald Duck"]
+    //let nbMot = self.mots.counts
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-    
+    //node des vues
     var groupe1 : SKNode?
     var groupe2 : SKNode?
     var groupe3 : SKNode?
+    
+    //node groupe jeux
     var groupeJeux : SKNode?
     var chrono : SKLabelNode?
-    let pointZero = CGPoint(x: 0, y: 0)
     var nextButton : SKNode?
     
+    
+    
+    //variable pour le chrono
     var timer = Timer()
+    var count: Int = 60
+    
     
     
     override func didMove(to view: SKView)
@@ -81,7 +89,9 @@ class GameScene: SKScene
             groupe1?.run(SKAction.moveTo(y: -1900, duration: 0.5), completion:
                 {
                     print("Premiere manche")
-                    self.jeux()
+                    
+                    print("Shuffled: \(self.randomArray(array: self.mots))")
+                    //self.jeux()
             })
             
         }
@@ -110,26 +120,33 @@ class GameScene: SKScene
     func jeux()
     {
         groupeJeux?.isHidden = false
-        var count: Int = 60
+        
+        //timer lancé
+        //var count: Int = 60
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
             { (timer) in
-                
-                if(count > 0)
-                {
-                    
-                    count -= 1
-                    self.chrono!.text = String (count)
-                } else {
-                    timer.invalidate()
-                }
-            //self.updateTime()
+                self.updateTime()
         })
         timer.fire()
         
     }
-    
+    //met a jour la variable count
     func updateTime(){
         
+        if(count > 0)
+        {
+            
+            count -= 1
+            self.chrono!.text = String (count)
+        } else {
+            timer.invalidate()
+            count = 60
+        }
+    }
+    //melange la liste de mot
+    func randomArray(array : [String]) -> [String]{
+      return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: array) as! [String]
+    }
 }
 
-}
+
