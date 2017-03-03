@@ -15,7 +15,7 @@ class Joueur{
     
     init() {
         IDJoueur = 0
-        NomJoueur = "Unknown"
+        NomJoueur = ""
     }
     
     func Joueur (pNomJoueur: String) {
