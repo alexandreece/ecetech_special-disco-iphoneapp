@@ -80,7 +80,9 @@ class PreviousWordDataBase: NSObject {
     public var objects = [PreviousWord]()
     
     public func loadData() {
-        
+        let asset = NSDataAsset(name: "Previous Words", bundle: Bundle.main)
+        let json = try? JSONSerialization.jsonObject(with: asset!.data, options: JSONSerialization.ReadingOptions.allowFragments)
+        print(json)
     }
     
     func parseJSON(data : Data) {
