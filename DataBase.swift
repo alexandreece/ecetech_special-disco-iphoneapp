@@ -71,3 +71,33 @@ class Word: NSObject, NSCoding {
         }
     }
 }
+
+class PreviousWordDataBase: NSObject {
+    private static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    private static let ArchiveURL = DocumentsDirectory.appendingPathComponent("PreviousWords")
+    static let shared = PreviousWordDataBase()
+    public var delegate : DataBaseDelegate? = nil
+    public var objects = [PreviousWord]()
+    
+    public func loadData() {
+        
+    }
+    
+    func parseJSON(data : Data) {
+        
+    }
+    
+    func saveToDisk() -> Bool {
+        return NSKeyedArchiver.archiveRootObject(objects, toFile: PreviousWordDataBase.ArchiveURL.path)
+    }
+    
+    func loadFromDisk() -> Bool {
+        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: PreviousWordDataBase.ArchiveURL.path) as? [PreviousWord]
+        {
+            objects = data
+            return true
+        }
+        return false
+    }
+    
+}
