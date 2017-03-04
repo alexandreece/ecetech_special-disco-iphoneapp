@@ -29,6 +29,12 @@ class GameViewController: UIViewController {
             
             view.showsFPS = true
             view.showsNodeCount = true
+            
+            // TEST DB !
+            let database = PreviousWordDataBase.shared
+            database.loadData()
+            
+            
         }
     }
 
