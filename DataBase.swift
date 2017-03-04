@@ -83,10 +83,11 @@ class PreviousWordDataBase: NSObject {
         let asset = NSDataAsset(name: "Previous Words", bundle: Bundle.main)
         let json = try? JSONSerialization.jsonObject(with: asset!.data, options: JSONSerialization.ReadingOptions.allowFragments)
         print(json!)
+        //self.parseJSON(data: <#T##Data#>)
     }
     
     func parseJSON(data : Data) {
-        
+        //TODO
     }
     
     func saveToDisk() -> Bool {
@@ -95,6 +96,39 @@ class PreviousWordDataBase: NSObject {
     
     func loadFromDisk() -> Bool {
         if let data = NSKeyedUnarchiver.unarchiveObject(withFile: PreviousWordDataBase.ArchiveURL.path) as? [PreviousWord]
+        {
+            objects = data
+            return true
+        }
+        return false
+    }
+    
+}
+
+class WordDataBase: NSObject {
+    private static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    private static let ArchiveURL = DocumentsDirectory.appendingPathComponent("WordsList")
+    static let shared = WordDataBase()
+    public var delegate : DataBaseDelegate? = nil
+    public var objects = [Word]()
+    
+    public func loadData() {
+        let asset = NSDataAsset(name: "WordsList", bundle: Bundle.main)
+        let json = try? JSONSerialization.jsonObject(with: asset!.data, options: JSONSerialization.ReadingOptions.allowFragments)
+        print(json!)
+        //Appeler PARSER
+    }
+    
+    func parseJSON(data : Data) {
+        
+    }
+    
+    func saveToDisk() -> Bool {
+        return NSKeyedArchiver.archiveRootObject(objects, toFile: WordDataBase.ArchiveURL.path)
+    }
+    
+    func loadFromDisk() -> Bool {
+        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: WordDataBase.ArchiveURL.path) as? [Word]
         {
             objects = data
             return true

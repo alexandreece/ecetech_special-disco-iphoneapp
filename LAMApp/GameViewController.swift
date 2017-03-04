@@ -31,7 +31,7 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
             
             // TEST DB !
-            let database = PreviousWordDataBase.shared
+            let database = WordDataBase.shared
             database.loadData()
             
             
