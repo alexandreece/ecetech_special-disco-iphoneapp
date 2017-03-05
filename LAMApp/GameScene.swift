@@ -68,8 +68,7 @@ class GameScene: SKScene
         
         nextButton = childNode(withName: "//NextButton")
         okButton = childNode(withName: "//OkButton")
-
-        //nextButton = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
+        
     }
     
     
@@ -92,10 +91,10 @@ class GameScene: SKScene
         if let touch = touches.first
         {
             let location = touch.location(in: self)
-                
+            
             if nextButton!.contains(location)
             {
-                    
+                
                 print("next button")
             }
             if okButton!.contains(location)
@@ -110,7 +109,7 @@ class GameScene: SKScene
                     print("Premiere manche")
                     
                     print("Shuffled: \(self.randomArray(array: self.mots))")
-                    //self.jeux()
+                    self.jeux()
             })
             
         }
@@ -168,7 +167,7 @@ class GameScene: SKScene
     }
     //melange la liste de mot
     func randomArray(array : [String]) -> [String]{
-      return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: array) as! [String]
+        return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: array) as! [String]
     }
 }
 
