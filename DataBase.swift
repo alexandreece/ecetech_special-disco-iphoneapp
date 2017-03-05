@@ -80,14 +80,14 @@ class PreviousWordDataBase: NSObject {
     public var objects = [PreviousWord]()
     
     public func loadData() {
-        let asset = NSDataAsset(name: "Previous Words", bundle: Bundle.main)
-        let json = try? JSONSerialization.jsonObject(with: asset!.data, options: JSONSerialization.ReadingOptions.allowFragments)
-        print(json!)
-        //self.parseJSON(data: <#T##Data#>)
+        let asset = NSDataAsset(name: "Previous Words", bundle: Bundle.main) //Je ne sais pas si le if let s'impose, on protegerait uniquement une coquille...
+        parseJSON(asset: asset!)
     }
     
-    func parseJSON(data : Data) {
-        //TODO
+    func parseJSON(asset : NSDataAsset) {
+        let json = try? JSONSerialization.jsonObject(with: asset.data, options: JSONSerialization.ReadingOptions.allowFragments)
+        print(json!)
+        //TODO PARSER
     }
     
     func saveToDisk() -> Bool {
@@ -113,14 +113,32 @@ class WordDataBase: NSObject {
     public var objects = [Word]()
     
     public func loadData() {
-        let asset = NSDataAsset(name: "WordsList", bundle: Bundle.main)
-        let json = try? JSONSerialization.jsonObject(with: asset!.data, options: JSONSerialization.ReadingOptions.allowFragments)
-        print(json!)
-        //Appeler PARSER
+        let asset = NSDataAsset(name: "WordsList", bundle: Bundle.main) //Je ne sais pas si le if let s'impose, on protegerait uniquement une coquille...
+        parseJSON(asset: asset!)
     }
     
-    func parseJSON(data : Data) {
+    func parseJSON(asset : NSDataAsset) {
+        let json = try? JSONSerialization.jsonObject(with: asset.data, options: JSONSerialization.ReadingOptions.allowFragments)
+        guard let root = json as? [String:AnyObject] else {
+            return
+        }
+        guard let feed = root["objects"] as? [String:AnyObject] else {
+            return
+        }
+        guard let list = feed["rows"] as? [AnyObject] else {
+            return
+        }
+        objects.removeAll()
         
+        for item in list {
+            let mot = Word()
+            if let wordEntry = item[2] as? String {
+                mot.word = wordEntry
+                print("coucou")
+                print(mot.word)
+            }
+            //mot.word = item[2] as? String
+        }
     }
     
     func saveToDisk() -> Bool {
