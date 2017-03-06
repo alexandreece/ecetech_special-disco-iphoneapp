@@ -13,8 +13,7 @@ class LevelViewController: UIViewController {
     @IBOutlet weak var EasyButton: UIButton!
     @IBOutlet weak var IntermediateButton: UIButton!
     @IBOutlet weak var DifficultButton: UIButton!
-    var Level: Int = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Selection du niveau 1:Facile, 2:Intermediaire, 3:Difficile")
@@ -39,14 +38,14 @@ class LevelViewController: UIViewController {
     
     @IBAction func buttonClicked(_ sender: UIButton) {
         if sender === EasyButton {
-            Level = 1
-            print(Level)
+            Game.shared.Level = 1
+            print(Game.shared.Level)
         } else if sender === IntermediateButton {
-            Level = 2
-            print(Level)
+            Game.shared.Level = 2
+            print(Game.shared.Level)
         } else if sender === DifficultButton {
-            Level = 3
-            print(Level)
+            Game.shared.Level = 3
+            print(Game.shared.Level)
         }
     }
     

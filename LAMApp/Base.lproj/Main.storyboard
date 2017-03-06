@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -73,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="292" y="160.56971514242881"/>
         </scene>
-        <!--View Controller-->
+        <!--Config Jeu View Controller-->
         <scene sceneID="rDt-Zr-3E2">
             <objects>
-                <viewController id="1WH-Pq-Zcg" sceneMemberID="viewController">
+                <viewController id="1WH-Pq-Zcg" customClass="ConfigJeuViewController" customModule="LAMApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6cO-XN-9K9"/>
                         <viewControllerLayoutGuide type="bottom" id="9fb-ke-6qT"/>
@@ -103,6 +102,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
+                                    <action selector="configClick:" destination="1WH-Pq-Zcg" eventType="touchUpInside" id="7X7-qJ-wg5"/>
                                     <segue destination="zb3-mp-nAJ" kind="show" id="qjt-gq-s8z"/>
                                 </connections>
                             </button>
@@ -116,6 +116,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
+                                    <action selector="configClick:" destination="1WH-Pq-Zcg" eventType="touchUpInside" id="0K4-f4-ifH"/>
                                     <segue destination="zb3-mp-nAJ" kind="show" id="iDu-Mu-NLe"/>
                                 </connections>
                             </button>
@@ -129,6 +130,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
+                                    <action selector="configClick:" destination="1WH-Pq-Zcg" eventType="touchUpInside" id="1iY-r6-4AC"/>
                                     <segue destination="zb3-mp-nAJ" kind="show" id="pjS-lv-WuF"/>
                                 </connections>
                             </button>
@@ -142,12 +144,19 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
+                                    <action selector="configClick:" destination="1WH-Pq-Zcg" eventType="touchUpInside" id="aJh-8h-Lce"/>
                                     <segue destination="zb3-mp-nAJ" kind="show" id="NHy-1j-uha"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.4941176471" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="x2Button" destination="caB-r1-d0i" id="bqJ-pQ-9Ze"/>
+                        <outlet property="x3Button" destination="lTF-8i-35M" id="t6k-QE-rOR"/>
+                        <outlet property="x4Button" destination="T6g-tN-BGM" id="6mM-Uv-Ngp"/>
+                        <outlet property="x5Button" destination="QnW-4Y-4Qk" id="WJf-pK-8HI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="clT-oC-4YG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -560,7 +569,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" hidesBarsOnSwipe="YES" hidesBarsOnTap="YES" hidesBarsWhenKeyboardAppears="YES" hidesBarsWhenVerticallyCompact="YES" id="Ori-hN-nzv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UzH-AR-XL6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UzH-AR-XL6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.068472906949999995" green="0.4951608777" blue="0.49975997210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
