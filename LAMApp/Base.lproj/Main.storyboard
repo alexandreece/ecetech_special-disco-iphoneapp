@@ -64,8 +64,8 @@
                         <color key="tintColor" red="0.068472906949999995" green="0.4951608777" blue="0.49975997210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="eY9-kk-XNW">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="2JC-Au-YBJ">
-                            <color key="tintColor" red="0.068472906947135925" green="0.49516087770462036" blue="0.4997599720954895" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="LAMApp" id="2JC-Au-YBJ">
+                            <color key="tintColor" red="0.0039215686269999999" green="0.4941176471" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -153,10 +153,10 @@
             </objects>
             <point key="canvasLocation" x="1917.5999999999999" y="162.3688155922039"/>
         </scene>
-        <!--Noms Joueurs Table View Controller-->
+        <!--Test Table View Controller-->
         <scene sceneID="vpS-6E-rHx">
             <objects>
-                <tableViewController id="zb3-mp-nAJ" customClass="NomsJoueursTableViewController" customModule="LAMApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="zb3-mp-nAJ" customClass="TestTableViewController" customModule="LAMApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BHx-1F-V48">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,7 +190,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8gn-cR-UeF">
+                                        <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="testTextfield" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8gn-cR-UeF">
                                             <rect key="frame" x="28" y="0.0" width="319" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
@@ -479,10 +479,10 @@
             </objects>
             <point key="canvasLocation" x="292" y="946"/>
         </scene>
-        <!--View Controller-->
+        <!--Level View Controller-->
         <scene sceneID="MWX-Jd-KJa">
             <objects>
-                <viewController id="dc6-pe-lUo" sceneMemberID="viewController">
+                <viewController id="dc6-pe-lUo" customClass="LevelViewController" customModule="LAMApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0tr-zV-M5w"/>
                         <viewControllerLayoutGuide type="bottom" id="1Sw-j2-hch"/>
@@ -491,19 +491,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pE-MB-HIV">
-                                <rect key="frame" x="58" y="205" width="258" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="39"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Facile">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="1WH-Pq-Zcg" kind="show" id="thM-S3-22s"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nb7-DH-uyD">
                                 <rect key="frame" x="58" y="338" width="258" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -514,6 +501,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
+                                    <action selector="buttonClicked:" destination="dc6-pe-lUo" eventType="touchUpInside" id="ecU-9y-R5m"/>
                                     <segue destination="1WH-Pq-Zcg" kind="show" id="z8Q-2E-C1G"/>
                                 </connections>
                             </button>
@@ -527,6 +515,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
+                                    <action selector="buttonClicked:" destination="dc6-pe-lUo" eventType="touchUpInside" id="UdZ-Zq-d3r"/>
                                     <segue destination="1WH-Pq-Zcg" kind="show" id="Mpp-Cq-nOX"/>
                                 </connections>
                             </button>
@@ -538,9 +527,28 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pE-MB-HIV">
+                                <rect key="frame" x="58" y="202" width="258" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="39"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Facile">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="dc6-pe-lUo" eventType="touchUpInside" id="KKC-Je-4qF"/>
+                                    <segue destination="1WH-Pq-Zcg" kind="show" id="thM-S3-22s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.4941176471" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="DifficultButton" destination="tMU-nK-RqR" id="h7G-Mx-B3R"/>
+                        <outlet property="EasyButton" destination="5pE-MB-HIV" id="ppx-cN-Dk0"/>
+                        <outlet property="IntermediateButton" destination="Nb7-DH-uyD" id="jdb-ve-BBP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Chd-2S-Opo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -574,7 +582,7 @@
         <image name="LAMApp_LOGO_Whie_1000x14000" width="1000" height="1425"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z8Q-2E-C1G"/>
+        <segue reference="thM-S3-22s"/>
         <segue reference="qjt-gq-s8z"/>
     </inferredMetricsTieBreakers>
 </document>
