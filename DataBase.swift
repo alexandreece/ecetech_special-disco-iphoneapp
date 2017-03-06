@@ -72,39 +72,6 @@ class Word: NSObject, NSCoding {
     }
 }
 
-class PreviousWordDataBase: NSObject {
-    private static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    private static let ArchiveURL = DocumentsDirectory.appendingPathComponent("PreviousWords")
-    static let shared = PreviousWordDataBase()
-    public var delegate : DataBaseDelegate? = nil
-    public var objects = [PreviousWord]()
-    
-    public func loadData() {
-        let asset = NSDataAsset(name: "Previous Words", bundle: Bundle.main) //Je ne sais pas si le if let s'impose, on protegerait uniquement une coquille...
-        parseJSON(asset: asset!)
-    }
-    
-    func parseJSON(asset : NSDataAsset) {
-        let json = try? JSONSerialization.jsonObject(with: asset.data, options: JSONSerialization.ReadingOptions.allowFragments)
-        print(json!)
-        //TODO PARSER
-    }
-    
-    func saveToDisk() -> Bool {
-        return NSKeyedArchiver.archiveRootObject(objects, toFile: PreviousWordDataBase.ArchiveURL.path)
-    }
-    
-    func loadFromDisk() -> Bool {
-        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: PreviousWordDataBase.ArchiveURL.path) as? [PreviousWord]
-        {
-            objects = data
-            return true
-        }
-        return false
-    }
-    
-}
-
 class WordDataBase: NSObject {
     private static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     private static let ArchiveURL = DocumentsDirectory.appendingPathComponent("WordsList")
