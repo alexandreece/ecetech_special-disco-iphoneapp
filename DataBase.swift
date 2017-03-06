@@ -120,8 +120,7 @@ class WordDataBase: NSObject {
     func parseJSON(asset : NSDataAsset) {
         let json = try? JSONSerialization.jsonObject(with: asset.data, options: JSONSerialization.ReadingOptions.allowFragments)
         print(json!)
-        
-        
+        //TODO PARSER
     }
     
     func saveToDisk() -> Bool {
