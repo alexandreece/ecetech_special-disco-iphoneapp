@@ -119,8 +119,45 @@ class WordDataBase: NSObject {
     
     func parseJSON(asset : NSDataAsset) {
         let json = try? JSONSerialization.jsonObject(with: asset.data, options: JSONSerialization.ReadingOptions.allowFragments)
-        print(json!)
-        //TODO PARSER
+        
+        guard let root = json as? [ String : AnyObject] else
+        {
+            return
+        }
+        guard let mots = root["objects"] as? [[ String : AnyObject]] else
+        {
+            return
+        }
+        objects.removeAll()
+        
+        for item in mots {
+            let dataItem = Word()
+            
+            if let motEntry = item["word"] as? String {
+                dataItem.word = motEntry
+            }
+            if let IDMotEntry = item["id"] as? Int {
+                dataItem.idWord = IDMotEntry
+            }
+            if let categoryEntry = item["category"] as? String {
+                dataItem.category = categoryEntry
+            }
+            //            print(dataItem.word)
+            objects.append(dataItem)
+        }
+        if (self.saveToDisk())
+        {
+            print("Save OK")
+        }
+        else
+        {
+            print("Save ERROR")
+        }
+        
+        DispatchQueue.main.async
+            {
+                self.delegate?.didLoadData()
+        }
     }
     
     func saveToDisk() -> Bool {
