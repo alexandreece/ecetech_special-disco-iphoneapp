@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC3B02BC1E698DAA00D7F251 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B02BB1E698DAA00D7F251 /* DataBase.swift */; };
 		ACA89FC91E68354F00AE700D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA89FC81E68354F00AE700D /* AppDelegate.swift */; };
 		ACA89FCB1E68354F00AE700D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FCA1E68354F00AE700D /* GameScene.sks */; };
 		ACA89FCD1E68354F00AE700D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FCC1E68354F00AE700D /* Actions.sks */; };
@@ -15,19 +16,26 @@
 		ACA89FD41E68354F00AE700D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD21E68354F00AE700D /* Main.storyboard */; };
 		ACA89FD61E68354F00AE700D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD51E68354F00AE700D /* Assets.xcassets */; };
 		ACA89FD91E68354F00AE700D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD71E68354F00AE700D /* LaunchScreen.storyboard */; };
+		C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */; };
+		D23BA9191E696C9300FB33FD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23BA9181E696C9300FB33FD /* Game.swift */; };
+		D23BA91B1E698DCA00FB33FD /* Joueur.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23BA91A1E698DCA00FB33FD /* Joueur.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC3B02BB1E698DAA00D7F251 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		ACA89FC51E68354F00AE700D /* LAMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LAMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA89FC81E68354F00AE700D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACA89FCA1E68354F00AE700D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		ACA89FCC1E68354F00AE700D /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		ACA89FCE1E68354F00AE700D /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		ACA89FD01E68354F00AE700D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		ACA89FD01E68354F00AE700D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GameViewController.swift; sourceTree = "<group>"; };
 		ACA89FD31E68354F00AE700D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACA89FD51E68354F00AE700D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACA89FD81E68354F00AE700D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACA89FDA1E68354F00AE700D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
+		D23BA9181E696C9300FB33FD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		D23BA91A1E698DCA00FB33FD /* Joueur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joueur.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +52,7 @@
 		ACA89FBC1E68354F00AE700D = {
 			isa = PBXGroup;
 			children = (
+				AC3B02BB1E698DAA00D7F251 /* DataBase.swift */,
 				ACA89FC71E68354F00AE700D /* LAMApp */,
 				ACA89FC61E68354F00AE700D /* Products */,
 			);
@@ -66,9 +75,12 @@
 				ACA89FCE1E68354F00AE700D /* GameScene.swift */,
 				ACA89FD01E68354F00AE700D /* GameViewController.swift */,
 				ACA89FD21E68354F00AE700D /* Main.storyboard */,
+				C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */,
 				ACA89FD51E68354F00AE700D /* Assets.xcassets */,
 				ACA89FD71E68354F00AE700D /* LaunchScreen.storyboard */,
 				ACA89FDA1E68354F00AE700D /* Info.plist */,
+				D23BA9181E696C9300FB33FD /* Game.swift */,
+				D23BA91A1E698DCA00FB33FD /* Joueur.swift */,
 			);
 			path = LAMApp;
 			sourceTree = "<group>";
@@ -150,7 +162,11 @@
 			files = (
 				ACA89FCF1E68354F00AE700D /* GameScene.swift in Sources */,
 				ACA89FD11E68354F00AE700D /* GameViewController.swift in Sources */,
+				AC3B02BC1E698DAA00D7F251 /* DataBase.swift in Sources */,
 				ACA89FC91E68354F00AE700D /* AppDelegate.swift in Sources */,
+				C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */,
+				D23BA9191E696C9300FB33FD /* Game.swift in Sources */,
+				D23BA91B1E698DCA00FB33FD /* Joueur.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,9 +289,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3LDB7QR9F9;
 				INFOPLIST_FILE = LAMApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lama.lamapp.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -287,9 +303,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 3LDB7QR9F9;
 				INFOPLIST_FILE = LAMApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lama.lamapp.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
