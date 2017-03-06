@@ -1,243 +1,207 @@
 {
     "type": "database",
     "name": "LAMapp",
+    "table": "WordsList",
     "objects": [
         {
-            "type": "table",
-            "database": null,
-            "name": "WordsList",
-            "withoutRowId": true,
-            "ddl": "CREATE TABLE `WordsList` (\n\t`idWord`\tINTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,\n\t`category`\tTEXT,\n\t`word`\tTEXT\n)",
-            "columns": [
-                {
-                    "name": "idWord",
-                    "type": "INTEGER",
-                    "constraints": [
-                        {
-                            "type": "NOT NULL",
-                            "definition": "NOT NULL "
-                        },
-                        {
-                            "type": "PRIMARY KEY",
-                            "definition": "PRIMARY KEY AUTOINCREMENT "
-                        },
-                        {
-                            "type": "UNIQUE",
-                            "definition": "UNIQUE"
-                        }
-                    ]
-                },
-                {
-                    "name": "category",
-                    "type": "TEXT"
-                },
-                {
-                    "name": "word",
-                    "type": "TEXT"
-                }
-            ],
-            "rows": [
-                [
-                    1,
-                    "People",
-                    "Brad Pitt"
-                ],
-                [
-                    2,
-                    "People",
-                    "Angelina Jolie"
-                ],
-                [
-                    3,
-                    "People",
-                    "Rihanna"
-                ],
-                [
-                    4,
-                    "People",
-                    "Marion Cotillard"
-                ],
-                [
-                    5,
-                    "People",
-                    "Rocco Siffredi"
-                ],
-                [
-                    6,
-                    "People",
-                    "Donald Trump"
-                ],
-                [
-                    7,
-                    "People",
-                    "The Rock"
-                ],
-                [
-                    8,
-                    "People",
-                    "François Hollande"
-                ],
-                [
-                    9,
-                    "People",
-                    "George Cloney"
-                ],
-                [
-                    10,
-                    "People",
-                    "Le Pape François"
-                ],
-                [
-                    11,
-                    "Faune",
-                    "Tigre"
-                ],
-                [
-                    12,
-                    "Faune",
-                    "Lombric"
-                ],
-                [
-                    13,
-                    "Faune",
-                    "Lama"
-                ],
-                [
-                    14,
-                    "Faune",
-                    "Kangourou"
-                ],
-                [
-                    15,
-                    "Faune",
-                    "Poule"
-                ],
-                [
-                    16,
-                    "Flore",
-                    "Rose"
-                ],
-                [
-                    17,
-                    "Flore",
-                    "Tournesol"
-                ],
-                [
-                    18,
-                    "Flore",
-                    "Pommier"
-                ],
-                [
-                    19,
-                    "Flore",
-                    "Nenuphare"
-                ],
-                [
-                    20,
-                    "Flore",
-                    "Saule Pleureur"
-                ],
-                [
-                    21,
-                    "Fictif",
-                    "Marsupilami"
-                ],
-                [
-                    22,
-                    "Fictif",
-                    "Snoopi"
-                ],
-                [
-                    23,
-                    "Fictif",
-                    "La Faucheuse"
-                ],
-                [
-                    24,
-                    "Fictif",
-                    "Tintin"
-                ],
-                [
-                    25,
-                    "Fictif",
-                    "Obelix"
-                ],
-                [
-                    26,
-                    "Fictif",
-                    "Lucky Luke"
-                ],
-                [
-                    27,
-                    "Fictif",
-                    "Groot"
-                ],
-                [
-                    28,
-                    "Fictif",
-                    "Hulk"
-                ],
-                [
-                    29,
-                    "Fictif",
-                    "La belle au bois dormant"
-                ],
-                [
-                    30,
-                    "Fictif",
-                    "Chewbacca"
-                ],
-                [
-                    31,
-                    "Objet",
-                    "Table"
-                ],
-                [
-                    32,
-                    "Objet",
-                    "Porte"
-                ],
-                [
-                    33,
-                    "Objet",
-                    "Bouche à incendie"
-                ],
-                [
-                    34,
-                    "Objet",
-                    "Escalator"
-                ],
-                [
-                    35,
-                    "Objet",
-                    "Smartphone"
-                ],
-                [
-                    36,
-                    "Objet",
-                    "Trampoline"
-                ],
-                [
-                    37,
-                    "Objet",
-                    "Douche"
-                ],
-                [
-                    38,
-                    "Objet",
-                    "Sabre laser"
-                ],
-                [
-                    39,
-                    "Objet",
-                    "Boite au lettre"
-                ],
-                [
-                    40,
-                    "Objet",
-                    "Cage à hamster"
-                ]
-            ]
-        }
+            "id": "1",
+            "category": "People",
+            "word": "Brad Pitt"
+    },
+        {
+            "id": "2",
+            "category": "People",
+            "word": "Angelina Jolie"
+    },
+        {
+            "id": "3",
+            "category": "People",
+            "word": "Rihanna"
+    },
+        {
+            "id": "4",
+            "category": "People",
+            "word": "Marion Cotillard"
+    },
+        {
+            "id": "5",
+            "category": "People",
+            "word": "Rocco Siffredi"
+    },
+        {
+            "id": "6",
+            "category": "People",
+            "word": "Donald Trump"
+    },
+        {
+            "id": "7",
+            "category": "People",
+            "word": "The Rock"
+    },
+        {
+            "id": "8",
+            "category": "People",
+            "word": "François Hollande"
+    },
+        {
+            "id": "9",
+            "category": "People",
+            "word": "George Cloney"
+    },
+        {
+            "id": "10",
+            "category": "People",
+            "word": "Le Pape François"
+    },
+        {
+            "id": "11",
+            "category": "Faune",
+            "word": "Tigre"
+    },
+        {
+            "id": "12",
+            "category": "Faune",
+            "word": "Lombric"
+    },
+        {
+            "id": "13",
+            "category": "Faune",
+            "word": "Lama"
+    },
+        {
+            "id": "14",
+            "category": "Faune",
+            "word": "Kangourou"
+    },
+        {
+            "id": "15",
+            "category": "Faune",
+            "word": "Poule"
+    },
+        {
+            "id": "16",
+            "category": "Flore",
+            "word": "Rose"
+    },
+        {
+            "id": "17",
+            "category": "Flore",
+            "word": "Tournesol"
+    },
+        {
+            "id": "18",
+            "category": "Flore",
+            "word": "Pommier"
+    },
+        {
+            "id": "19",
+            "category": "Flore",
+            "word": "Nenuphar"
+    },
+        {
+            "id": "20",
+            "category": "Flore",
+            "word": "Saule Pleureur"
+    },
+        {
+            "id": "21",
+            "category": "Fictif",
+            "word": "Marsupilami"
+    },
+        {
+            "id": "22",
+            "category": "Fictif",
+            "word": "Snoopi"
+    },
+        {
+            "id": "23",
+            "category": "Fictif",
+            "word": "La Faucheuse"
+    },
+        {
+            "id": "24",
+            "category": "Fictif",
+            "word": "Tintin"
+    },
+        {
+            "id": "25",
+            "category": "Fictif",
+            "word": "Obelix"
+    },
+        {
+            "id": "26",
+            "category": "Fictif",
+            "word": "Lucky Luke"
+    },
+        {
+            "id": "27",
+            "category": "Fictif",
+            "word": "Groot"
+    },
+        {
+            "id": "28",
+            "category": "Fictif",
+            "word": "Hulk"
+    },
+        {
+            "id": "29",
+            "category": "Fictif",
+            "word": "La Belle au Bois Dormant"
+    },
+        {
+            "id": "30",
+            "category": "Fictif",
+            "word": "Chewbacca"
+    },
+        {
+            "id": "31",
+            "category": "Objet",
+            "word": "Table"
+    },
+        {
+            "id": "32",
+            "category": "Objet",
+            "word": "Porte"
+    },
+        {
+            "id": "33",
+            "category": "Objet",
+            "word": "Bouche à incendie"
+    },
+        {
+            "id": "34",
+            "category": "Objet",
+            "word": "Escalator"
+    },
+        {
+            "id": "35",
+            "category": "Objet",
+            "word": "Smartphone"
+    },
+        {
+            "id": "36",
+            "category": "Objet",
+            "word": "Trampoline"
+    },
+        {
+            "id": "37",
+            "category": "Objet",
+            "word": "Douche"
+    },
+        {
+            "id": "38",
+            "category": "Objet",
+            "word": "Sabre laser"
+    },
+        {
+            "id": "39",
+            "category": "Objet",
+            "word": "Boite aux lettres"
+    },
+        {
+            "id": "40",
+            "category": "Objet",
+            "word": "Cage à hamster"
+    }
     ]
 }
