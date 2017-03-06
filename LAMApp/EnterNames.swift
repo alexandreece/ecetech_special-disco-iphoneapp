@@ -17,7 +17,7 @@ class EnterNames : 	UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
-            case 0 :
+        case 0:
                 return Game.shared.NbPlayers+1
             case 1 :
                 return Game.shared.NbPlayers+1

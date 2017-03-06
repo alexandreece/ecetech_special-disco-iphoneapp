@@ -15,7 +15,7 @@ class Game{
     // ----- INSTANTIATION ----- //
     var Level: Int
     
-    var NbPlayers: Int = 5
+    var NbPlayers: Int
     var NbTeam = 2
     
     var TeamA: String
