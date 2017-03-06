@@ -18,6 +18,7 @@ class Game{
     var NbPlayers: Int
     
     var TeamA: String
+    
     var TeamB: String
     
     var TeamA_List_Joueurs = [Joueur]()
@@ -42,8 +43,8 @@ class Game{
     init() {
     self.Level = 0
     self.NbPlayers = 0
-    self.TeamA = ""
-    self.TeamB = ""
+    self.TeamA = "Lamatraque"
+    self.TeamB = "Lamatrice"
     self.NbWords = 0
     self.Word = ""
     self.CurrentWord = 0
@@ -53,17 +54,26 @@ class Game{
     self.NbPointsRoundTeamA = 0
     self.NbPointsRoundTeamB = 0
     self.Words_List = ["papillon", "voiture", "George Cloney", "Obama", "Trump", "Donald Duck"]
+    self.TeamA_List_Joueurs = [Joueur(),Joueur(),Joueur()]
+    self.TeamB_List_Joueurs = [Joueur(),Joueur(),Joueur()]
+        var i = 0
+        for joueur in TeamA_List_Joueurs {
+            joueur.SetNomJoueur(pNomJoueur: "joueur \(i)")
+            i += 1
+        }
+        i=0
+        for joueur in TeamB_List_Joueurs {
+            joueur.SetNomJoueur(pNomJoueur: "joueur \(i)")
+            i += 1
+        }
+        
     }
     
     // ----- GETTERS ----- //
      
-    func getLevel() -> Int {
-        return Level
-    }
     
-    func getNbPlayers() -> Int {
-        return NbPlayers
-    }
+    
+    
     
     func getNameTeamA() -> String {
         return TeamA;

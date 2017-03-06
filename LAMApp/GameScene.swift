@@ -37,16 +37,21 @@ class GameScene: SKScene
     var okButton : SKNode?
     var numWord : SKLabelNode?
     var nbLama : SKLabelNode?
+    var joueurName : SKLabelNode?
+    var teamName : SKLabelNode?
     
     //variable pour le chrono
     var timer = Timer()
     var count: Int = 60
     
+    //var decompte joueurs
+    var v = 0
     
-    
+    // override function didmove
     override func didMove(to view: SKView)
     {
         
+        //groupe
         if let g1 = childNode(withName: "//PremiereManche")
         {
             groupe1 = g1
@@ -65,6 +70,11 @@ class GameScene: SKScene
         {
             groupeJeux = gJeux
         }
+        if let finTou = childNode(withName: "//FinTour")
+        {
+            finTourG = finTou
+        }
+        //label
         if let ch = childNode(withName: "//Time") as? SKLabelNode
         {
             chrono = ch
@@ -77,22 +87,25 @@ class GameScene: SKScene
         {
             numWord = nbmo
         }
-        if let finTou = childNode(withName: "//FinTour")
-        {
-            finTourG = finTou
-        }
+        
         if let nblamas = childNode(withName: "//NbLama") as? SKLabelNode
         {
             nbLama = nblamas
+        }
+        if let jname = childNode(withName: "//JoueurName") as? SKLabelNode
+        {
+            joueurName = jname
+        }
+        if let tname = childNode(withName: "//TeamName") as? SKLabelNode
+        {
+            teamName = tname
         }
         
         
         
         groupeJeux?.isHidden = true
         numWord?.text = "\(score) / \(nbMrestant)"
-        
-        
-        
+        joueurName?.text = Game.shared.getTeamA_List_Joueurs()[0].GetNomJoueur()
         
         nextButton = childNode(withName: "//NextButton")
         okButton = childNode(withName: "//OkButton")
@@ -101,20 +114,19 @@ class GameScene: SKScene
     
     
     
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
-    {
+    //gestion touch
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         
     }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
-    {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?){
+        
+    }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        
         
         if let touch = touches.first
         {
@@ -123,41 +135,23 @@ class GameScene: SKScene
             if nextButton!.contains(location)
             {
                 nextWord()
-                print("next button")
-                
             }
             if okButton!.contains(location)
             {
                 validWord()
-                print("ok button")
             }
         }
         if (groupe1?.position == pointZero){
             groupe1?.run(SKAction.moveTo(y: -1900, duration: 0.5), completion:
                 {
-                    print("Premiere manche")
-                    
-                    //print("Shuffled: \(self.randomArray(array: self.mots))")
                     self.jeux()
             })
             
         }
         
-       /* if (groupe2?.position == pointZero){
-            groupe2?.run(SKAction.moveTo(y: -1900, duration: 0.5), completion:
-                {
-                    print("Deuxieme manche")
-            })
-            groupe3?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
-                {
-                    print("Troisieme manche")
-            })
-        }*/
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
+    
     
     
     override func update(_ currentTime: TimeInterval) {
@@ -167,38 +161,21 @@ class GameScene: SKScene
     func jeux()
     {
         groupeJeux?.isHidden = false
+        print(Game.shared.getTeamA_List_Joueurs())
         
-        //timer lancé
-        //var count: Int = 60
-        if #available(iOS 10.0, *) {
-            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
-                { (timer) in
-                    self.updateTime()
-            })
-        } else {
-            // Fallback on earlier versions
-        }
-        timer.fire()
-        mot?.text = wordCurrentList[posTab]
-        
-    }
-    //met a jour la variable count
-    func updateTime(){
-        
-        if(count > 0)
-        {
+        while (v<Game.shared.getTeamA_List_Joueurs().count){
+            joueurName?.text = Game.shared.getTeamA_List_Joueurs()[v].GetNomJoueur()
+            teamName?.text = Game.shared.TeamA
+            time()
+            while(count > 0 || wordCurrentList.count != 1 ){
+                print(count)
+            }
+           // mot?.text = wordCurrentList[posTab]
             
-            count -= 1
-            self.chrono!.text = String (count)
-        } else {
-            timer.invalidate()
-            count = 60
-            finTour()
         }
-    }
-    //melange la liste de mot
-    func randomArray(array : [String]) -> [String]{
-        return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: array) as! [String]
+        print("broke")
+        
+        
     }
     
     //fonction mot suivant
@@ -219,8 +196,8 @@ class GameScene: SKScene
         print(wordCurrentList.count)
         print(wordCurrentList)
         if(wordCurrentList.count == 1){
-            print("fintour")
-            print("points")
+            print("points \(score)")
+            score += 1
             finTour()
             
         }
@@ -255,6 +232,40 @@ class GameScene: SKScene
         })
         
     }
+    
+    //timer
+    func time(){
+        if #available(iOS 10.0, *) {
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
+                { (timer) in
+                    self.updateTime()
+            })
+        } else {
+            // Fallback on earlier versions
+        }
+        timer.fire()
+        
+    }
+    //met a jour la variable count
+    func updateTime(){
+        
+        if(count > 0)
+        {
+            
+            count -= 1
+            self.chrono!.text = String (count)
+
+        } else {
+            timer.invalidate()
+            count = 60
+            finTour()
+        }
+    }
+    //melange la liste de mot
+    func randomArray(array : [String]) -> [String]{
+        return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: array) as! [String]
+    }
+    
     
 }
 
