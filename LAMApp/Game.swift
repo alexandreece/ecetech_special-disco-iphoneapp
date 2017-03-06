@@ -52,6 +52,7 @@ class Game{
     self.NbPointsTurn = 0
     self.NbPointsRoundTeamA = 0
     self.NbPointsRoundTeamB = 0
+    self.Words_List = ["papillon", "voiture", "George Cloney", "Obama", "Trump", "Donald Duck"]
     }
     
     // ----- GETTERS ----- //

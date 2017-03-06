@@ -63,7 +63,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="1Vv-dt-bQP"/>
+                                    <segue destination="BV1-FR-VrT" kind="presentation" id="1Vv-dt-bQP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -582,6 +582,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="z8Q-2E-C1G"/>
-        <segue reference="qjt-gq-s8z"/>
+        <segue reference="NHy-1j-uha"/>
     </inferredMetricsTieBreakers>
 </document>
