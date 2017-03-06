@@ -15,7 +15,8 @@ class Game{
     // ----- INSTANTIATION ----- //
     var Level: Int
     
-    var NbPlayers: Int
+    var NbPlayers: Int = 5
+    var NbTeam = 2
     
     var TeamA: String
     var TeamB: String
@@ -41,7 +42,7 @@ class Game{
     // ----- CONSTRUCTOR ----- //
     init() {
     self.Level = 0
-    self.NbPlayers = 0
+    self.NbPlayers = 5
     self.TeamA = ""
     self.TeamB = ""
     self.NbWords = 0
