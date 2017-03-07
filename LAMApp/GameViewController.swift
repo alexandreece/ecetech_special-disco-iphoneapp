@@ -11,6 +11,7 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+
 /*
     @IBOutlet weak var RoundText: UILabel!
     @IBOutlet weak var PlayerNameText: UILabel!
@@ -42,6 +43,7 @@ class GameViewController: UIViewController {
         self.CurrentWordText.text = WordList[0]
         self.ScoreText.text = "\(Point)/\(WordList.count)"
         */
+
     }
     
     override var shouldAutorotate: Bool {
@@ -70,6 +72,7 @@ class GameViewController: UIViewController {
         }
     }
     
+
     @IBAction func ValidateWord(_ sender: UIButton) {
         
         if Point < WordList.count {
@@ -109,6 +112,7 @@ class GameViewController: UIViewController {
             i = 0
             self.CurrentWordText.text = WordList[i]
         }
+
     }
  */
 }
