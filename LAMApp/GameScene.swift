@@ -25,6 +25,7 @@ class GameScene: SKScene
     var groupeJeux : SKNode?
     var chrono : SKLabelNode?
     var nextButton : SKNode?
+    var okButton : SKNode?
     
     
     
@@ -66,7 +67,8 @@ class GameScene: SKScene
         
         
         nextButton = childNode(withName: "//NextButton")
-        
+        okButton = childNode(withName: "//OkButton")
+
         //nextButton = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
     }
     
@@ -85,6 +87,23 @@ class GameScene: SKScene
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
     {
+        
+        
+        if let touch = touches.first
+        {
+            let location = touch.location(in: self)
+                
+            if nextButton!.contains(location)
+            {
+                    
+                print("next button")
+            }
+            if okButton!.contains(location)
+            {
+                
+                print("ok button")
+            }
+        }
         if (groupe1?.position == pointZero){
             groupe1?.run(SKAction.moveTo(y: -1900, duration: 0.5), completion:
                 {
