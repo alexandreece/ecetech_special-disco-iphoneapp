@@ -16,6 +16,7 @@
 		ACA89FD41E68354F00AE700D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD21E68354F00AE700D /* Main.storyboard */; };
 		ACA89FD61E68354F00AE700D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD51E68354F00AE700D /* Assets.xcassets */; };
 		ACA89FD91E68354F00AE700D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD71E68354F00AE700D /* LaunchScreen.storyboard */; };
+		ACB03B081E76B4CD00CD016A /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B02BB1E698DAA00D7F251 /* DataBase.swift */; };
 		C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */; };
 		C4C7A3301E6D92300088B3F0 /* ConfigJeuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A32F1E6D92300088B3F0 /* ConfigJeuViewController.swift */; };
 		C4C7A3321E6DACC40088B3F0 /* EnterWordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A3311E6DACC40088B3F0 /* EnterWordsTableViewController.swift */; };
@@ -168,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACB03B081E76B4CD00CD016A /* DataBase.swift in Sources */,
 				ACA89FCF1E68354F00AE700D /* GameScene.swift in Sources */,
 				ACA89FD11E68354F00AE700D /* GameViewController.swift in Sources */,
 				C4C7A3321E6DACC40088B3F0 /* EnterWordsTableViewController.swift in Sources */,
