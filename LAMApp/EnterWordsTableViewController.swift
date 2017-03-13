@@ -10,16 +10,12 @@ import UIKit
 
 class EnterWordsTableViewController: UITableViewController {
     
-    @IBOutlet weak var progressView: UIProgressView!
-    
     @IBOutlet weak var randomButton: UIButton!
     @IBOutlet weak var dictionaryButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
     
-    @IBOutlet weak var labelPlayer: UILabel!
-    
-    @IBOutlet weak var validWordButton: UIButton!
     @IBOutlet weak var validButton: UIButton!
+ 
     
 
     override func viewDidLoad() {

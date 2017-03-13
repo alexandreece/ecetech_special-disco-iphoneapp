@@ -535,7 +535,6 @@
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
-                                                <action selector="validClicked:" destination="kfQ-Rn-uBe" eventType="touchUpInside" id="WKp-39-6Xd"/>
                                                 <segue destination="BV1-FR-VrT" kind="show" id="Mfh-b8-RVN"/>
                                             </connections>
                                         </button>
@@ -551,16 +550,6 @@
                             <outlet property="delegate" destination="kfQ-Rn-uBe" id="Urf-T9-3o7"/>
                         </connections>
                     </tableView>
-                    <connections>
-                        <outlet property="dictionaryButton" destination="UUM-uJ-qaD" id="Kfe-51-azF"/>
-                        <outlet property="labelPlayer" destination="C0x-uy-XdC" id="CCV-pY-gdr"/>
-                        <outlet property="previousButton" destination="1ho-Mf-RRU" id="L28-V4-44s"/>
-                        <outlet property="progressView" destination="QiV-Un-2vi" id="DKi-7x-yoc"/>
-                        <outlet property="randomButton" destination="b3F-67-LOa" id="V9O-Y2-6Ts"/>
-                        <outlet property="validButton" destination="9UH-5R-EJu" id="B1j-Yj-akW"/>
-                        <outlet property="validWordButton" destination="K3D-el-9ra" id="K80-cm-CGt"/>
-                        <outlet property="validwordButton" destination="g7R-ts-tYS" id="owA-I8-b8e"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ox-xQ-GmU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
