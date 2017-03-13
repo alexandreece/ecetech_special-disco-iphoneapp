@@ -7,7 +7,9 @@
 //
 
 import Foundation
+
 import GameplayKit
+
 
 
 class Game{
@@ -16,10 +18,12 @@ class Game{
     
     // ----- INSTANTIATION ----- //
     var Level: Int
+
     var NbPlayers: Int
     
     var TeamA: String
     
+
     var TeamB: String
     
     var TeamA_List_Joueurs = [Joueur]()
@@ -27,12 +31,15 @@ class Game{
     
     var NbWords: Int
     var CurrentWord: Int
+
     
     var posTab = 0
     
     var Words_List = [String]()
     var Words_Current_List = [String]()
     //var Word: String
+
+
     
 //    int NbPointsTurnTeamA;
 //    int NbPointsTurnTeamB;
@@ -46,17 +53,20 @@ class Game{
     // ----- CONSTRUCTOR ----- //
     init() {
     self.Level = 0
+
     self.NbPlayers = 3
     self.TeamA = "Lamatraque"
     self.TeamB = "Lamatrice"
     self.NbWords = 0
     
+
     self.CurrentWord = 0
     self.CurrentRound = 0
     self.PlayerToPlay = [0, 0]
     self.NbPointsTurn = 0
     self.NbPointsRoundTeamA = 0
     self.NbPointsRoundTeamB = 0
+
         
     self.Words_List = ["papillon", "voiture", "George Cloney", "Obama", "Trump", "Donald Duck"]
         
@@ -104,11 +114,13 @@ class Game{
     func getNameJoueurTeamA (pIDJoueur: Int) -> String {
         let Joueur: Joueur = TeamA_List_Joueurs[pIDJoueur]
         let JoueurName: String = Joueur.NomJoueur
+
         return JoueurName
     }
     
     func getNameJoueurTeamB (pIDJoueur: Int) -> String {
         let Joueur: Joueur = TeamB_List_Joueurs[pIDJoueur]
+
         let JoueurName: String = Joueur.NomJoueur
         return JoueurName
     }
@@ -120,4 +132,5 @@ class Game{
         
     }
    
+
 }

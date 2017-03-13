@@ -212,6 +212,7 @@ class GameScene: SKScene , GameEngineDelegate
     func nextWord()
     {
         
+
         GameEngine.shared.nextWord()
         mot?.text = Game.shared.getNextWord()
         
@@ -261,13 +262,16 @@ class GameScene: SKScene , GameEngineDelegate
         count = 60
         /*if #available(iOS 10.0, *)
         {
+
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
                 { (timer) in
                     self.updateTime()
             })
         } else {
             // Fallback on earlier versions
+
         }*/
+
         timer.fire()
         
     }

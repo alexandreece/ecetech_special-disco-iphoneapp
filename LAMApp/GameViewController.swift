@@ -11,6 +11,7 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +38,28 @@ class GameViewController: UIViewController {
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
+        return .landscapeLeft
+    }
+    /*
+    @IBAction func TEST(_ sender: UIButton) {
+        if Point < WordList.count {
+            
+            Point = Point + 1
+            
+            if i < WordList.count {
+                i = i + 1
+                self.CurrentWordText.text = WordList[i]
+            } else if i == WordList.count{
+                i = 0
+                self.CurrentWordText.text = WordList[i]
+            }
+        }
+        if Point == WordList.count{
+            // Aller à la view suivante --> Fin de manche
         }
     }
     
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
@@ -51,5 +67,7 @@ class GameViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+
     }
+ */
 }
