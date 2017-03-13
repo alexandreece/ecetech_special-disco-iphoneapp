@@ -1,31 +1,51 @@
 //
-//  EnterWordsTableViewController.swift
+//  SelectWordTableViewController.swift
 //  LAMApp
 //
-//  Created by Maeva Margueritat on 06/03/2017.
+//  Created by Alexandre on 13/03/2017.
 //  Copyright © 2017 LAMA. All rights reserved.
 //
 
 import UIKit
 
-class EnterWordsTableViewController: UITableViewController {
-    
-    @IBOutlet weak var randomButton: UIButton!
-    @IBOutlet weak var dictionaryButton: UIButton!
-    @IBOutlet weak var previousButton: UIButton!
-    
-    @IBOutlet weak var validButton: UIButton!
+class SelectWordTableViewController: UITableViewController , DataBaseDelegate {
 
-    var size: Int = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        lenghtTable()
+        
+        let dataBase = WordDataBase.shared
+        dataBase.delegate = self
+        
+        dataBase.loadFromDisk()
+        dataBase.loadData()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func didLoadData()
+    {
+        tableView.reloadData()
+        
+        
+        if(WordDataBase.shared.saveToDisk())
+        {
+            print("Save OK")
+        }
+        else
+        {
+            print("Save ERROR")
+        }
+        
+        
+    }
+    
+    func didLoadDataAtIndex( index : Int)
+    {
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,20 +62,22 @@ class EnterWordsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return size
+        return WordDataBase.shared.objects.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellPlayer", for: indexPath)
-        /*
- 
-        */
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WordCell", for: indexPath)
+
         // Configure the cell...
+        
+        let item = WordDataBase.shared.objects[indexPath.row]
+        cell.textLabel?.text = item.word
+        cell.detailTextLabel?.text = item.category
 
         return cell
     }
-    
+ 
 
     /*
     // Override to support conditional editing of the table view.
@@ -101,29 +123,5 @@ class EnterWordsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-   @IBAction func optionClicked(_ sender: UIButton){
-        if sender === randomButton {
-            
-            print()
-        } else if sender === dictionaryButton {
-            
-            print()
-        } else if sender === previousButton {
-            
-            print()
-        }
-    }
-    
-    @IBAction func validClicked(_ sender: UIButton){
-        if sender === validButton{
-            
-        }
-    }
-    
-    @IBAction func lenghtTable(){
-        size = Game.shared.getNbPlayers()*2
-        print(size)
-    }
 
 }

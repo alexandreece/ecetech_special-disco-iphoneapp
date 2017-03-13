@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC3B02BC1E698DAA00D7F251 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B02BB1E698DAA00D7F251 /* DataBase.swift */; };
+		AC3A663F1E76A6B900A2BE78 /* SelectWordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A663E1E76A6B900A2BE78 /* SelectWordTableViewController.swift */; };
 		ACA89FC91E68354F00AE700D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA89FC81E68354F00AE700D /* AppDelegate.swift */; };
 		ACA89FCB1E68354F00AE700D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FCA1E68354F00AE700D /* GameScene.sks */; };
 		ACA89FCD1E68354F00AE700D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FCC1E68354F00AE700D /* Actions.sks */; };
@@ -16,17 +16,17 @@
 		ACA89FD41E68354F00AE700D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD21E68354F00AE700D /* Main.storyboard */; };
 		ACA89FD61E68354F00AE700D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD51E68354F00AE700D /* Assets.xcassets */; };
 		ACA89FD91E68354F00AE700D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD71E68354F00AE700D /* LaunchScreen.storyboard */; };
+		ACB03B081E76B4CD00CD016A /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B02BB1E698DAA00D7F251 /* DataBase.swift */; };
 		C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */; };
 		C4C7A3301E6D92300088B3F0 /* ConfigJeuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A32F1E6D92300088B3F0 /* ConfigJeuViewController.swift */; };
 		C4C7A3321E6DACC40088B3F0 /* EnterWordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A3311E6DACC40088B3F0 /* EnterWordsTableViewController.swift */; };
 		D23BA9191E696C9300FB33FD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23BA9181E696C9300FB33FD /* Game.swift */; };
 		D23BA91B1E698DCA00FB33FD /* Joueur.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23BA91A1E698DCA00FB33FD /* Joueur.swift */; };
-		D28EEE741E6D5C4A00DF5F3E /* TEMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EEE731E6D5C4A00DF5F3E /* TEMP.swift */; };
-		D28EEE761E6D5C7800DF5F3E /* EnterNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28EEE751E6D5C7800DF5F3E /* EnterNames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AC3B02BB1E698DAA00D7F251 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		AC3A663E1E76A6B900A2BE78 /* SelectWordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWordTableViewController.swift; sourceTree = "<group>"; };
+		AC3B02BB1E698DAA00D7F251 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataBase.swift; path = ../DataBase.swift; sourceTree = "<group>"; };
 		ACA89FC51E68354F00AE700D /* LAMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LAMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA89FC81E68354F00AE700D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACA89FCA1E68354F00AE700D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -42,8 +42,6 @@
 		C4C7A3311E6DACC40088B3F0 /* EnterWordsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterWordsTableViewController.swift; sourceTree = "<group>"; };
 		D23BA9181E696C9300FB33FD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		D23BA91A1E698DCA00FB33FD /* Joueur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joueur.swift; sourceTree = "<group>"; };
-		D28EEE731E6D5C4A00DF5F3E /* TEMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMP.swift; sourceTree = "<group>"; };
-		D28EEE751E6D5C7800DF5F3E /* EnterNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +58,6 @@
 		ACA89FBC1E68354F00AE700D = {
 			isa = PBXGroup;
 			children = (
-				AC3B02BB1E698DAA00D7F251 /* DataBase.swift */,
 				ACA89FC71E68354F00AE700D /* LAMApp */,
 				ACA89FC61E68354F00AE700D /* Products */,
 			);
@@ -77,12 +74,14 @@
 		ACA89FC71E68354F00AE700D /* LAMApp */ = {
 			isa = PBXGroup;
 			children = (
+				AC3B02BB1E698DAA00D7F251 /* DataBase.swift */,
 				ACA89FC81E68354F00AE700D /* AppDelegate.swift */,
 				ACA89FCA1E68354F00AE700D /* GameScene.sks */,
 				ACA89FCC1E68354F00AE700D /* Actions.sks */,
 				ACA89FCE1E68354F00AE700D /* GameScene.swift */,
 				ACA89FD01E68354F00AE700D /* GameViewController.swift */,
 				ACA89FD21E68354F00AE700D /* Main.storyboard */,
+				AC3A663E1E76A6B900A2BE78 /* SelectWordTableViewController.swift */,
 				C4C7A3311E6DACC40088B3F0 /* EnterWordsTableViewController.swift */,
 				C4C7A32F1E6D92300088B3F0 /* ConfigJeuViewController.swift */,
 				C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */,
@@ -170,12 +169,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACB03B081E76B4CD00CD016A /* DataBase.swift in Sources */,
 				ACA89FCF1E68354F00AE700D /* GameScene.swift in Sources */,
 				ACA89FD11E68354F00AE700D /* GameViewController.swift in Sources */,
 				C4C7A3321E6DACC40088B3F0 /* EnterWordsTableViewController.swift in Sources */,
 				ACA89FC91E68354F00AE700D /* AppDelegate.swift in Sources */,
 				C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */,
 				D23BA9191E696C9300FB33FD /* Game.swift in Sources */,
+				AC3A663F1E76A6B900A2BE78 /* SelectWordTableViewController.swift in Sources */,
 				C4C7A3301E6D92300088B3F0 /* ConfigJeuViewController.swift in Sources */,
 				D23BA91B1E698DCA00FB33FD /* Joueur.swift in Sources */,
 			);
