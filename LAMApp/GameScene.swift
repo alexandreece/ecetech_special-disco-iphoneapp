@@ -9,13 +9,14 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene
+class GameScene: SKScene , GameEngineDelegate
 {
     //game
     
-    var wordCurrentList = Game.shared.getWords_List()
-    var posTab = 0
-    var nbMrestant = Game.shared.getWords_List().count
+    //var wordCurrentList = Game.shared.Words_List
+    
+    
+    //var nbMrestant = Game.shared.Words_List.count
     var score = 0
     var manche = 1
     //constantes
@@ -47,10 +48,35 @@ class GameScene: SKScene
     //var decompte joueurs
     var v = 0
     
+    func updateView()
+    {
+        updateNumText()
+        updateNomText()
+    }
+    func updateGame()
+    {
+        updateNumText()
+        
+        print(" State \(GameEngine.shared.etatJeux) Manche \(GameEngine.shared.idManche) Equipe \(GameEngine.shared.idEquipe) joueur \(GameEngine.shared.idJoueur) NbMot \(Game.shared.Words_Current_List.count)")
+        print(Game.shared.Words_Current_List.count)
+        
+        joueurName?.text = Game.shared.TeamA_List_Joueurs[GameEngine.shared.idJoueur].NomJoueur
+        if(GameEngine.shared.idEquipe == 0) {
+            teamName?.text = Game.shared.TeamA
+        }
+        else
+        {
+         teamName?.text = Game.shared.TeamB
+        }
+        
+        
+        
+    }
     // override function didmove
     override func didMove(to view: SKView)
     {
-        
+        GameEngine.shared.delegate = self
+        Game.shared.copyWordList()
         //groupe
         if let g1 = childNode(withName: "//PremiereManche")
         {
@@ -104,8 +130,8 @@ class GameScene: SKScene
         
         
         groupeJeux?.isHidden = true
-        numWord?.text = "\(score) / \(nbMrestant)"
-        joueurName?.text = Game.shared.getTeamA_List_Joueurs()[0].GetNomJoueur()
+        updateNumText()
+        
         
         nextButton = childNode(withName: "//NextButton")
         okButton = childNode(withName: "//OkButton")
@@ -130,6 +156,21 @@ class GameScene: SKScene
         
         if let touch = touches.first
         {
+            if (groupe1?.position == pointZero){
+                groupe1?.run(SKAction.moveTo(y: -1900, duration: 0.5), completion:
+                    {
+                        self.jeux()
+                })
+                
+            }
+            if (finTourG?.position == pointZero){
+                finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
+                    {
+                        self.jeux()
+                })
+                
+            }
+            
             let location = touch.location(in: self)
             
             if nextButton!.contains(location)
@@ -140,14 +181,9 @@ class GameScene: SKScene
             {
                 validWord()
             }
-        }
-        if (groupe1?.position == pointZero){
-            groupe1?.run(SKAction.moveTo(y: -1900, duration: 0.5), completion:
-                {
-                    self.jeux()
-            })
             
         }
+        
         
     }
     
@@ -161,61 +197,43 @@ class GameScene: SKScene
     func jeux()
     {
         groupeJeux?.isHidden = false
-        print(Game.shared.getTeamA_List_Joueurs())
-        
-        while (v<Game.shared.getTeamA_List_Joueurs().count){
-            joueurName?.text = Game.shared.getTeamA_List_Joueurs()[v].GetNomJoueur()
-            teamName?.text = Game.shared.TeamA
-            time()
-            while(count > 0 || wordCurrentList.count != 1 ){
-                print(count)
-            }
-           // mot?.text = wordCurrentList[posTab]
-            
-        }
-        print("broke")
-        
+        print(Game.shared.TeamA_List_Joueurs)
+        time()
         
     }
     
     //fonction mot suivant
-    func nextWord(){
-        posTab += 1
-        if(posTab < wordCurrentList.count){
-            mot?.text = wordCurrentList[posTab]
-        }
-        else{
-            posTab = 0
-            wordCurrentList = randomArray(array: wordCurrentList)
-            mot?.text = wordCurrentList[posTab]
-        }
+    func nextWord()
+    {
+        
+        GameEngine.shared.nextWord()
+        mot?.text = Game.shared.getNextWord()
+        
     }
     
     // fonction valider un mot
-    func validWord(){
-        print(wordCurrentList.count)
-        print(wordCurrentList)
-        if(wordCurrentList.count == 1){
-            print("points \(score)")
-            score += 1
-            finTour()
-            
-        }
-        else{
-            wordCurrentList.remove(at : posTab)
-            score += 1
-            posTab += 1
-            numWord?.text = "\(score) / \(nbMrestant)"
-            if(posTab < wordCurrentList.count){
-                mot?.text = wordCurrentList[posTab]
-            }
-                
-            else{
-                posTab = 0
-                wordCurrentList = randomArray(array: wordCurrentList)
-                mot?.text = wordCurrentList[posTab]
-            }
-        }
+    func validWord()
+    {
+        score += 1
+        GameEngine.shared.validWord()
+    }
+    
+    func updateNumText()
+    {
+        numWord?.text = "\(score) / \(Game.shared.Words_List.count)"
+    }
+    func gameDidEnd()
+    {
+        groupeJeux?.isHidden = true
+        finTourG?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
+            {
+                self.nbLama?.text = "L'équipe adverse reçois \(self.score) LAMA"
+        })
+
+    }
+    func updateNomText()
+    {
+        mot?.text = Game.shared.Words_Current_List[ Game.shared.posTab]
     }
     
     //fonction fin de manche
@@ -224,18 +242,16 @@ class GameScene: SKScene
         
     }
     
-    func finTour(){
-        groupeJeux?.isHidden = true
-        finTourG?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
-            {
-                self.nbLama?.text = "L'équipe adverse reçois \(self.score) LAMA"
-        })
-        
+    func finTour()
+    {
+        GameEngine.shared.endManche()
     }
     
     //timer
     func time(){
-        if #available(iOS 10.0, *) {
+        count = 60
+        if #available(iOS 10.0, *)
+        {
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
                 { (timer) in
                     self.updateTime()
@@ -258,13 +274,11 @@ class GameScene: SKScene
         } else {
             timer.invalidate()
             count = 60
+            
             finTour()
         }
     }
-    //melange la liste de mot
-    func randomArray(array : [String]) -> [String]{
-        return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: array) as! [String]
-    }
+    
     
     
 }

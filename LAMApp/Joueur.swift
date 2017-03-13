@@ -31,7 +31,7 @@ class Joueur{
         self.IDJoueur = pIDJoueur
     }
     
-    func SetIDJoueur (pIDJoueur: Int) {
+   /* func SetIDJoueur (pIDJoueur: Int) {
         self.IDJoueur = pIDJoueur
     }
     
@@ -45,5 +45,5 @@ class Joueur{
     
     func GetNomJoueur() -> String {
         return NomJoueur
-    }
+    }*/
 }
