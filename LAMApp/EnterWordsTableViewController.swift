@@ -15,12 +15,12 @@ class EnterWordsTableViewController: UITableViewController {
     @IBOutlet weak var previousButton: UIButton!
     
     @IBOutlet weak var validButton: UIButton!
- 
-    
 
+    var size: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Hello world")
+        lenghtTable()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -37,23 +37,25 @@ class EnterWordsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return size
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellPlayer", for: indexPath)
+        /*
+ 
+        */
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -117,6 +119,11 @@ class EnterWordsTableViewController: UITableViewController {
         if sender === validButton{
             
         }
+    }
+    
+    @IBAction func lenghtTable(){
+        size = Game.shared.getNbPlayers()*2
+        print(size)
     }
 
 }

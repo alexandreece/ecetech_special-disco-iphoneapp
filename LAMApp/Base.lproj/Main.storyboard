@@ -377,11 +377,11 @@
                                 <color key="backgroundColor" red="0.068472906949999995" green="0.4951608777" blue="0.49975997210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="122" id="A0x-eF-WVl">
-                                <rect key="frame" x="0.0" y="150" width="375" height="122"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cellplayer" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellPlayer" rowHeight="134" id="A0x-eF-WVl">
+                                <rect key="frame" x="0.0" y="150" width="375" height="134"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A0x-eF-WVl" id="OMi-ne-Cbf">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joueur 1 :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0x-uy-XdC">
@@ -411,6 +411,9 @@
                                             <state key="normal" title="Dictionnaire">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="optionClicked:" destination="kfQ-Rn-uBe" eventType="touchUpInside" id="lXi-Gw-xFe"/>
+                                            </connections>
                                         </button>
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QiV-Un-2vi">
                                             <rect key="frame" x="121" y="53" width="209" height="2"/>
@@ -425,6 +428,9 @@
                                             <state key="normal" title="Précédents">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="optionClicked:" destination="kfQ-Rn-uBe" eventType="touchUpInside" id="dWa-kH-s9B"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3F-67-LOa">
                                             <rect key="frame" x="32" y="78" width="81" height="35"/>
@@ -434,6 +440,9 @@
                                             <state key="normal" title="Aléatoire">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="optionClicked:" destination="kfQ-Rn-uBe" eventType="touchUpInside" id="2YY-59-zDY"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -441,7 +450,7 @@
                                 <color key="tintColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="63" id="AtG-hg-2L1">
-                                <rect key="frame" x="0.0" y="272" width="375" height="63"/>
+                                <rect key="frame" x="0.0" y="284" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AtG-hg-2L1" id="qhb-bD-fS2">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
@@ -460,7 +469,7 @@
                                 <color key="tintColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="111" id="ogr-Hf-sx5">
-                                <rect key="frame" x="0.0" y="335" width="375" height="111"/>
+                                <rect key="frame" x="0.0" y="347" width="375" height="111"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ogr-Hf-sx5" id="Aww-E2-tpf">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="111"/>
@@ -523,7 +532,7 @@
                                 <color key="tintColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="86" id="3f4-gR-TGo">
-                                <rect key="frame" x="0.0" y="446" width="375" height="86"/>
+                                <rect key="frame" x="0.0" y="458" width="375" height="86"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3f4-gR-TGo" id="Yf6-tq-syC">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
