@@ -412,6 +412,7 @@
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QiV-Un-2vi">
                                             <rect key="frame" x="121" y="53" width="209" height="2"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="trackTintColor" red="0.0039215686269999999" green="0.4941176471" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </progressView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ho-Mf-RRU">
                                             <rect key="frame" x="263" y="78" width="104" height="35"/>
@@ -484,6 +485,7 @@
                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gFc-i4-H5B">
                                             <rect key="frame" x="121" y="46" width="209" height="2"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="trackTintColor" red="0.0039215686269999999" green="0.4941176471" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </progressView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYV-Az-rcv">
                                             <rect key="frame" x="32" y="66" width="81" height="35"/>
@@ -532,6 +534,10 @@
                                             <state key="normal" title="Valider">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <connections>
+                                                <action selector="validClicked:" destination="kfQ-Rn-uBe" eventType="touchUpInside" id="WKp-39-6Xd"/>
+                                                <segue destination="BV1-FR-VrT" kind="show" id="Mfh-b8-RVN"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -545,6 +551,16 @@
                             <outlet property="delegate" destination="kfQ-Rn-uBe" id="Urf-T9-3o7"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="dictionaryButton" destination="UUM-uJ-qaD" id="Kfe-51-azF"/>
+                        <outlet property="labelPlayer" destination="C0x-uy-XdC" id="CCV-pY-gdr"/>
+                        <outlet property="previousButton" destination="1ho-Mf-RRU" id="L28-V4-44s"/>
+                        <outlet property="progressView" destination="QiV-Un-2vi" id="DKi-7x-yoc"/>
+                        <outlet property="randomButton" destination="b3F-67-LOa" id="V9O-Y2-6Ts"/>
+                        <outlet property="validButton" destination="9UH-5R-EJu" id="B1j-Yj-akW"/>
+                        <outlet property="validWordButton" destination="K3D-el-9ra" id="K80-cm-CGt"/>
+                        <outlet property="validwordButton" destination="g7R-ts-tYS" id="owA-I8-b8e"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ox-xQ-GmU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -791,7 +807,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" hidesBarsOnSwipe="YES" hidesBarsOnTap="YES" hidesBarsWhenKeyboardAppears="YES" hidesBarsWhenVerticallyCompact="YES" id="Ori-hN-nzv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UzH-AR-XL6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UzH-AR-XL6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.068472906949999995" green="0.4951608777" blue="0.49975997210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

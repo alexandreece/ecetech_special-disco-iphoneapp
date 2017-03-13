@@ -9,6 +9,18 @@
 import UIKit
 
 class EnterWordsTableViewController: UITableViewController {
+    
+    @IBOutlet weak var progressView: UIProgressView!
+    
+    @IBOutlet weak var randomButton: UIButton!
+    @IBOutlet weak var dictionaryButton: UIButton!
+    @IBOutlet weak var previousButton: UIButton!
+    
+    @IBOutlet weak var labelPlayer: UILabel!
+    
+    @IBOutlet weak var validWordButton: UIButton!
+    @IBOutlet weak var validButton: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,5 +103,24 @@ class EnterWordsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+   @IBAction func optionClicked(_ sender: UIButton){
+        if sender === randomButton {
+            
+            print()
+        } else if sender === dictionaryButton {
+            
+            print()
+        } else if sender === previousButton {
+            
+            print()
+        }
+    }
+    
+    @IBAction func validClicked(_ sender: UIButton){
+        if sender === validButton{
+            
+        }
+    }
 
 }
