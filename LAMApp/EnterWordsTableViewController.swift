@@ -21,6 +21,7 @@ class EnterWordsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         lenghtTable()
+        tableView.estimatedRowHeight = UITableViewAutomaticDimension
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -101,6 +102,9 @@ class EnterWordsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
    @IBAction func optionClicked(_ sender: UIButton){
         if sender === randomButton {

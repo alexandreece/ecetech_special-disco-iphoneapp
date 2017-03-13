@@ -5,13 +5,16 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="1K6-4i-2al">
             <objects>
-                <viewController id="m4T-In-bvN" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="m4T-In-bvN" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tiB-nb-wa0"/>
                         <viewControllerLayoutGuide type="bottom" id="lOf-uW-lqO"/>
@@ -384,28 +387,28 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joueur 1 :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0x-uy-XdC">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Joueur 1 :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0x-uy-XdC">
                                             <rect key="frame" x="8" y="15" width="105" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXS-Qd-aXN">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXS-Qd-aXN">
                                             <rect key="frame" x="121" y="15" width="209" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3D-el-9ra">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3D-el-9ra">
                                             <rect key="frame" x="329" y="19" width="46" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="23" id="Jp3-vc-nQp"/>
+                                                <constraint firstAttribute="width" constant="46" id="KWz-7e-Frf"/>
+                                            </constraints>
                                             <state key="normal" title="OK"/>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUM-uJ-qaD">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUM-uJ-qaD">
                                             <rect key="frame" x="130" y="78" width="114" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <state key="normal" title="Dictionnaire">
@@ -415,36 +418,26 @@
                                                 <action selector="optionClicked:" destination="kfQ-Rn-uBe" eventType="touchUpInside" id="lXi-Gw-xFe"/>
                                             </connections>
                                         </button>
-                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QiV-Un-2vi">
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QiV-Un-2vi">
                                             <rect key="frame" x="121" y="53" width="209" height="2"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="trackTintColor" red="0.0039215686269999999" green="0.4941176471" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </progressView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ho-Mf-RRU">
-                                            <rect key="frame" x="263" y="78" width="104" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <state key="normal" title="Précédents">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="optionClicked:" destination="kfQ-Rn-uBe" eventType="touchUpInside" id="dWa-kH-s9B"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3F-67-LOa">
-                                            <rect key="frame" x="32" y="78" width="81" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <state key="normal" title="Aléatoire">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="optionClicked:" destination="kfQ-Rn-uBe" eventType="touchUpInside" id="2YY-59-zDY"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cXS-Qd-aXN" firstAttribute="trailing" secondItem="QiV-Un-2vi" secondAttribute="trailing" id="17x-mz-nyA"/>
+                                        <constraint firstItem="C0x-uy-XdC" firstAttribute="leading" secondItem="OMi-ne-Cbf" secondAttribute="leadingMargin" id="6W9-eZ-cCK"/>
+                                        <constraint firstItem="UUM-uJ-qaD" firstAttribute="top" secondItem="QiV-Un-2vi" secondAttribute="bottom" constant="23" id="8fv-dr-l7M"/>
+                                        <constraint firstItem="C0x-uy-XdC" firstAttribute="top" secondItem="OMi-ne-Cbf" secondAttribute="topMargin" constant="7" id="9jJ-YY-cby"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="cXS-Qd-aXN" secondAttribute="trailing" constant="37" id="BV9-3U-iLI"/>
+                                        <constraint firstAttribute="trailing" secondItem="K3D-el-9ra" secondAttribute="trailing" id="WU3-YC-CS4"/>
+                                        <constraint firstItem="cXS-Qd-aXN" firstAttribute="leading" secondItem="C0x-uy-XdC" secondAttribute="trailing" constant="8" symbolic="YES" id="aJ1-6O-v5c"/>
+                                        <constraint firstItem="cXS-Qd-aXN" firstAttribute="leading" secondItem="QiV-Un-2vi" secondAttribute="leading" id="dO9-Zq-LfD"/>
+                                        <constraint firstItem="UUM-uJ-qaD" firstAttribute="centerX" secondItem="OMi-ne-Cbf" secondAttribute="centerX" id="hAn-FI-KHb"/>
+                                        <constraint firstItem="QiV-Un-2vi" firstAttribute="top" secondItem="cXS-Qd-aXN" secondAttribute="bottom" constant="8" symbolic="YES" id="qRL-n9-C4k"/>
+                                        <constraint firstItem="cXS-Qd-aXN" firstAttribute="centerY" secondItem="K3D-el-9ra" secondAttribute="centerY" id="tRU-Yg-ynQ"/>
+                                        <constraint firstItem="cXS-Qd-aXN" firstAttribute="baseline" secondItem="C0x-uy-XdC" secondAttribute="firstBaseline" id="v7R-b2-xrw"/>
+                                        <constraint firstItem="C0x-uy-XdC" firstAttribute="centerY" secondItem="cXS-Qd-aXN" secondAttribute="centerY" id="xxS-sN-RHX"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.068472906949999995" green="0.4951608777" blue="0.49975997210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
