@@ -17,7 +17,6 @@ class GameScene: SKScene , GameEngineDelegate
     
     
     //var nbMrestant = Game.shared.Words_List.count
-    var score = 0
     var manche = 1
     //constantes
     let pointZero = CGPoint(x: 0, y: 0)
@@ -131,7 +130,14 @@ class GameScene: SKScene , GameEngineDelegate
         
         groupeJeux?.isHidden = true
         updateNumText()
-        
+        if #available(iOS 10.0, *) {
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
+                { (timer) in
+                    self.updateTime()
+            })
+        } else {
+            // Fallback on earlier versions
+        }
         
         nextButton = childNode(withName: "//NextButton")
         okButton = childNode(withName: "//OkButton")
@@ -214,22 +220,24 @@ class GameScene: SKScene , GameEngineDelegate
     // fonction valider un mot
     func validWord()
     {
-        score += 1
         GameEngine.shared.validWord()
+        //print("score \(Game.shared.n)")
     }
     
     func updateNumText()
     {
-        numWord?.text = "\(score) / \(Game.shared.Words_List.count)"
+        numWord?.text = "\(Game.shared.NbPointsTurn) / \(Game.shared.Words_List.count)"
     }
     func gameDidEnd()
     {
         groupeJeux?.isHidden = true
         finTourG?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
             {
-                self.nbLama?.text = "L'équipe adverse reçois \(self.score) LAMA"
+                print("point \(Game.shared.NbPointsTurn)")
+                self.nbLama?.text = "L'équipe adverse reçois \(Game.shared.NbPointsTurn) LAMA"
         })
-
+        //GameEngine.shared.score()
+        updateNumText()
     }
     func updateNomText()
     {
@@ -244,13 +252,14 @@ class GameScene: SKScene , GameEngineDelegate
     
     func finTour()
     {
+        timer.invalidate()
         GameEngine.shared.endManche()
     }
     
     //timer
     func time(){
         count = 60
-        if #available(iOS 10.0, *)
+        /*if #available(iOS 10.0, *)
         {
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
                 { (timer) in
@@ -258,7 +267,7 @@ class GameScene: SKScene , GameEngineDelegate
             })
         } else {
             // Fallback on earlier versions
-        }
+        }*/
         timer.fire()
         
     }
