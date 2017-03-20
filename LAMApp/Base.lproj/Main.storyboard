@@ -48,9 +48,6 @@
                                 <state key="normal" title="Scores">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <segue destination="kfQ-Rn-uBe" kind="show" id="vyP-RJ-bg3"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I77-pJ-5KX">
                                 <rect key="frame" x="96" y="569" width="182" height="63"/>
@@ -62,6 +59,14 @@
                                 </state>
                                 <connections>
                                     <segue destination="GiQ-74-XnS" kind="show" id="k33-PK-f7c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0T-u6-0jx">
+                                <rect key="frame" x="240" y="196" width="16" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="kfQ-Rn-uBe" kind="show" id="L5q-fV-tK1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NhQ-Et-1lE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="207" y="161"/>
+            <point key="canvasLocation" x="205.59999999999999" y="160.56971514242881"/>
         </scene>
         <!--Config Jeu View Controller-->
         <scene sceneID="rDt-Zr-3E2">
