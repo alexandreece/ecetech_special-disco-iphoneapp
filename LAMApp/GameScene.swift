@@ -5,7 +5,6 @@
 //  Created by Alexandre on 02/03/2017.
 //  Copyright © 2017 LAMA. All rights reserved.
 //
-
 import SpriteKit
 import GameplayKit
 
@@ -17,7 +16,7 @@ class GameScene: SKScene , GameEngineDelegate
     
     
     //var nbMrestant = Game.shared.Words_List.count
-    var manche = 1
+    var manche = 0
     //constantes
     let pointZero = CGPoint(x: 0, y: 0)
     
@@ -46,7 +45,8 @@ class GameScene: SKScene , GameEngineDelegate
     
     //var decompte joueurs
     var v = 0
-    
+    var playing = 0
+    var mancheShow = 0
     func updateView()
     {
         updateNumText()
@@ -65,7 +65,7 @@ class GameScene: SKScene , GameEngineDelegate
         }
         else
         {
-         teamName?.text = Game.shared.TeamB
+            teamName?.text = Game.shared.TeamB
         }
         
         
@@ -107,6 +107,8 @@ class GameScene: SKScene , GameEngineDelegate
         if let mo = childNode(withName: "//Mot") as? SKLabelNode
         {
             mot = mo
+            mot?.text = Game.shared.getNextWord()
+            
         }
         if let nbmo = childNode(withName: "//CompteMot") as? SKLabelNode
         {
@@ -165,25 +167,66 @@ class GameScene: SKScene , GameEngineDelegate
             if (groupe1?.position == pointZero){
                 groupe1?.run(SKAction.moveTo(y: -1900, duration: 0.5), completion:
                     {
+                        self.playing = 1
                         self.jeux()
                 })
                 
             }
-            if (finTourG?.position == pointZero){
-                finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
-                    {
-                        self.jeux()
-                })
+            if (mancheShow == 0 ){
+                if(finTourG?.position == pointZero){
+                    finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
+                        {
+                            self.playing = 1
+                            self.jeux()
+                    })
+                }
+                else if(groupe2?.position == pointZero){
+                    groupe2?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
+                        {
+                            self.playing = 1
+                            self.jeux()
+                    })
+                }
+                else if(groupe3?.position == pointZero){
+                    groupe3?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
+                        {
+                            self.playing = 1
+                            self.jeux()
+                    })
+                }
+            }
+            if (finTourG?.position == pointZero && mancheShow != 0 ){
+                if(mancheShow == 1){
+                    finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
+                        {
+                            self.playing = 1
+                            //self.jeux()
+                    })
+                    groupe2?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
+                        {
+                            self.mancheShow = 0
+                    })}
+                if(mancheShow == 2){
+                    finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
+                        {
+                            //self.playing = 1
+                            self.jeux()
+                    })
+                    groupe3?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
+                        {
+                            self.mancheShow = 0
+                    })}
+                
                 
             }
             
             let location = touch.location(in: self)
             
-            if nextButton!.contains(location)
+            if nextButton!.contains(location) && playing != 0
             {
                 nextWord()
             }
-            if okButton!.contains(location)
+            if okButton!.contains(location) && playing != 0
             {
                 validWord()
             }
@@ -211,8 +254,6 @@ class GameScene: SKScene , GameEngineDelegate
     //fonction mot suivant
     func nextWord()
     {
-        
-
         GameEngine.shared.nextWord()
         mot?.text = Game.shared.getNextWord()
         
@@ -231,18 +272,37 @@ class GameScene: SKScene , GameEngineDelegate
     }
     func gameDidEnd()
     {
+        playing = 0
         groupeJeux?.isHidden = true
         finTourG?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
             {
                 print("point \(Game.shared.NbPointsTurn)")
                 self.nbLama?.text = "L'équipe adverse reçois \(Game.shared.NbPointsTurn) LAMA"
+                Game.shared.NbPointsTurn = 0
+                self.updateNumText()
+                
         })
+        
         //GameEngine.shared.score()
-        updateNumText()
+        
+    }
+    func mancheDidEnd() {
+        if (GameEngine.shared.idManche == 1)
+        {
+            mancheShow = 1
+        }
+        if (GameEngine.shared.idManche == 2)
+        {
+            mancheShow = 2
+        }
+        if (GameEngine.shared.idManche == 3)
+        {
+            
+        }
     }
     func updateNomText()
     {
-        mot?.text = Game.shared.Words_Current_List[ Game.shared.posTab]
+        mot?.text = Game.shared.Words_Current_List[Game.shared.posTab]
     }
     
     //fonction fin de manche
@@ -261,17 +321,15 @@ class GameScene: SKScene , GameEngineDelegate
     func time(){
         count = 60
         /*if #available(iOS 10.0, *)
-        {
-
-            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
-                { (timer) in
-                    self.updateTime()
-            })
-        } else {
-            // Fallback on earlier versions
-
-        }*/
-
+         {
+         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
+         { (timer) in
+         self.updateTime()
+         })
+         } else {
+         // Fallback on earlier versions
+         }*/
+        
         timer.fire()
         
     }
@@ -283,7 +341,7 @@ class GameScene: SKScene , GameEngineDelegate
             
             count -= 1
             self.chrono!.text = String (count)
-
+            
         } else {
             timer.invalidate()
             count = 60
@@ -295,5 +353,3 @@ class GameScene: SKScene , GameEngineDelegate
     
     
 }
-
-

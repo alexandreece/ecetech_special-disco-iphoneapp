@@ -13,8 +13,8 @@ protocol GameEngineDelegate
 {
     /*
      func joueurDidEnd()
-     func mancheDidEnd()
      */
+    func mancheDidEnd()
     func gameDidEnd()
     
     func updateView()
@@ -51,13 +51,13 @@ enum TourState
 class GameEngine: NSObject
 {
     static var shared = GameEngine()
-    var etatJeux   = GameState.Start
+    var etatJeux   = GameState.Manche
     var idManche    : Int = 0
     var idJoueur   : Int = 0
     var idEquipe   : Int = 0
     
     var delegate : GameEngineDelegate?
-    
+
     func nextWord()
     {
         
@@ -82,22 +82,20 @@ class GameEngine: NSObject
     {
         Game.shared.Words_Current_List.remove(at : Game.shared.posTab)
         Game.shared.NbPointsTurn += 1
-       // print("Points engine \(Game.shared.NbPointsTurn) point eqA \(Game.shared.NbPointsRoundTeamA) point eqB \(Game.shared.NbPointsRoundTeamB)" )
+        // print("Points engine \(Game.shared.NbPointsTurn) point eqA \(Game.shared.NbPointsRoundTeamA) point eqB \(Game.shared.NbPointsRoundTeamB)" )
         
         if(Game.shared.Words_Current_List.isEmpty)
         {
             delegate?.gameDidEnd()
+             endManche()
             Game.shared.posTab = 0
-             Game.shared.copyWordList()
+            Game.shared.copyWordList()
             score()
             
-            endManche()
-            
-            print("postab \(Game.shared.posTab) word current list \(Game.shared.Words_Current_List)")
            
             
-            
-            
+            print("postab \(Game.shared.posTab) word current list \(Game.shared.Words_Current_List)")
+            printState()
             
         }
         else
@@ -127,22 +125,25 @@ class GameEngine: NSObject
     }
     func endManche()
     {
+    
         
         switch etatJeux {
         //Nouveau tour
+          /*
         case .Start:
-            etatJeux = .Manche
+            
             idManche = 0
             idJoueur = 0
             idEquipe = 0
-            
+            */
         //Nouvelle manche
         case .Manche:
-            if (Game.shared.Words_Current_List.count == 0 )
+            if (Game.shared.Words_Current_List.isEmpty )
             {
                 idManche += 1
-                print("Manche : \(Game.shared.Words_Current_List.count)")
-                
+                delegate?.mancheDidEnd()
+                print("if manche")
+                printState()
                 for i in Game.shared.Words_Current_List
                 {
                     print(i)
@@ -155,6 +156,8 @@ class GameEngine: NSObject
             }
             else
             {
+                print("else manche")
+                printState()
                 idEquipe += 1
                 if(idEquipe >= 2)
                 {
@@ -167,7 +170,7 @@ class GameEngine: NSObject
                     }
                 }
                 print("Id equipe  \(idEquipe)")
-
+                
                 tour()
             }
             
@@ -198,13 +201,15 @@ class GameEngine: NSObject
     {
         print("Id equipe  \(idEquipe)")
         if idEquipe == 0{
+            print (" Eq 1 : \(Game.shared.NbPointsTurn)")
             Game.shared.NbPointsRoundTeamA = Game.shared.NbPointsRoundTeamA + Game.shared.NbPointsTurn
         }
         else{
+            print (" Eq 2 : \(Game.shared.NbPointsTurn)")
             Game.shared.NbPointsRoundTeamB = Game.shared.NbPointsRoundTeamB + Game.shared.NbPointsTurn
         }
         delegate?.updateView()
-        Game.shared.NbPointsTurn = 0
+        
     }
 }
 
