@@ -22,6 +22,7 @@
 		C4C7A3321E6DACC40088B3F0 /* EnterWordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A3311E6DACC40088B3F0 /* EnterWordsTableViewController.swift */; };
 		D23BA9191E696C9300FB33FD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23BA9181E696C9300FB33FD /* Game.swift */; };
 		D23BA91B1E698DCA00FB33FD /* Joueur.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23BA91A1E698DCA00FB33FD /* Joueur.swift */; };
+		F53E3E661E7FDCB000E1C666 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53E3E651E7FDCB000E1C666 /* GameEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		C4C7A3311E6DACC40088B3F0 /* EnterWordsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterWordsTableViewController.swift; sourceTree = "<group>"; };
 		D23BA9181E696C9300FB33FD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		D23BA91A1E698DCA00FB33FD /* Joueur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joueur.swift; sourceTree = "<group>"; };
+		F53E3E651E7FDCB000E1C666 /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				ACA89FDA1E68354F00AE700D /* Info.plist */,
 				D23BA9181E696C9300FB33FD /* Game.swift */,
 				D23BA91A1E698DCA00FB33FD /* Joueur.swift */,
+				F53E3E651E7FDCB000E1C666 /* GameEngine.swift */,
 			);
 			path = LAMApp;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				C4C7A3321E6DACC40088B3F0 /* EnterWordsTableViewController.swift in Sources */,
 				ACA89FC91E68354F00AE700D /* AppDelegate.swift in Sources */,
 				C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */,
+				F53E3E661E7FDCB000E1C666 /* GameEngine.swift in Sources */,
 				D23BA9191E696C9300FB33FD /* Game.swift in Sources */,
 				AC3A663F1E76A6B900A2BE78 /* SelectWordTableViewController.swift in Sources */,
 				C4C7A3301E6D92300088B3F0 /* ConfigJeuViewController.swift in Sources */,

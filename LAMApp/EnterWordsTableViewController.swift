@@ -122,7 +122,7 @@ class EnterWordsTableViewController: UITableViewController {
     }
     
     @IBAction func lenghtTable(){
-        size = Game.shared.getNbPlayers()*2
+        size = Game.shared.NbPlayers*2
         print(size)
     }
 
