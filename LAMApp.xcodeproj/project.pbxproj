@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		AC3A663E1E76A6B900A2BE78 /* SelectWordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWordTableViewController.swift; sourceTree = "<group>"; };
-		AC3B02BB1E698DAA00D7F251 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataBase.swift; path = ../DataBase.swift; sourceTree = "<group>"; };
+		AC3B02BB1E698DAA00D7F251 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		ACA3EE841E7FE40C0095A438 /* SelectRandomWordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRandomWordTableViewController.swift; sourceTree = "<group>"; };
 		ACA89FC51E68354F00AE700D /* LAMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LAMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA89FC81E68354F00AE700D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
