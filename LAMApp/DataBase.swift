@@ -72,6 +72,50 @@ class Word: NSObject, NSCoding {
     }
 }
 
+class Score: NSObject, NSCoding {
+    var nomEquipe = String()
+    var score = Int()
+    var date = String()
+    var nbPlayer = Int()
+    var niveau = Int()
+    
+    static let KeyNomEquipe = "KeyNomEquipe"
+    static let KeyScore = "KeyScore"
+    static let KeyDate = "KeyDate"
+    static let KeyNbPlayer = "KeyNbPlayer"
+    static let KeyNiveau = "KeyNiveau"
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(nomEquipe, forKey: Score.KeyNomEquipe)
+        aCoder.encode(score, forKey: Score.KeyScore)
+        aCoder.encode(date, forKey: Score.KeyDate)
+        aCoder.encode(nbPlayer, forKey: Score.KeyNbPlayer)
+        aCoder.encode(niveau, forKey:Score.KeyNiveau)
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        if let value = aDecoder.decodeObject(forKey: Score.KeyNomEquipe) as? String {
+            self.nomEquipe = value
+        }
+        if let value = aDecoder.decodeObject(forKey: Score.KeyScore) as? Int {
+            self.score = value
+        }
+        if let value = aDecoder.decodeObject(forKey: Score.KeyDate) as? String {
+            self.date = value
+        }
+        if let value = aDecoder.decodeObject(forKey: Score.KeyNbPlayer) as? Int {
+            self.nbPlayer = value
+        }
+        if let value = aDecoder.decodeObject(forKey: Score.KeyNiveau) as? Int {
+            self.niveau = value
+        }
+    }
+}
+
 class WordDataBase: NSObject {
     private static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     private static let ArchiveURL = DocumentsDirectory.appendingPathComponent("WordsList")
