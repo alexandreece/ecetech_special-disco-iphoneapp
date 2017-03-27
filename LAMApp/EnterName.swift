@@ -21,7 +21,7 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
         //        let scrollViewWidth:CGFloat = self.Scroll.frame.width
         //        let scrollViewHeight:CGFloat = self.Scroll.frame.height
         
-        let nameTeamALabel = UITextView(frame: CGRect(x: 40.0, y: 60.0, width: 300.0, height: 80.0))
+        let nameTeamALabel = UITextView(frame: CGRect(x: 40.0, y: 30.0, width: 300.0, height: 80.0))
         nameTeamALabel.text = "Nommez l'équipe A :"
         nameTeamALabel.textAlignment = NSTextAlignment.center
         nameTeamALabel.font = UIFont.boldSystemFont(ofSize: 30)
@@ -31,14 +31,14 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
         //        view.addConstraint(NSLayoutConstraint(item: nameTeamA, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0))
         self.Scroll.addSubview(nameTeamALabel)
         
-        let nameTeamAField: UITextField = UITextField(frame: CGRect(x: 40, y: 110, width: 300.00, height: 30.00));
+        let nameTeamAField: UITextField = UITextField(frame: CGRect(x: 40, y: 90, width: 300.00, height: 30.00));
         nameTeamAField.placeholder = "Ex: LAMAtraque"
         nameTeamAField.borderStyle = UITextBorderStyle.roundedRect
         nameTeamAField.backgroundColor = UIColor.white
         nameTeamAField.textColor = UIColor.black
         self.Scroll.addSubview(nameTeamAField)
         
-        var margin = 165
+        var margin = 150
         
         for i in 0...Game.shared.NbPlayers-1 {
             
@@ -72,7 +72,7 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
         nameTeamBLabel.isEditable = false
         self.Scroll.addSubview(nameTeamBLabel)
         
-        margin = margin + 50
+        margin = margin + 60
         
         let nameTeamBField: UITextField = UITextField(frame: CGRect(x: 40, y: Double(margin), width: 300.00, height: 30.00));
         nameTeamBField.placeholder = "Ex: LAMAlédiction"
@@ -81,7 +81,7 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
         nameTeamBField.textColor = UIColor.black
         self.Scroll.addSubview(nameTeamBField)
         
-        margin = margin + 50
+        margin = margin + 60
         
         for i in 0...Game.shared.NbPlayers-1 {
             
@@ -104,7 +104,7 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
             margin = margin + 40
         }
         
-        margin = margin + 20
+        margin = margin + 40
         
         let btn: UIButton = UIButton(frame: CGRect(x: 100, y: margin, width: 200, height: 50))
         btn.backgroundColor = UIColor.white
