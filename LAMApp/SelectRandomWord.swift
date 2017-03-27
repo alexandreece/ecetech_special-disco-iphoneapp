@@ -9,6 +9,10 @@
 import Foundation
 
 func SelectRandomWord() -> Word {
-    let mots = WordDataBase.shared.objects
+    let dataBase = WordDataBase.shared
+    dataBase.loadFromDisk()
+    dataBase.loadData()
+    var mots=[Word]()
+    mots = dataBase.objects
     return mots[Int(arc4random_uniform(UInt32(mots.count)))]
 }
