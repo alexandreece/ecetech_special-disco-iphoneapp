@@ -89,7 +89,6 @@ class EnterWord : UIViewController, UIScrollViewDelegate {
         if let playerField = self.view.viewWithTag(i) as? UITextField{
             playerField.text = word
         }
-        
     }
     
     func DicoWord(sender: UIButton!) {
