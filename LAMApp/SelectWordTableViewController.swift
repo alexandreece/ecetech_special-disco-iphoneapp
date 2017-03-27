@@ -39,8 +39,6 @@ class SelectWordTableViewController: UITableViewController , DataBaseDelegate {
         {
             print("Save ERROR")
         }
-        
-        
     }
     
     func didLoadDataAtIndex( index : Int)
