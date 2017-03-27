@@ -109,6 +109,26 @@ class Score: NSObject, NSCoding {
     }
 }
 
+class PreviousWordDataBase : NSObject {
+    private static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    private static let ArchiveURL = DocumentsDirectory.appendingPathComponent("PreviousWordsList")
+    static let shared = PreviousWordDataBase()
+    public var delegate : DataBaseDelegate? = nil
+    public var objects = [PreviousWord]()
+    
+    func saveToDisk() -> Bool {
+        return NSKeyedArchiver.archiveRootObject(objects, toFile:PreviousWordDataBase.ArchiveURL.path)
+    }
+    
+    func loadFromDisk() -> Bool {
+        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: PreviousWordDataBase.ArchiveURL.path) as? [PreviousWord] {
+            objects = data
+            return true
+        }
+        return false
+    }
+}
+
 class WordDataBase: NSObject {
     private static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     private static let ArchiveURL = DocumentsDirectory.appendingPathComponent("WordsList")
