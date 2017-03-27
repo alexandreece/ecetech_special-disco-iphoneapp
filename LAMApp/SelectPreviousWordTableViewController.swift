@@ -17,7 +17,6 @@ class SelectPreviousWordTableViewController: UITableViewController , DataBaseDel
         dataBase.delegate = self
         
         dataBase.loadFromDisk()
-        dataBase.loadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -70,7 +69,7 @@ class SelectPreviousWordTableViewController: UITableViewController , DataBaseDel
         // Configure the cell...
         
         let item = PreviousWordDataBase.shared.objects[indexPath.row]
-        cell.textLabel?.text = item.word
+        cell.textLabel?.text = item.previousWord
 
         return cell
     }
