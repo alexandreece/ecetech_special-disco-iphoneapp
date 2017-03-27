@@ -84,7 +84,7 @@ class EnterWord : UIViewController, UIScrollViewDelegate {
     
     func RndmWord(sender: UIButton!) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "RndmWordID") as UIViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "DicoWordID") as UIViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
