@@ -13,6 +13,15 @@ import GameplayKit
 class GameViewController: UIViewController {
 
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        let value =  UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        UIViewController.attemptRotationToDeviceOrientation()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

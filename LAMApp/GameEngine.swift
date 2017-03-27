@@ -16,9 +16,11 @@ protocol GameEngineDelegate
      */
     func mancheDidEnd()
     func gameDidEnd()
-    
+    func updatePlayer()
     func updateView()
     func updateGame()
+    
+    func gameTerminated()
 }
 
 /*class Game : NSObject
@@ -57,97 +59,31 @@ class GameEngine: NSObject
     var idEquipe   : Int = 0
     
     var delegate : GameEngineDelegate?
-
-    func nextWord()
-    {
-        
-        //        GameEngine.shared.nextWord()
-        Game.shared.posTab += 1
-        
-        if( Game.shared.posTab < Game.shared.Words_Current_List.count)
-        {
-            
-        }
-        else
-        {
-            Game.shared.posTab = 0
-            Game.shared.Words_Current_List = randomArray(array: Game.shared.Words_Current_List)
-            
-        }
-        
-        
-    }
     
-    func validWord()
-    {
-        Game.shared.Words_Current_List.remove(at : Game.shared.posTab)
-        Game.shared.NbPointsTurn += 1
-        // print("Points engine \(Game.shared.NbPointsTurn) point eqA \(Game.shared.NbPointsRoundTeamA) point eqB \(Game.shared.NbPointsRoundTeamB)" )
-        
-        if(Game.shared.Words_Current_List.isEmpty)
-        {
-            delegate?.gameDidEnd()
-             endManche()
-            Game.shared.posTab = 0
-            Game.shared.copyWordList()
-            score()
-            
-           
-            
-            print("postab \(Game.shared.posTab) word current list \(Game.shared.Words_Current_List)")
-            printState()
-            
-        }
-        else
-        {
-            
-            Game.shared.posTab += 1
-            
-            
-            
-            
-            if( Game.shared.posTab < Game.shared.Words_Current_List.count){
-                
-                
-            }
-                
-            else
-            {
-                Game.shared.posTab = 0
-                Game.shared.Words_Current_List = randomArray(array: Game.shared.Words_Current_List)
-                
-                
-            }
-            
-            delegate?.updateView()
-            
-        }
-    }
     func endManche()
     {
-    
+        
         
         switch etatJeux {
-        //Nouveau tour
-          /*
-        case .Start:
-            
-            idManche = 0
-            idJoueur = 0
-            idEquipe = 0
-            */
+            //Nouveau tour
+            /*
+             case .Start:
+             
+             idManche = 0
+             idJoueur = 0
+             idEquipe = 0
+             */
         //Nouvelle manche
         case .Manche:
             if (Game.shared.Words_Current_List.isEmpty )
             {
                 idManche += 1
+                equipe()
                 delegate?.mancheDidEnd()
+                delegate?.updatePlayer()
+                
                 print("if manche")
                 printState()
-                for i in Game.shared.Words_Current_List
-                {
-                    print(i)
-                }
                 
                 if(idManche >= 2)
                 {
@@ -157,26 +93,19 @@ class GameEngine: NSObject
             else
             {
                 print("else manche")
-                printState()
-                idEquipe += 1
-                if(idEquipe >= 2)
-                {
-                    idEquipe = 0
-                    idJoueur += 1
-                    
-                    if(idJoueur >= Game.shared.NbPlayers)
-                    {
-                        idJoueur = 0
-                    }
-                }
-                print("Id equipe  \(idEquipe)")
                 
+                delegate?.mancheDidEnd()
+                printState()
+                equipe()
                 tour()
+                delegate?.updatePlayer()
+                
             }
             
         //fin
         case .End:
-            
+            print ("fin !")
+            delegate?.gameTerminated()
             break
             
             
@@ -193,8 +122,51 @@ class GameEngine: NSObject
     
     func printState()
     {
-        print(" State \(etatJeux) Manche \(idManche) Equipe \(idEquipe) joueur \(idJoueur) nbWord \(Game.shared.Words_Current_List.count)")
+        print("State \(etatJeux) Manche \(idManche) Equipe \(idEquipe) joueur \(idJoueur) nbWord \(Game.shared.Words_Current_List.count)")
         
+    }
+    func nextWord()
+    {
+        
+        //GameEngine.shared.nextWord()
+        Game.shared.posTab += 1
+        
+        if( Game.shared.posTab == Game.shared.Words_Current_List.count)
+        {
+            Game.shared.posTab = 0
+            Game.shared.Words_Current_List = randomArray(array: Game.shared.Words_Current_List)
+            
+        }
+    }
+    
+    func validWord()
+    {
+        Game.shared.Words_Current_List.remove(at : Game.shared.posTab)
+        Game.shared.NbPointsTurn += 1
+        // print("Points engine \(Game.shared.NbPointsTurn) point eqA \(Game.shared.NbPointsRoundTeamA) point eqB \(Game.shared.NbPointsRoundTeamB)" )
+        
+        if(Game.shared.Words_Current_List.isEmpty)
+        {
+            delegate?.gameDidEnd()
+            endManche()
+            Game.shared.posTab = 0
+            Game.shared.copyWordList()
+            score()
+            
+        }
+        else
+        {
+            
+            Game.shared.posTab += 1
+            
+            if( Game.shared.posTab >= Game.shared.Words_Current_List.count){
+                Game.shared.posTab = 0
+                Game.shared.Words_Current_List = randomArray(array: Game.shared.Words_Current_List)
+                
+            }
+            delegate?.updateView()
+            
+        }
     }
     
     func score()
@@ -209,6 +181,39 @@ class GameEngine: NSObject
             Game.shared.NbPointsRoundTeamB = Game.shared.NbPointsRoundTeamB + Game.shared.NbPointsTurn
         }
         delegate?.updateView()
+        
+    }
+    func scoreDispatch()
+    {
+        switch Game.shared.Level {
+        case 0:
+        
+            break
+        case 1:
+            break
+        case 3:
+            break
+        default:
+            break
+            
+        }    }
+    
+    func equipe()
+    {
+        idEquipe += 1
+        if(idEquipe == 2)
+        {
+            print ("if equipe ")
+            idEquipe = 0
+            idJoueur += 1
+            
+            if(idJoueur >= Game.shared.NbPlayers)
+            {
+                print ("if joueur")
+                idJoueur = 0
+            }
+        }
+        print("Id equipe  \(idEquipe)")
         
     }
 }

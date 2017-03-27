@@ -27,6 +27,7 @@ class GameScene: SKScene , GameEngineDelegate
     var groupe2 : SKNode?
     var groupe3 : SKNode?
     var finTourG : SKNode?
+    var finJeux : SKNode?
     
     //node groupe jeux
     var groupeJeux : SKNode?
@@ -38,39 +39,21 @@ class GameScene: SKScene , GameEngineDelegate
     var nbLama : SKLabelNode?
     var joueurName : SKLabelNode?
     var teamName : SKLabelNode?
+    var nbManche : SKLabelNode?
     
     //variable pour le chrono
     var timer = Timer()
-    var count: Int = 60
+    
+    static let TimeCount = 4
+    var count = TimeCount
     
     //var decompte joueurs
     var v = 0
     var playing = 0
     var mancheShow = 0
-    func updateView()
-    {
-        updateNumText()
-        updateNomText()
-    }
-    func updateGame()
-    {
-        updateNumText()
-        
-        print(" State \(GameEngine.shared.etatJeux) Manche \(GameEngine.shared.idManche) Equipe \(GameEngine.shared.idEquipe) joueur \(GameEngine.shared.idJoueur) NbMot \(Game.shared.Words_Current_List.count)")
-        print(Game.shared.Words_Current_List.count)
-        
-        joueurName?.text = Game.shared.TeamA_List_Joueurs[GameEngine.shared.idJoueur].NomJoueur
-        if(GameEngine.shared.idEquipe == 0) {
-            teamName?.text = Game.shared.TeamA
-        }
-        else
-        {
-            teamName?.text = Game.shared.TeamB
-        }
-        
-        
-        
-    }
+    
+    
+    
     // override function didmove
     override func didMove(to view: SKView)
     {
@@ -99,6 +82,13 @@ class GameScene: SKScene , GameEngineDelegate
         {
             finTourG = finTou
         }
+        if let finJ = childNode(withName: "//FinJeux")
+        {
+            finJeux = finJ
+        }
+        assert((finJeux != nil))
+        
+        
         //label
         if let ch = childNode(withName: "//Time") as? SKLabelNode
         {
@@ -127,6 +117,12 @@ class GameScene: SKScene , GameEngineDelegate
         {
             teamName = tname
         }
+        if let nmanche = childNode(withName: "//NManche") as? SKLabelNode
+        {
+            nbManche = nmanche
+        }
+        
+        
         
         
         
@@ -141,11 +137,14 @@ class GameScene: SKScene , GameEngineDelegate
             // Fallback on earlier versions
         }
         
+        
+        
+        updatePlayer()
+        
         nextButton = childNode(withName: "//NextButton")
         okButton = childNode(withName: "//OkButton")
         
     }
-    
     
     
     //gestion touch
@@ -173,14 +172,9 @@ class GameScene: SKScene , GameEngineDelegate
                 
             }
             if (mancheShow == 0 ){
-                if(finTourG?.position == pointZero){
-                    finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
-                        {
-                            self.playing = 1
-                            self.jeux()
-                    })
-                }
-                else if(groupe2?.position == pointZero){
+                showScreen()
+                print("if 0")
+                 if(groupe2?.position == pointZero){
                     groupe2?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
                         {
                             self.playing = 1
@@ -209,12 +203,22 @@ class GameScene: SKScene , GameEngineDelegate
                 if(mancheShow == 2){
                     finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
                         {
-                            //self.playing = 1
-                            self.jeux()
+                            self.playing = 1
+                            //self.jeux()
                     })
                     groupe3?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
                         {
                             self.mancheShow = 0
+                    })}
+                if(mancheShow == 3){
+                    finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
+                        {
+                            self.playing = 0
+                            //self.jeux()
+                    })
+                    finJeux?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
+                        {
+                            self.groupeJeux?.isHidden = true
                     })}
                 
                 
@@ -237,7 +241,24 @@ class GameScene: SKScene , GameEngineDelegate
     }
     
     
-    
+    func showScreen()
+    {
+        if(finTourG?.position == pointZero){
+            finTourG?.run(SKAction.moveTo(y: -900, duration: 0.5), completion:
+                {
+                    self.jeux()
+                    self.playing = 1
+                    
+            })
+        }
+        else if(finTourG?.position.y == -900 && playing != 0){
+            finTourG?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
+                {
+                    self.groupeJeux?.isHidden = true
+                    self.playing = 1
+            })
+        }
+    }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
@@ -247,7 +268,7 @@ class GameScene: SKScene , GameEngineDelegate
     {
         groupeJeux?.isHidden = false
         print(Game.shared.TeamA_List_Joueurs)
-        time()
+        startTimer()
         
     }
     
@@ -263,13 +284,8 @@ class GameScene: SKScene , GameEngineDelegate
     func validWord()
     {
         GameEngine.shared.validWord()
-        //print("score \(Game.shared.n)")
     }
     
-    func updateNumText()
-    {
-        numWord?.text = "\(Game.shared.NbPointsTurn) / \(Game.shared.Words_List.count)"
-    }
     func gameDidEnd()
     {
         playing = 0
@@ -297,14 +313,72 @@ class GameScene: SKScene , GameEngineDelegate
         }
         if (GameEngine.shared.idManche == 3)
         {
+            mancheShow = 3
             
         }
+        print (GameEngine.shared.idManche)
+        showScreen()
     }
+    func updateView()
+    {
+        updateNumText()
+        updateNomText()
+        
+    }
+    func updateGame()
+    {
+        updateNumText()
+        
+        print(" State \(GameEngine.shared.etatJeux) Manche \(GameEngine.shared.idManche) Equipe \(GameEngine.shared.idEquipe) joueur \(GameEngine.shared.idJoueur) NbMot \(Game.shared.Words_Current_List.count)")
+        print(Game.shared.Words_Current_List.count)
+        
+        
+    }
+    
     func updateNomText()
     {
         mot?.text = Game.shared.Words_Current_List[Game.shared.posTab]
     }
+    func updateNumText()
+    {
+        numWord?.text = "\(Game.shared.NbPointsTurn) / \(Game.shared.Words_List.count)"
+    }
     
+    func updatePlayer()
+    {
+        if(GameEngine.shared.idEquipe == 0){
+            joueurName?.text = Game.shared.TeamA_List_Joueurs[GameEngine.shared.idJoueur].GetNomJoueur()
+            
+        }
+        else if(GameEngine.shared.idEquipe == 1){
+            joueurName?.text = Game.shared.TeamB_List_Joueurs[GameEngine.shared.idJoueur].GetNomJoueur()
+            
+        }
+        
+        if(GameEngine.shared.idManche == 0)
+        {
+            nbManche?.text = ("Manche  1")
+        }
+        else if(GameEngine.shared.idManche == 1)
+        {
+            nbManche?.text = ("Manche  2")
+        }
+        else if(GameEngine.shared.idManche == 2)
+        {
+            nbManche?.text = ("Manche  3")
+        }
+        
+        if(GameEngine.shared.idEquipe == 0) {
+            teamName?.text = Game.shared.TeamA
+        }
+        else
+        {
+            teamName?.text = Game.shared.TeamB
+        }
+        
+        
+        
+    }
     //fonction fin de manche
     func finManche(){
         groupeJeux?.isHidden = true
@@ -315,21 +389,19 @@ class GameScene: SKScene , GameEngineDelegate
     {
         timer.invalidate()
         GameEngine.shared.endManche()
+        
+    }
+    
+    
+    func gameTerminated() {
+        print("game terminated ")
+        manche = 3
     }
     
     //timer
-    func time(){
-        count = 60
-        /*if #available(iOS 10.0, *)
-         {
-         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
-         { (timer) in
-         self.updateTime()
-         })
-         } else {
-         // Fallback on earlier versions
-         }*/
-        
+    func startTimer()
+    {
+        count = GameScene.TimeCount
         timer.fire()
         
     }
@@ -344,7 +416,6 @@ class GameScene: SKScene , GameEngineDelegate
             
         } else {
             timer.invalidate()
-            count = 60
             
             finTour()
         }

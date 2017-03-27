@@ -75,12 +75,12 @@ class Game{
     self.TeamB_List_Joueurs = [Joueur(),Joueur(),Joueur()]
         var i = 0
         for joueur in TeamA_List_Joueurs {
-            joueur.NomJoueur = "joueur \(i)"
+            joueur.NomJoueur = "toto \(i)"
             i += 1
         }
         i=0
         for joueur in TeamB_List_Joueurs {
-            joueur.NomJoueur = "joueur \(i)"
+            joueur.NomJoueur = "tutu \(i)"
             i += 1
         }
         
