@@ -83,9 +83,12 @@ class EnterWord : UIViewController, UIScrollViewDelegate {
     }
     
     func RndmWord(sender: UIButton!) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "DicoWordID") as UIViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        let word = SelectRandomWord().word
+        print(word)
+        let i = sender.tag - 1
+        if let playerField = self.view.viewWithTag(i) as? UITextField{
+            playerField.text = word
+        }
     }
     
     func DicoWord(sender: UIButton!) {
@@ -96,7 +99,7 @@ class EnterWord : UIViewController, UIScrollViewDelegate {
     
     func PrevWord(sender: UIButton!) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "DicoWordID") as UIViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "PrevWordID") as UIViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
