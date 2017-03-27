@@ -251,7 +251,7 @@
         <!--Select Word Table View Controller-->
         <scene sceneID="rX0-je-vvJ">
             <objects>
-                <tableViewController id="glx-Jk-lES" customClass="SelectWordTableViewController" customModule="LAMApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DicoWordID" id="glx-Jk-lES" customClass="SelectWordTableViewController" customModule="LAMApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="qSL-lD-Z1C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -298,7 +298,7 @@
         <!--Select Random Word Table View Controller-->
         <scene sceneID="kHQ-U7-fUC">
             <objects>
-                <tableViewController id="qGm-oq-UDJ" customClass="SelectRandomWordTableViewController" customModule="LAMApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RndmWordID" id="qGm-oq-UDJ" customClass="SelectRandomWordTableViewController" customModule="LAMApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zr2-hE-I5S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
