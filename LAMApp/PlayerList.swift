@@ -86,11 +86,28 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
             margin = margin + 50
         }
         
-        self.Scroll.contentSize = CGSize(width:self.Scroll.frame.width, height:self.Scroll.frame.height + 100)
+        margin = margin + 50
+        
+        let btn: UIButton = UIButton(frame: CGRect(x: 100, y: margin, width: 200, height: 35))
+        btn.backgroundColor = UIColor.white
+        btn.setTitle("VALIDER", for: .normal)
+        btn.setTitleColor(UIColor.black, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        btn.addTarget(self, action: #selector(playGame), for: .touchUpInside)
+        btn.tag = 1
+        self.Scroll.addSubview(btn)
+        
+        self.Scroll.contentSize = CGSize(width:self.Scroll.frame.width, height:self.Scroll.frame.height + 150)
         self.Scroll.delegate = self
     }
     
     func buttonAction(sender: UIButton!) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "EnterWordID") as UIViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func playGame(sender: UIButton!) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "EnterWordID") as UIViewController
         self.navigationController?.pushViewController(vc, animated: true)

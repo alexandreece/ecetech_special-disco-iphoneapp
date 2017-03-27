@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC3A663F1E76A6B900A2BE78 /* SelectWordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A663E1E76A6B900A2BE78 /* SelectWordTableViewController.swift */; };
+		AC9809151E891CB600DD26B1 /* SelectRandomWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9809141E891CB600DD26B1 /* SelectRandomWord.swift */; };
 		ACA3EE851E7FE40C0095A438 /* SelectRandomWordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA3EE841E7FE40C0095A438 /* SelectRandomWordTableViewController.swift */; };
 		ACA89FC91E68354F00AE700D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA89FC81E68354F00AE700D /* AppDelegate.swift */; };
 		ACA89FCB1E68354F00AE700D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FCA1E68354F00AE700D /* GameScene.sks */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		AC3A663E1E76A6B900A2BE78 /* SelectWordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWordTableViewController.swift; sourceTree = "<group>"; };
 		AC3B02BB1E698DAA00D7F251 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		AC9809141E891CB600DD26B1 /* SelectRandomWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRandomWord.swift; sourceTree = "<group>"; };
 		ACA3EE841E7FE40C0095A438 /* SelectRandomWordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRandomWordTableViewController.swift; sourceTree = "<group>"; };
 		ACA89FC51E68354F00AE700D /* LAMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LAMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACA89FC81E68354F00AE700D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				ACA89FD21E68354F00AE700D /* Main.storyboard */,
 				ACA3EE841E7FE40C0095A438 /* SelectRandomWordTableViewController.swift */,
 				AC3A663E1E76A6B900A2BE78 /* SelectWordTableViewController.swift */,
+				AC9809141E891CB600DD26B1 /* SelectRandomWord.swift */,
 				C4C7A32F1E6D92300088B3F0 /* ConfigJeuViewController.swift */,
 				C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */,
 				ACA89FD51E68354F00AE700D /* Assets.xcassets */,
@@ -185,6 +188,7 @@
 				ACA89FCF1E68354F00AE700D /* GameScene.swift in Sources */,
 				ACA89FD11E68354F00AE700D /* GameViewController.swift in Sources */,
 				ACA89FC91E68354F00AE700D /* AppDelegate.swift in Sources */,
+				AC9809151E891CB600DD26B1 /* SelectRandomWord.swift in Sources */,
 				D2F2EA8B1E812B8E00218FFE /* PlayerList.swift in Sources */,
 				ACA3EE851E7FE40C0095A438 /* SelectRandomWordTableViewController.swift in Sources */,
 				C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */,
