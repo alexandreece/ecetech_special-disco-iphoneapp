@@ -8,12 +8,12 @@
 
 import UIKit
 
-class SelectWordTableViewController: UITableViewController , DataBaseDelegate {
+class SelectPreviousWordTableViewController: UITableViewController , DataBaseDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dataBase = WordDataBase.shared
+        let dataBase = PreviousWordDataBase.shared
         dataBase.delegate = self
         
         dataBase.loadFromDisk()
@@ -31,7 +31,7 @@ class SelectWordTableViewController: UITableViewController , DataBaseDelegate {
         tableView.reloadData()
         
         
-        if(WordDataBase.shared.saveToDisk())
+        if(PreviousWordDataBase.shared.saveToDisk())
         {
             print("Save OK")
         }
@@ -60,7 +60,7 @@ class SelectWordTableViewController: UITableViewController , DataBaseDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return WordDataBase.shared.objects.count
+        return PreviousWordDataBase.shared.objects.count
     }
 
     
@@ -69,9 +69,8 @@ class SelectWordTableViewController: UITableViewController , DataBaseDelegate {
 
         // Configure the cell...
         
-        let item = WordDataBase.shared.objects[indexPath.row]
+        let item = PreviousWordDataBase.shared.objects[indexPath.row]
         cell.textLabel?.text = item.word
-        cell.detailTextLabel?.text = item.category
 
         return cell
     }
