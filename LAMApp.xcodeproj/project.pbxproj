@@ -20,6 +20,7 @@
 		ACB03B081E76B4CD00CD016A /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B02BB1E698DAA00D7F251 /* DataBase.swift */; };
 		C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */; };
 		C4C7A3301E6D92300088B3F0 /* ConfigJeuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A32F1E6D92300088B3F0 /* ConfigJeuViewController.swift */; };
+		C4F76C5A1E891A550003D36D /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F76C591E891A550003D36D /* Scores.swift */; };
 		D23BA9191E696C9300FB33FD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23BA9181E696C9300FB33FD /* Game.swift */; };
 		D23BA91B1E698DCA00FB33FD /* Joueur.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23BA91A1E698DCA00FB33FD /* Joueur.swift */; };
 		D2F2EA891E812AFA00218FFE /* EnterName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F2EA881E812AFA00218FFE /* EnterName.swift */; };
@@ -43,6 +44,7 @@
 		ACA89FDA1E68354F00AE700D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		C4C7A32F1E6D92300088B3F0 /* ConfigJeuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigJeuViewController.swift; sourceTree = "<group>"; };
+		C4F76C591E891A550003D36D /* Scores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scores.swift; path = ../Scores.swift; sourceTree = "<group>"; };
 		D23BA9181E696C9300FB33FD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		D23BA91A1E698DCA00FB33FD /* Joueur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joueur.swift; sourceTree = "<group>"; };
 		D2F2EA881E812AFA00218FFE /* EnterName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterName.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		ACA89FC71E68354F00AE700D /* LAMApp */ = {
 			isa = PBXGroup;
 			children = (
+				C4F76C591E891A550003D36D /* Scores.swift */,
 				AC3B02BB1E698DAA00D7F251 /* DataBase.swift */,
 				ACA89FC81E68354F00AE700D /* AppDelegate.swift */,
 				ACA89FCA1E68354F00AE700D /* GameScene.sks */,
@@ -188,6 +191,7 @@
 				D2F2EA891E812AFA00218FFE /* EnterName.swift in Sources */,
 				D23BA9191E696C9300FB33FD /* Game.swift in Sources */,
 				D2F2EA8D1E812C8F00218FFE /* EnterWord.swift in Sources */,
+				C4F76C5A1E891A550003D36D /* Scores.swift in Sources */,
 				AC3A663F1E76A6B900A2BE78 /* SelectWordTableViewController.swift in Sources */,
 				C4C7A3301E6D92300088B3F0 /* ConfigJeuViewController.swift in Sources */,
 				D23BA91B1E698DCA00FB33FD /* Joueur.swift in Sources */,
