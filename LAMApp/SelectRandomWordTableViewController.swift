@@ -106,9 +106,7 @@ class SelectRandomWordTableViewController: UITableViewController, DataBaseDelega
                     objet.append(item)
                 }
             }
-            
-            print(objet[Int(arc4random_uniform(UInt32(objet.count)))].word)
+            Game.shared.WordRndm = objet[Int(arc4random_uniform(UInt32(objet.count)))].word
         }
     }
-    
 }
