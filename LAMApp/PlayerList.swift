@@ -42,8 +42,11 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
         
         margin = margin + 60
         
+        var TeamA = 10
         
         for i in 0...Game.shared.NbPlayers-1 {
+            
+            TeamA += 1
             
             let btn: UIButton = UIButton(frame: CGRect(x: 100, y: margin, width: 200, height: 35))
             btn.backgroundColor = UIColor.white
@@ -51,7 +54,7 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
             btn.setTitleColor(UIColor.black, for: .normal)
             btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             btn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-            btn.tag = 1
+            btn.tag = TeamA
             self.Scroll.addSubview(btn)
             
             margin = margin + 50
@@ -71,8 +74,11 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
         
         margin = margin + 60
         
+        var TeamB = 20
         
         for i in 0...Game.shared.NbPlayers-1 {
+            
+            TeamB += 1
             
             let btn: UIButton = UIButton(frame: CGRect(x: 100, y: margin, width: 200, height: 35))
             btn.backgroundColor = UIColor.white
@@ -80,7 +86,7 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
             btn.setTitleColor(UIColor.black, for: .normal)
             btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             btn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-            btn.tag = 1
+            btn.tag = TeamB
             self.Scroll.addSubview(btn)
             
             margin = margin + 50
@@ -104,6 +110,7 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
     func buttonAction(sender: UIButton!) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "EnterWordID") as UIViewController
+        Game.shared.WordPlayer = sender.tag
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
