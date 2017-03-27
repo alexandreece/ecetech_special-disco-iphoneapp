@@ -15,14 +15,10 @@ protocol DataBaseDelegate {
 
 class PreviousWord : NSObject, NSCoding {
     
-    var idPreviousWord = Int()
     var previousWord = String()
-    
-    static let KeyIdPreviousWord = "KeyIdPreviousWord"
     static let KeyPreviousWord = "KeyPreviousWord"
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(idPreviousWord, forKey: PreviousWord.KeyIdPreviousWord)
         aCoder.encode(previousWord, forKey:PreviousWord.KeyPreviousWord)
     }
     
@@ -31,9 +27,6 @@ class PreviousWord : NSObject, NSCoding {
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        if let value = aDecoder.decodeObject(forKey: PreviousWord.KeyIdPreviousWord) as? Int {
-            self.idPreviousWord = value
-        }
         if let value = aDecoder.decodeObject(forKey: PreviousWord.KeyPreviousWord) as? String {
             self.previousWord = value
         }
@@ -69,6 +62,70 @@ class Word: NSObject, NSCoding {
         if let value = aDecoder.decodeObject(forKey: Word.KeyWord) as? String {
             self.word = value
         }
+    }
+}
+
+class Score: NSObject, NSCoding {
+    var nomEquipe = String()
+    var score = Int()
+    var date = String()
+    var nbPlayer = Int()
+    var niveau = Int()
+    
+    static let KeyNomEquipe = "KeyNomEquipe"
+    static let KeyScore = "KeyScore"
+    static let KeyDate = "KeyDate"
+    static let KeyNbPlayer = "KeyNbPlayer"
+    static let KeyNiveau = "KeyNiveau"
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(nomEquipe, forKey: Score.KeyNomEquipe)
+        aCoder.encode(score, forKey: Score.KeyScore)
+        aCoder.encode(date, forKey: Score.KeyDate)
+        aCoder.encode(nbPlayer, forKey: Score.KeyNbPlayer)
+        aCoder.encode(niveau, forKey:Score.KeyNiveau)
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        if let value = aDecoder.decodeObject(forKey: Score.KeyNomEquipe) as? String {
+            self.nomEquipe = value
+        }
+        if let value = aDecoder.decodeObject(forKey: Score.KeyScore) as? Int {
+            self.score = value
+        }
+        if let value = aDecoder.decodeObject(forKey: Score.KeyDate) as? String {
+            self.date = value
+        }
+        if let value = aDecoder.decodeObject(forKey: Score.KeyNbPlayer) as? Int {
+            self.nbPlayer = value
+        }
+        if let value = aDecoder.decodeObject(forKey: Score.KeyNiveau) as? Int {
+            self.niveau = value
+        }
+    }
+}
+
+class PreviousWordDataBase : NSObject {
+    private static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    private static let ArchiveURL = DocumentsDirectory.appendingPathComponent("PreviousWordsList")
+    static let shared = PreviousWordDataBase()
+    public var delegate : DataBaseDelegate? = nil
+    public var objects = [PreviousWord]()
+    
+    func saveToDisk() -> Bool {
+        return NSKeyedArchiver.archiveRootObject(objects, toFile:PreviousWordDataBase.ArchiveURL.path)
+    }
+    
+    func loadFromDisk() -> Bool {
+        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: PreviousWordDataBase.ArchiveURL.path) as? [PreviousWord] {
+            objects = data
+            return true
+        }
+        return false
     }
 }
 
@@ -140,4 +197,94 @@ class WordDataBase: NSObject {
         return false
     }
     
+}
+
+class ScoreDataBase: NSObject {
+    private static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    private static let ArchiveURL = DocumentsDirectory.appendingPathComponent("ScoresCache")
+    static let shared = ScoreDataBase()
+    public var delegate : DataBaseDelegate? = nil
+    public var objects = [Score]()
+    
+    public func loadData(param: String?) {
+        var path = ""
+        if param == nil {
+            path = "http://78.192.156.30:8050/LAMA/api/index.php/teams"
+        }
+        else {
+            path = "http://78.192.156.30:8050/LAMA/api/index.php/teams/\(param)"
+        }
+        
+        if let url = URL(string: path) {
+            let task = URLSession.shared.dataTask(with: url, completionHandler:
+                { (data, response, error) -> Void in
+                    guard let data = data, error == nil else
+                    {
+                        return
+                    }
+                    // ok
+                    self.parseJSON(data: data)
+            })
+            task.resume()
+        }
+    }
+    
+    func parseJSON(data : Data) {
+        do {
+            let dataJson = try JSONSerialization.jsonObject(with: data, options: .allowFragments )
+            guard let root = dataJson as? [[String : AnyObject]] else {
+                return
+            }
+            objects.removeAll()
+            
+            for item in root {
+                let dataItem = Score()
+                
+                if let nomEquipeEntry = item["NomTeam"] as? String {
+                    dataItem.nomEquipe = nomEquipeEntry
+                }
+                if let scoreEntry = item["Score"] as? Int {
+                    dataItem.score = scoreEntry
+                }
+                if let dateEntry = item["Date"] as? String {
+                    dataItem.date = dateEntry
+                }
+                if let nbPlayerEntry = item["NbPlayer"] as? Int {
+                    dataItem.nbPlayer = nbPlayerEntry
+                }
+                if let niveauEntry = item["Niveau"] as? Int {
+                    dataItem.niveau = niveauEntry
+                }
+                objects.append(dataItem)
+            }
+            if (self.saveToDisk())
+            {
+                print("Save OK")
+            }
+            else
+            {
+                print("Save ERROR")
+            }
+            DispatchQueue.main.async
+                {
+                    self.delegate?.didLoadData()
+            }
+        }
+        catch {
+            assert( false )
+            return
+        }
+    }
+    
+    func saveToDisk() -> Bool {
+        return NSKeyedArchiver.archiveRootObject(objects, toFile: ScoreDataBase.ArchiveURL.path)
+    }
+    
+    func loadFromDisk() -> Bool {
+        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: ScoreDataBase.ArchiveURL.path) as? [Score] {
+            objects = data
+            return true
+        }
+        return false
+    }
 }
