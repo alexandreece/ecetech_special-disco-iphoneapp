@@ -29,6 +29,7 @@ class Game{
     var Words_List = [String]()
     var Words_Current_List = [String]()
     var Word: String
+    var WordRndm: String
     
 //    int NbPointsTurnTeamA;
 //    int NbPointsTurnTeamB;
@@ -47,6 +48,7 @@ class Game{
     self.TeamB = ""
     self.NbWords = 0
     self.Word = ""
+    self.WordRndm = ""
     self.CurrentWord = 0
     self.CurrentRound = 0
     self.PlayerToPlay = [0, 0]
