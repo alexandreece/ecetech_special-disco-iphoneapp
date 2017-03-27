@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectRandomWordTableViewController: UITableViewController, DataBaseDelegate {
+class SelectWordDicoTableViewController: UITableViewController, DataBaseDelegate {
     
     @IBOutlet weak var peopleButton: UIButton!
     @IBOutlet weak var fauneButton: UIButton!
