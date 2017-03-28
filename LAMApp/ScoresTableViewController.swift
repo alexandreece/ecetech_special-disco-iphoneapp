@@ -65,8 +65,8 @@ class ScoresTableViewController: UITableViewController, DataBaseDelegate {
         let item = ScoreDataBase.shared.objects[indexPath.row]
         
         cell.nomEquipeLabel?.text = item.nomEquipe
-        cell.scoreLabel?.text = "\(item.score)"
-        cell.niveauLabel?.text = "\(item.niveau)"
+        cell.scoreLabel?.text = item.score
+        cell.niveauLabel?.text = item.niveau
         
         return cell
     }

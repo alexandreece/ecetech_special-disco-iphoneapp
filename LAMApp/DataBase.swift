@@ -67,10 +67,10 @@ class Word: NSObject, NSCoding {
 
 class Score: NSObject, NSCoding {
     var nomEquipe = String()
-    var score = Int()
+    var score = String()
     var date = String()
-    var nbPlayer = Int()
-    var niveau = Int()
+    var nbPlayer = String()
+    var niveau = String()
     
     static let KeyNomEquipe = "KeyNomEquipe"
     static let KeyScore = "KeyScore"
@@ -94,16 +94,16 @@ class Score: NSObject, NSCoding {
         if let value = aDecoder.decodeObject(forKey: Score.KeyNomEquipe) as? String {
             self.nomEquipe = value
         }
-        if let value = aDecoder.decodeObject(forKey: Score.KeyScore) as? Int {
+        if let value = aDecoder.decodeObject(forKey: Score.KeyScore) as? String {
             self.score = value
         }
         if let value = aDecoder.decodeObject(forKey: Score.KeyDate) as? String {
             self.date = value
         }
-        if let value = aDecoder.decodeObject(forKey: Score.KeyNbPlayer) as? Int {
+        if let value = aDecoder.decodeObject(forKey: Score.KeyNbPlayer) as? String {
             self.nbPlayer = value
         }
-        if let value = aDecoder.decodeObject(forKey: Score.KeyNiveau) as? Int {
+        if let value = aDecoder.decodeObject(forKey: Score.KeyNiveau) as? String {
             self.niveau = value
         }
     }
@@ -243,19 +243,21 @@ class ScoreDataBase: NSObject {
                 if let nomEquipeEntry = item["NomTeam"] as? String {
                     dataItem.nomEquipe = nomEquipeEntry
                 }
-                if let scoreEntry = item["Score"] as? Int {
+                if let scoreEntry = item["Score"] as? String {
                     dataItem.score = scoreEntry
                 }
                 if let dateEntry = item["Date"] as? String {
                     dataItem.date = dateEntry
                 }
-                if let nbPlayerEntry = item["NbPlayer"] as? Int {
+                if let nbPlayerEntry = item["NbPlayer"] as? String {
                     dataItem.nbPlayer = nbPlayerEntry
                 }
-                if let niveauEntry = item["Niveau"] as? Int {
+                if let niveauEntry = item["Niveau"] as? String {
                     dataItem.niveau = niveauEntry
                 }
                 objects.append(dataItem)
+                print(dataItem.nomEquipe)
+                print(dataItem.score)
             }
             if (self.saveToDisk())
             {
