@@ -31,6 +31,10 @@ class PreviousWord : NSObject, NSCoding {
             self.previousWord = value
         }
     }
+    
+    public init?(previousWord : String) {
+        self.previousWord = previousWord
+    }
 }
 
 class Word: NSObject, NSCoding {
@@ -206,24 +210,18 @@ class ScoreDataBase: NSObject {
     public var delegate : DataBaseDelegate? = nil
     public var objects = [Score]()
     
-    public func loadData(param: String?) {
-        var path = ""
-        if param == nil {
-            path = "http://78.192.156.30:8050/LAMA/api/index.php/teams/Best"
-        }
-        else {
-            path = "http://78.192.156.30:8050/LAMA/api/index.php/teams/\(param)"
-        }
+    public func loadData() {
+        let path = "http://78.192.156.30:8050/LAMA/api/index.php/teams/Best"
         
         if let url = URL(string: path) {
             let task = URLSession.shared.dataTask(with: url, completionHandler:
-                { (data, response, error) -> Void in
-                    guard let data = data, error == nil else
-                    {
-                        return
-                    }
-                    // ok
-                    self.parseJSON(data: data)
+            { (data, response, error) -> Void in
+                guard let data = data, error == nil else
+                {
+                    return
+                }
+                // ok
+                self.parseJSON(data: data)
             })
             task.resume()
         }
@@ -256,8 +254,6 @@ class ScoreDataBase: NSObject {
                     dataItem.niveau = niveauEntry
                 }
                 objects.append(dataItem)
-                print(dataItem.nomEquipe)
-                print(dataItem.score)
             }
             if (self.saveToDisk())
             {

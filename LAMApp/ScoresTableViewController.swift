@@ -21,7 +21,7 @@ class ScoresTableViewController: UITableViewController, DataBaseDelegate {
         
         let dataBase = ScoreDataBase.shared
         dataBase.delegate = self
-        dataBase.loadData(param: nil)
+        dataBase.loadData()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -65,8 +65,8 @@ class ScoresTableViewController: UITableViewController, DataBaseDelegate {
         let item = ScoreDataBase.shared.objects[indexPath.row]
         
         cell.nomEquipeLabel?.text = item.nomEquipe
-        cell.scoreLabel?.text = item.score
-        cell.niveauLabel?.text = item.niveau
+        cell.scoreLabel?.text = "Score : \(item.score)"
+        cell.niveauLabel?.text = "Niveau : \(item.niveau)"
         
         return cell
     }
