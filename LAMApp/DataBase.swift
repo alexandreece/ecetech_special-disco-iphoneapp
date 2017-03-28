@@ -209,7 +209,7 @@ class ScoreDataBase: NSObject {
     public func loadData(param: String?) {
         var path = ""
         if param == nil {
-            path = "http://78.192.156.30:8050/LAMA/api/index.php/teams"
+            path = "http://78.192.156.30:8050/LAMA/api/index.php/teams/Best"
         }
         else {
             path = "http://78.192.156.30:8050/LAMA/api/index.php/teams/\(param)"
