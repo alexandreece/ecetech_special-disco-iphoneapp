@@ -30,7 +30,7 @@ protocol GameEngineDelegate
  
  }*/
 
-
+//enumeration des états du jeux
 enum GameState
 {
     case Start
@@ -38,6 +38,7 @@ enum GameState
     case End
     
 }
+//enumeration des état des tours
 enum TourState
 {
     case Start
@@ -60,11 +61,14 @@ class GameEngine: NSObject
     
     var delegate : GameEngineDelegate?
     
+    
+    //fonction principal avec la logique du jeux
     func endManche()
     {
         
         
         switch etatJeux {
+            //etat voué a reinitialiser le jeux
             //Nouveau tour
             /*
              case .Start:
@@ -75,6 +79,7 @@ class GameEngine: NSObject
              */
         //Nouvelle manche
         case .Manche:
+            //cas de fin de manche lorsque la liste de mot est vide
             if (Game.shared.Words_Current_List.isEmpty )
             {
                 idManche += 1
@@ -84,12 +89,13 @@ class GameEngine: NSObject
                 
                 print("if manche")
                 printState()
-                
+                //cas ou l'on est a la troisieme manche et que le jeux est fini
                 if(idManche >= 2)
                 {
                     etatJeux = .End
                 }
             }
+            //timer terminé
             else
             {
                 print("else manche")
@@ -97,7 +103,6 @@ class GameEngine: NSObject
                 delegate?.mancheDidEnd()
                 printState()
                 equipe()
-                tour()
                 delegate?.updatePlayer()
                 
             }
@@ -106,30 +111,28 @@ class GameEngine: NSObject
         case .End:
             print ("fin !")
             delegate?.gameTerminated()
+            //etatJeux = Start
             break
             
             
         default:
             break
         }
-        
-        tour()
-    }
+}
     
-    func tour(){
-        delegate?.updateGame()
-    }
-    
+    //affiche l'état du jeux
     func printState()
     {
         print("State \(etatJeux) Manche \(idManche) Equipe \(idEquipe) joueur \(idJoueur) nbWord \(Game.shared.Words_Current_List.count)")
         
     }
+    //fonction mot précédent
     func nextWord()
     {
         
         //GameEngine.shared.nextWord()
         Game.shared.posTab += 1
+        //reinitialise la liste de mot (courante) 
         
         if( Game.shared.posTab == Game.shared.Words_Current_List.count)
         {
@@ -139,12 +142,13 @@ class GameEngine: NSObject
         }
     }
     
+    //mot valider
     func validWord()
     {
         Game.shared.Words_Current_List.remove(at : Game.shared.posTab)
         Game.shared.NbPointsTurn += 1
         // print("Points engine \(Game.shared.NbPointsTurn) point eqA \(Game.shared.NbPointsRoundTeamA) point eqB \(Game.shared.NbPointsRoundTeamB)" )
-        
+        //si la liste est vide, ordonne a gameScene d'afficher les scores
         if(Game.shared.Words_Current_List.isEmpty)
         {
             delegate?.gameDidEnd()
@@ -154,21 +158,22 @@ class GameEngine: NSObject
             score()
             
         }
+        //ordonne a gameScene d'afficher le prochain mot
         else
         {
             
             Game.shared.posTab += 1
-            
+            //si le compteur estplus grand que la liste, le remet a  zero
             if( Game.shared.posTab >= Game.shared.Words_Current_List.count){
                 Game.shared.posTab = 0
                 Game.shared.Words_Current_List = randomArray(array: Game.shared.Words_Current_List)
                 
-            }
+            }`
             delegate?.updateView()
             
         }
     }
-    
+    //met a jour le score des equipes
     func score()
     {
         print("Id equipe  \(idEquipe)")
@@ -183,6 +188,8 @@ class GameEngine: NSObject
         delegate?.updateView()
         
     }
+    
+    //fonction pour dipstcher les points entre les joueurs (pas fini ! )
     func scoreDispatch()
     {
         switch Game.shared.Level {
@@ -197,7 +204,7 @@ class GameEngine: NSObject
             break
             
         }    }
-    
+    //incremente le num d'équipe et de joueur 
     func equipe()
     {
         idEquipe += 1
