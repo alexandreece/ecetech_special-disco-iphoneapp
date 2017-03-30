@@ -168,7 +168,7 @@ class GameEngine: NSObject
                 Game.shared.posTab = 0
                 Game.shared.Words_Current_List = randomArray(array: Game.shared.Words_Current_List)
                 
-            }`
+            }
             delegate?.updateView()
             
         }
@@ -204,7 +204,7 @@ class GameEngine: NSObject
             break
             
         }    }
-    //incremente le num d'équipe et de joueur 
+    //incremente le num d'équipe et de joueur
     func equipe()
     {
         idEquipe += 1
