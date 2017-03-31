@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EnterWord : UIViewController, UIScrollViewDelegate {
+class EnterWord : UIViewController, UIScrollViewDelegate, DataBaseDelegate {
     
     var arrayOfTextFields:[UITextField] = []
     
@@ -108,6 +108,12 @@ class EnterWord : UIViewController, UIScrollViewDelegate {
         let i = sender.tag + 1
         if let txtField = self.view.viewWithTag(i) as? UITextField {
             Game.shared.Words_List.append(txtField.text!)
+            let dataBase = PreviousWordDataBase.shared
+            dataBase.delegate = self
+            dataBase.loadFromDisk()
+            dataBase.objects.append(PreviousWord(previousWord : txtField.text!)!)
+            print(dataBase.objects.last!.previousWord)
+            dataBase.saveToDisk()
             print(Game.shared.Words_List)
             
             if let btnValidate = self.view.viewWithTag(sender.tag) as? UIButton{
@@ -138,6 +144,21 @@ class EnterWord : UIViewController, UIScrollViewDelegate {
                 btnPrev.removeFromSuperview()
             }
         }
+    }
+    
+    func didLoadData() {
+        if (PreviousWordDataBase.shared.saveToDisk())
+        {
+            print("Save OK")
+        }
+        else
+        {
+            print("Save ERROR")
+        }
+    }
+    
+    func didLoadDataAtIndex( index : Int) {
+        
     }
     
 }

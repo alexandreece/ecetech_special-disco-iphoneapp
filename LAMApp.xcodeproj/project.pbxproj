@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC1680B71E8AA203009827C6 /* ScoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1680B61E8AA203009827C6 /* ScoresTableViewController.swift */; };
 		AC3A663F1E76A6B900A2BE78 /* SelectPreviousWordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A663E1E76A6B900A2BE78 /* SelectPreviousWordTableViewController.swift */; };
 		AC9809151E891CB600DD26B1 /* SelectRandomWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9809141E891CB600DD26B1 /* SelectRandomWord.swift */; };
 		ACA3EE851E7FE40C0095A438 /* SelectWordDicoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA3EE841E7FE40C0095A438 /* SelectWordDicoTableViewController.swift */; };
@@ -19,6 +20,7 @@
 		ACA89FD61E68354F00AE700D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD51E68354F00AE700D /* Assets.xcassets */; };
 		ACA89FD91E68354F00AE700D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD71E68354F00AE700D /* LaunchScreen.storyboard */; };
 		ACB03B081E76B4CD00CD016A /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B02BB1E698DAA00D7F251 /* DataBase.swift */; };
+		ACDA8D581E8ACB79001ADAB7 /* ScorePoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA8D571E8ACB79001ADAB7 /* ScorePoster.swift */; };
 		C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */; };
 		C4C7A3301E6D92300088B3F0 /* ConfigJeuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A32F1E6D92300088B3F0 /* ConfigJeuViewController.swift */; };
 		D23BA9191E696C9300FB33FD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23BA9181E696C9300FB33FD /* Game.swift */; };
@@ -29,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC1680B61E8AA203009827C6 /* ScoresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoresTableViewController.swift; sourceTree = "<group>"; };
 		AC3A663E1E76A6B900A2BE78 /* SelectPreviousWordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPreviousWordTableViewController.swift; sourceTree = "<group>"; };
 		AC3B02BB1E698DAA00D7F251 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		AC9809141E891CB600DD26B1 /* SelectRandomWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRandomWord.swift; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 		ACA89FD51E68354F00AE700D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACA89FD81E68354F00AE700D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACA89FDA1E68354F00AE700D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACDA8D571E8ACB79001ADAB7 /* ScorePoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScorePoster.swift; sourceTree = "<group>"; };
 		C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		C4C7A32F1E6D92300088B3F0 /* ConfigJeuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigJeuViewController.swift; sourceTree = "<group>"; };
 		D23BA9181E696C9300FB33FD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 				ACA89FCE1E68354F00AE700D /* GameScene.swift */,
 				ACA89FD01E68354F00AE700D /* GameViewController.swift */,
 				ACA89FD21E68354F00AE700D /* Main.storyboard */,
+				AC1680B61E8AA203009827C6 /* ScoresTableViewController.swift */,
 				ACA3EE841E7FE40C0095A438 /* SelectWordDicoTableViewController.swift */,
 				AC3A663E1E76A6B900A2BE78 /* SelectPreviousWordTableViewController.swift */,
 				AC9809141E891CB600DD26B1 /* SelectRandomWord.swift */,
@@ -102,6 +107,7 @@
 				D2F2EA881E812AFA00218FFE /* EnterName.swift */,
 				D2F2EA8A1E812B8E00218FFE /* PlayerList.swift */,
 				D2F2EA8C1E812C8F00218FFE /* EnterWord.swift */,
+				ACDA8D571E8ACB79001ADAB7 /* ScorePoster.swift */,
 			);
 			path = LAMApp;
 			sourceTree = "<group>";
@@ -186,6 +192,7 @@
 				ACA89FD11E68354F00AE700D /* GameViewController.swift in Sources */,
 				ACA89FC91E68354F00AE700D /* AppDelegate.swift in Sources */,
 				AC9809151E891CB600DD26B1 /* SelectRandomWord.swift in Sources */,
+				ACDA8D581E8ACB79001ADAB7 /* ScorePoster.swift in Sources */,
 				D2F2EA8B1E812B8E00218FFE /* PlayerList.swift in Sources */,
 				ACA3EE851E7FE40C0095A438 /* SelectWordDicoTableViewController.swift in Sources */,
 				C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */,
@@ -195,6 +202,7 @@
 				AC3A663F1E76A6B900A2BE78 /* SelectPreviousWordTableViewController.swift in Sources */,
 				C4C7A3301E6D92300088B3F0 /* ConfigJeuViewController.swift in Sources */,
 				D23BA91B1E698DCA00FB33FD /* Joueur.swift in Sources */,
+				AC1680B71E8AA203009827C6 /* ScoresTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
