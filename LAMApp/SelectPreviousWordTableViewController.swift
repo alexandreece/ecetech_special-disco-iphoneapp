@@ -70,6 +70,7 @@ class SelectPreviousWordTableViewController: UITableViewController , DataBaseDel
         
         let item = PreviousWordDataBase.shared.objects[indexPath.row]
         cell.textLabel?.text = item.previousWord
+        print(item.previousWord)
 
         return cell
     }

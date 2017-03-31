@@ -31,6 +31,10 @@ class PreviousWord : NSObject, NSCoding {
             self.previousWord = value
         }
     }
+    
+    public init?(previousWord : String) {
+        self.previousWord = previousWord
+    }
 }
 
 class Word: NSObject, NSCoding {
@@ -67,10 +71,10 @@ class Word: NSObject, NSCoding {
 
 class Score: NSObject, NSCoding {
     var nomEquipe = String()
-    var score = Int()
+    var score = String()
     var date = String()
-    var nbPlayer = Int()
-    var niveau = Int()
+    var nbPlayer = String()
+    var niveau = String()
     
     static let KeyNomEquipe = "KeyNomEquipe"
     static let KeyScore = "KeyScore"
@@ -94,16 +98,16 @@ class Score: NSObject, NSCoding {
         if let value = aDecoder.decodeObject(forKey: Score.KeyNomEquipe) as? String {
             self.nomEquipe = value
         }
-        if let value = aDecoder.decodeObject(forKey: Score.KeyScore) as? Int {
+        if let value = aDecoder.decodeObject(forKey: Score.KeyScore) as? String {
             self.score = value
         }
         if let value = aDecoder.decodeObject(forKey: Score.KeyDate) as? String {
             self.date = value
         }
-        if let value = aDecoder.decodeObject(forKey: Score.KeyNbPlayer) as? Int {
+        if let value = aDecoder.decodeObject(forKey: Score.KeyNbPlayer) as? String {
             self.nbPlayer = value
         }
-        if let value = aDecoder.decodeObject(forKey: Score.KeyNiveau) as? Int {
+        if let value = aDecoder.decodeObject(forKey: Score.KeyNiveau) as? String {
             self.niveau = value
         }
     }
@@ -206,24 +210,18 @@ class ScoreDataBase: NSObject {
     public var delegate : DataBaseDelegate? = nil
     public var objects = [Score]()
     
-    public func loadData(param: String?) {
-        var path = ""
-        if param == nil {
-            path = "http://78.192.156.30:8050/LAMA/api/index.php/teams"
-        }
-        else {
-            path = "http://78.192.156.30:8050/LAMA/api/index.php/teams/\(param)"
-        }
+    public func loadData() {
+        let path = "http://78.192.156.30:8050/LAMA/api/index.php/teams/Best"
         
         if let url = URL(string: path) {
             let task = URLSession.shared.dataTask(with: url, completionHandler:
-                { (data, response, error) -> Void in
-                    guard let data = data, error == nil else
-                    {
-                        return
-                    }
-                    // ok
-                    self.parseJSON(data: data)
+            { (data, response, error) -> Void in
+                guard let data = data, error == nil else
+                {
+                    return
+                }
+                // ok
+                self.parseJSON(data: data)
             })
             task.resume()
         }
@@ -243,16 +241,16 @@ class ScoreDataBase: NSObject {
                 if let nomEquipeEntry = item["NomTeam"] as? String {
                     dataItem.nomEquipe = nomEquipeEntry
                 }
-                if let scoreEntry = item["Score"] as? Int {
+                if let scoreEntry = item["Score"] as? String {
                     dataItem.score = scoreEntry
                 }
                 if let dateEntry = item["Date"] as? String {
                     dataItem.date = dateEntry
                 }
-                if let nbPlayerEntry = item["NbPlayer"] as? Int {
+                if let nbPlayerEntry = item["NbPlayer"] as? String {
                     dataItem.nbPlayer = nbPlayerEntry
                 }
-                if let niveauEntry = item["Niveau"] as? Int {
+                if let niveauEntry = item["Niveau"] as? String {
                     dataItem.niveau = niveauEntry
                 }
                 objects.append(dataItem)
