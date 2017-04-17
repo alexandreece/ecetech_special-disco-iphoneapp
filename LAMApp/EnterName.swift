@@ -11,6 +11,7 @@ import UIKit
 class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
     
     @IBOutlet weak var Scroll: UIScrollView!
+    @IBOutlet var nameTeamALabel: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,7 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
         //        let scrollViewWidth:CGFloat = self.Scroll.frame.width
         //        let scrollViewHeight:CGFloat = self.Scroll.frame.height
         
-        let nameTeamALabel = UITextView(frame: CGRect(x: 40.0, y: 30.0, width: 300.0, height: 80.0))
+        nameTeamALabel = UITextView(frame: CGRect(x: 40.0, y: 30.0, width: 300.0, height: 80.0))
         nameTeamALabel.text = "Nommez l'équipe A :"
         nameTeamALabel.textAlignment = NSTextAlignment.center
         nameTeamALabel.font = UIFont.boldSystemFont(ofSize: 30)
@@ -31,7 +32,7 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
         //        view.addConstraint(NSLayoutConstraint(item: nameTeamA, attribute: .top, relatedBy: .equal, toItem: self.topLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0))
         self.Scroll.addSubview(nameTeamALabel)
         
-        let nameTeamAField: UITextField = UITextField(frame: CGRect(x: 40, y: 90, width: 300.00, height: 30.00));
+        let nameTeamAField = UITextField(frame: CGRect(x: 40, y: 90, width: 300.00, height: 30.00));
         nameTeamAField.placeholder = "Ex: LAMAtraque"
         nameTeamAField.borderStyle = UITextBorderStyle.roundedRect
         nameTeamAField.backgroundColor = UIColor.white
@@ -74,7 +75,7 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
         
         margin = margin + 60
         
-        let nameTeamBField: UITextField = UITextField(frame: CGRect(x: 40, y: Double(margin), width: 300.00, height: 30.00));
+        let nameTeamBField = UITextField(frame: CGRect(x: 40, y: Double(margin), width: 300.00, height: 30.00));
         nameTeamBField.placeholder = "Ex: LAMAlédiction"
         nameTeamBField.borderStyle = UITextBorderStyle.roundedRect
         nameTeamBField.backgroundColor = UIColor.white
@@ -94,7 +95,7 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
             playerLabel.isEditable = false
             self.Scroll.addSubview(playerLabel)
             
-            let playerField: UITextField = UITextField(frame: CGRect(x: 138, y: Double(margin+5), width: 200.00, height: 30.00));
+            let playerField = UITextField(frame: CGRect(x: 138, y: Double(margin+5), width: 200.00, height: 30.00));
             playerField.placeholder = "Ex: LAMAsseuse"
             playerField.borderStyle = UITextBorderStyle.roundedRect
             playerField.backgroundColor = UIColor.white
