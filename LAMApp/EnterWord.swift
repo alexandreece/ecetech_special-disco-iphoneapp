@@ -11,6 +11,7 @@ import UIKit
 class EnterWord : UIViewController, UIScrollViewDelegate, DataBaseDelegate {
     
     var arrayOfTextFields:[UITextField] = []
+    var WordField = 0
     
     @IBOutlet weak var Scroll: UIScrollView!
     
@@ -23,7 +24,13 @@ class EnterWord : UIViewController, UIScrollViewDelegate, DataBaseDelegate {
         
         var n = 0
         
-        for i in 0...5 {
+        if Game.shared.WordPlayer >= 10 && Game.shared.WordPlayer <= 14 {
+            WordField = Game.shared.WordTeamA[Game.shared.WordPlayer - 10]
+        } else if Game.shared.WordPlayer >= 20 && Game.shared.WordPlayer <= 24 {
+            WordField = Game.shared.WordTeamB[Game.shared.WordPlayer - 20]
+        }
+        
+        for i in 0...WordField - 1 {
             let playerField: UITextField = UITextField(frame: CGRect(x: 35, y: Double(margin), width: 275.00, height: 30.00));
             playerField.placeholder = "Ex: Vélociraptor"
             playerField.borderStyle = UITextBorderStyle.roundedRect
@@ -31,6 +38,7 @@ class EnterWord : UIViewController, UIScrollViewDelegate, DataBaseDelegate {
             playerField.textColor = UIColor.black
             n = (i + 1) * 10 + 1
             playerField.tag = n
+            if Game.shared.WordRndm != "" && playerField.tag == Game.shared.WordTag { playerField.text = Game.shared.WordRndm }
             self.arrayOfTextFields.append(playerField)
             self.Scroll.addSubview(playerField)
             
@@ -51,6 +59,7 @@ class EnterWord : UIViewController, UIScrollViewDelegate, DataBaseDelegate {
             btnRndm.setTitleColor(UIColor.black, for: .normal)
             btnRndm.titleLabel?.font = UIFont.boldSystemFont(ofSize: 10)
             btnRndm.addTarget(self, action: #selector(RndmWord), for: .touchUpInside)
+                
             n = n + 1
             btnRndm.tag = n
             self.Scroll.addSubview(btnRndm)
@@ -78,13 +87,16 @@ class EnterWord : UIViewController, UIScrollViewDelegate, DataBaseDelegate {
             margin = margin + 50
         }
         
-        self.Scroll.contentSize = CGSize(width:self.Scroll.frame.width, height:self.Scroll.frame.height + 100)
+        var heightmargin = -120
+        
+        if WordField - 1 >= 7 { heightmargin = 70*(WordField - 6) }
+        
+        self.Scroll.contentSize = CGSize(width:self.Scroll.frame.width, height:self.Scroll.frame.height + CGFloat(heightmargin))
         self.Scroll.delegate = self
     }
     
     func RndmWord(sender: UIButton!) {
         let word = SelectRandomWord().word
-        print(word)
         let i = sender.tag - 1
         if let playerField = self.view.viewWithTag(i) as? UITextField{
             playerField.text = word
@@ -92,6 +104,7 @@ class EnterWord : UIViewController, UIScrollViewDelegate, DataBaseDelegate {
     }
     
     func DicoWord(sender: UIButton!) {
+        Game.shared.WordTag = sender.tag - 2
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DicoWordID") as UIViewController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -104,44 +117,45 @@ class EnterWord : UIViewController, UIScrollViewDelegate, DataBaseDelegate {
     }
     
     func AddWord(sender: UIButton!) {
-        print(sender.tag)
         let i = sender.tag + 1
         if let txtField = self.view.viewWithTag(i) as? UITextField {
-            Game.shared.Words_List.append(txtField.text!)
-            let dataBase = PreviousWordDataBase.shared
-            dataBase.delegate = self
-            dataBase.loadFromDisk()
-            dataBase.objects.append(PreviousWord(previousWord : txtField.text!)!)
-            print(dataBase.objects.last!.previousWord)
-            dataBase.saveToDisk()
-            print(Game.shared.Words_List)
+            if txtField.text != "" {
+                Game.shared.Words_List.append(txtField.text!)
+                let dataBase = PreviousWordDataBase.shared
+                dataBase.delegate = self
+                dataBase.loadFromDisk()
+                dataBase.objects.append(PreviousWord(previousWord : txtField.text!)!)
+                print(dataBase.objects.last!.previousWord)
+                dataBase.saveToDisk()
+                print(Game.shared.Words_List)
             
-            if let btnValidate = self.view.viewWithTag(sender.tag) as? UIButton{
-                btnValidate.removeFromSuperview()
-            }
+                if let btnValidate = self.view.viewWithTag(sender.tag) as? UIButton{  btnValidate.removeFromSuperview() }
             
-            var k = sender.tag + 1
+                var k = sender.tag + 1
             
-            if let playerField = self.view.viewWithTag(k) as? UITextField{
-                playerField.removeFromSuperview()
-            }
+                if let playerField = self.view.viewWithTag(k) as? UITextField{ playerField.removeFromSuperview() }
             
-            k += 1
+                k += 1
             
-            if let btnRndm = self.view.viewWithTag(k) as? UIButton{
-                btnRndm.removeFromSuperview()
-            }
+                if let btnRndm = self.view.viewWithTag(k) as? UIButton{ btnRndm.removeFromSuperview() }
             
-            k += 1
+                k += 1
             
-            if let btnDico = self.view.viewWithTag(k) as? UIButton{
-                btnDico.removeFromSuperview()
-            }
+                if let btnDico = self.view.viewWithTag(k) as? UIButton{ btnDico.removeFromSuperview() }
             
-            k += 1
+                k += 1
             
-            if let btnPrev = self.view.viewWithTag(k) as? UIButton{
-                btnPrev.removeFromSuperview()
+                if let btnPrev = self.view.viewWithTag(k) as? UIButton{ btnPrev.removeFromSuperview() }
+                
+                Game.shared.WordRndm  = ""
+                Game.shared.WordTag = 0
+                
+                if Game.shared.WordPlayer >= 10 && Game.shared.WordPlayer <= 14 {
+                    Game.shared.WordTeamA[Game.shared.WordPlayer - 10] -= 1
+                } else if Game.shared.WordPlayer >= 20 && Game.shared.WordPlayer <= 24 {
+                    Game.shared.WordTeamB[Game.shared.WordPlayer - 20] -= 1
+                }
+                
             }
         }
     }

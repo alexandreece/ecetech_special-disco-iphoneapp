@@ -39,17 +39,44 @@ class ConfigJeuViewController: UIViewController {
     @IBAction func configClick(_ sender: UIButton) {
         if sender === x2Button {
             Game.shared.NbPlayers = 2
+            Game.shared.NbWords = 12
             print(Game.shared.NbPlayers)
         } else if sender === x3Button {
             Game.shared.NbPlayers = 3
+            Game.shared.NbWords = 8
             print(Game.shared.NbPlayers)
         } else if sender === x4Button {
             Game.shared.NbPlayers = 4
+            Game.shared.NbWords = 6
             print(Game.shared.NbPlayers)
         } else if sender === x5Button {
             Game.shared.NbPlayers = 5
+            Game.shared.NbWords = 4
             print(Game.shared.NbPlayers)
         }
+        
+        for i in 0...Game.shared.NbPlayers-1{
+         
+            switch Game.shared.NbPlayers {
+                case 2 :
+                    Game.shared.WordTeamA[i] = Game.shared.NbWords
+                    Game.shared.WordTeamB[i] = Game.shared.NbWords
+                case 3 :
+                    Game.shared.WordTeamA[i] = Game.shared.NbWords
+                    Game.shared.WordTeamB[i] = Game.shared.NbWords
+                case 4 :
+                    Game.shared.WordTeamA[i] = Game.shared.NbWords
+                    Game.shared.WordTeamB[i] = Game.shared.NbWords
+                case 5 :
+                    Game.shared.WordTeamA[i] = Game.shared.NbWords
+                    Game.shared.WordTeamB[i] = Game.shared.NbWords
+                default :
+                    Game.shared.WordTeamA[i] = 6
+                    Game.shared.WordTeamB[i] = 6
+            }
+            
+        }
+        
     }
 
 }

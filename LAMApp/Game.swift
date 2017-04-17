@@ -31,7 +31,10 @@ class Game{
     var Words_Current_List = [String]()
     var Word: String
     var WordRndm: String
+    var WordTeamA = [0, 0, 0, 0, 0]
+    var WordTeamB = [0, 0, 0, 0, 0]
     var WordPlayer: Int
+    var WordTag: Int
     
     //    int NbPointsTurnTeamA;
     //    int NbPointsTurnTeamB;
@@ -54,6 +57,7 @@ class Game{
         self.Word = ""
         self.WordRndm = ""
         self.WordPlayer = 0
+        self.WordTag = 0
         self.CurrentWord = 0
         self.CurrentRound = 0
         self.PlayerToPlay = [0, 0]
