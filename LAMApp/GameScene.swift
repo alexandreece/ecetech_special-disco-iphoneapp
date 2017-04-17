@@ -301,7 +301,7 @@ class GameScene: SKScene , GameEngineDelegate
             teamN = Game.shared.TeamA
         }
         self.groupeJeux?.isHidden = true
-        nbLama?.text = "L'equipe \(teamN) reçois \(scoreToShow) LAMAs"
+        nbLama?.text = "L'equipe \(teamN) reçoit \(scoreToShow) LAMAs"
         finTourG?.run(SKAction.move(to: pointZero, duration: 0.5))
         
     }
