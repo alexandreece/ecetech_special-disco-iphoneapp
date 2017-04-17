@@ -15,25 +15,16 @@ protocol GameEngineDelegate
      func joueurDidEnd()
      */
     func mancheDidEnd()
-    func gameDidEnd()
+    func finTour()
+    //func gameDidEnd()
     func updatePlayer()
     func updateView()
-    func updateGame()
-    
     func gameTerminated()
 }
-
-/*class Game : NSObject
- {
- static var shared = Game()
- var nbPlayer = 4
- 
- }*/
 
 //enumeration des états du jeux
 enum GameState
 {
-    case Start
     case Manche
     case End
     
@@ -68,40 +59,29 @@ class GameEngine: NSObject
         
         
         switch etatJeux {
-            //etat voué a reinitialiser le jeux
-            //Nouveau tour
-            /*
-             case .Start:
-             
-             idManche = 0
-             idJoueur = 0
-             idEquipe = 0
-             */
         //Nouvelle manche
         case .Manche:
             //cas de fin de manche lorsque la liste de mot est vide
             if (Game.shared.Words_Current_List.isEmpty )
             {
+                  score()
                 idManche += 1
-                equipe()
                 delegate?.mancheDidEnd()
-                delegate?.updatePlayer()
-                
-                print("if manche")
-                printState()
+              
+                equipe()
+            
+
                 //cas ou l'on est a la troisieme manche et que le jeux est fini
-                if(idManche >= 2)
+                if(idManche >= 3)
                 {
                     etatJeux = .End
                 }
             }
-            //timer terminé
+                //timer terminé
             else
             {
-                print("else manche")
                 
-                delegate?.mancheDidEnd()
-                printState()
+                score()
                 equipe()
                 delegate?.updatePlayer()
                 
@@ -109,16 +89,15 @@ class GameEngine: NSObject
             
         //fin
         case .End:
-            print ("fin !")
+            
             delegate?.gameTerminated()
-            //etatJeux = Start
             break
             
             
         default:
             break
         }
-}
+    }
     
     //affiche l'état du jeux
     func printState()
@@ -130,9 +109,8 @@ class GameEngine: NSObject
     func nextWord()
     {
         
-        //GameEngine.shared.nextWord()
         Game.shared.posTab += 1
-        //reinitialise la liste de mot (courante) 
+        //reinitialise la liste de mot (courante)
         
         if( Game.shared.posTab == Game.shared.Words_Current_List.count)
         {
@@ -147,23 +125,23 @@ class GameEngine: NSObject
     {
         Game.shared.Words_Current_List.remove(at : Game.shared.posTab)
         Game.shared.NbPointsTurn += 1
-        // print("Points engine \(Game.shared.NbPointsTurn) point eqA \(Game.shared.NbPointsRoundTeamA) point eqB \(Game.shared.NbPointsRoundTeamB)" )
         //si la liste est vide, ordonne a gameScene d'afficher les scores
+        
         if(Game.shared.Words_Current_List.isEmpty)
         {
-            delegate?.gameDidEnd()
+            
             endManche()
+            delegate?.mancheDidEnd()
             Game.shared.posTab = 0
             Game.shared.copyWordList()
-            score()
             
         }
-        //ordonne a gameScene d'afficher le prochain mot
+            //ordonne a gameScene d'afficher le prochain mot
         else
         {
             
             Game.shared.posTab += 1
-            //si le compteur estplus grand que la liste, le remet a  zero
+            //si le compteur est plus grand que la liste, le remet a  zero
             if( Game.shared.posTab >= Game.shared.Words_Current_List.count){
                 Game.shared.posTab = 0
                 Game.shared.Words_Current_List = randomArray(array: Game.shared.Words_Current_List)
@@ -173,11 +151,30 @@ class GameEngine: NSObject
             
         }
     }
-    //met a jour le score des equipes
+    
+    
+    //incremente le num d'équipe et de joueur
+    func equipe()
+    {
+        idEquipe += 1
+        if(idEquipe == 2)
+        {
+            idEquipe = 0
+            idJoueur += 1
+            
+            if(idJoueur >= Game.shared.NbPlayers)
+            {
+                idJoueur = 0
+            }
+        }
+        
+    }
+    
+    
     func score()
     {
         print("Id equipe  \(idEquipe)")
-        if idEquipe == 0{
+        if (idEquipe == 1){
             print (" Eq 1 : \(Game.shared.NbPointsTurn)")
             Game.shared.NbPointsRoundTeamA = Game.shared.NbPointsRoundTeamA + Game.shared.NbPointsTurn
         }
@@ -189,49 +186,12 @@ class GameEngine: NSObject
         
     }
     
-    //fonction pour dipstcher les points entre les joueurs (pas fini ! )
-    func scoreDispatch()
-    {
-        switch Game.shared.Level {
-        case 0:
-        
-            break
-        case 1:
-            break
-        case 3:
-            break
-        default:
-            break
-            
-        }    }
-    //incremente le num d'équipe et de joueur
-    func equipe()
-    {
-        idEquipe += 1
-        if(idEquipe == 2)
-        {
-            print ("if equipe ")
-            idEquipe = 0
-            idJoueur += 1
-            
-            if(idJoueur >= Game.shared.NbPlayers)
-            {
-                print ("if joueur")
-                idJoueur = 0
-            }
-        }
-        print("Id equipe  \(idEquipe)")
-        
+    
+    //melange la liste de mot
+    func randomArray(array : [String]) -> [String]{
+        return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: array) as! [String]
     }
+    
+    
+    
 }
-
-
-
-//melange la liste de mot
-func randomArray(array : [String]) -> [String]{
-    return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: array) as! [String]
-}
-
-
-
-

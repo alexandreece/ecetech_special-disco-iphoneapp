@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		AC1680B71E8AA203009827C6 /* ScoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1680B61E8AA203009827C6 /* ScoresTableViewController.swift */; };
 		AC3A663F1E76A6B900A2BE78 /* SelectPreviousWordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A663E1E76A6B900A2BE78 /* SelectPreviousWordTableViewController.swift */; };
+		AC3C89D71EA5665F0011455C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AC3C89D61EA5665F0011455C /* GameScene.sks */; };
+		AC3C89D91EA5667E0011455C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89D81EA5667E0011455C /* GameScene.swift */; };
+		AC3C89DB1EA566930011455C /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89DA1EA566930011455C /* GameEngine.swift */; };
 		AC9809151E891CB600DD26B1 /* SelectRandomWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9809141E891CB600DD26B1 /* SelectRandomWord.swift */; };
 		ACA3EE851E7FE40C0095A438 /* SelectWordDicoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA3EE841E7FE40C0095A438 /* SelectWordDicoTableViewController.swift */; };
 		ACA89FC91E68354F00AE700D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA89FC81E68354F00AE700D /* AppDelegate.swift */; };
@@ -19,9 +22,6 @@
 		ACA89FD91E68354F00AE700D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACA89FD71E68354F00AE700D /* LaunchScreen.storyboard */; };
 		ACB03B081E76B4CD00CD016A /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B02BB1E698DAA00D7F251 /* DataBase.swift */; };
 		ACDA8D581E8ACB79001ADAB7 /* ScorePoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDA8D571E8ACB79001ADAB7 /* ScorePoster.swift */; };
-		ACF0969D1E8EC716008294A4 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF0969C1E8EC716008294A4 /* GameEngine.swift */; };
-		ACF096A01E8EC72E008294A4 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = ACF0969E1E8EC72E008294A4 /* GameScene.sks */; };
-		ACF096A11E8EC72E008294A4 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF0969F1E8EC72E008294A4 /* GameScene.swift */; };
 		C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */; };
 		C4C7A3301E6D92300088B3F0 /* ConfigJeuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7A32F1E6D92300088B3F0 /* ConfigJeuViewController.swift */; };
 		D23BA9191E696C9300FB33FD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23BA9181E696C9300FB33FD /* Game.swift */; };
@@ -35,6 +35,9 @@
 		AC1680B61E8AA203009827C6 /* ScoresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoresTableViewController.swift; sourceTree = "<group>"; };
 		AC3A663E1E76A6B900A2BE78 /* SelectPreviousWordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPreviousWordTableViewController.swift; sourceTree = "<group>"; };
 		AC3B02BB1E698DAA00D7F251 /* DataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		AC3C89D61EA5665F0011455C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		AC3C89D81EA5667E0011455C /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		AC3C89DA1EA566930011455C /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		AC9809141E891CB600DD26B1 /* SelectRandomWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRandomWord.swift; sourceTree = "<group>"; };
 		ACA3EE841E7FE40C0095A438 /* SelectWordDicoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWordDicoTableViewController.swift; sourceTree = "<group>"; };
 		ACA89FC51E68354F00AE700D /* LAMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LAMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,9 +49,6 @@
 		ACA89FD81E68354F00AE700D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACA89FDA1E68354F00AE700D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACDA8D571E8ACB79001ADAB7 /* ScorePoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScorePoster.swift; sourceTree = "<group>"; };
-		ACF0969C1E8EC716008294A4 /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
-		ACF0969E1E8EC72E008294A4 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		ACF0969F1E8EC72E008294A4 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		C4C7A32D1E6D6CD80088B3F0 /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		C4C7A32F1E6D92300088B3F0 /* ConfigJeuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigJeuViewController.swift; sourceTree = "<group>"; };
 		D23BA9181E696C9300FB33FD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -90,9 +90,9 @@
 			children = (
 				AC3B02BB1E698DAA00D7F251 /* DataBase.swift */,
 				ACA89FC81E68354F00AE700D /* AppDelegate.swift */,
-				ACF0969E1E8EC72E008294A4 /* GameScene.sks */,
-				ACF0969F1E8EC72E008294A4 /* GameScene.swift */,
+				AC3C89D61EA5665F0011455C /* GameScene.sks */,
 				ACA89FCC1E68354F00AE700D /* Actions.sks */,
+				AC3C89D81EA5667E0011455C /* GameScene.swift */,
 				ACA89FD01E68354F00AE700D /* GameViewController.swift */,
 				ACA89FD21E68354F00AE700D /* Main.storyboard */,
 				AC1680B61E8AA203009827C6 /* ScoresTableViewController.swift */,
@@ -110,7 +110,7 @@
 				D2F2EA8A1E812B8E00218FFE /* PlayerList.swift */,
 				D2F2EA8C1E812C8F00218FFE /* EnterWord.swift */,
 				ACDA8D571E8ACB79001ADAB7 /* ScorePoster.swift */,
-				ACF0969C1E8EC716008294A4 /* GameEngine.swift */,
+				AC3C89DA1EA566930011455C /* GameEngine.swift */,
 			);
 			path = LAMApp;
 			sourceTree = "<group>";
@@ -176,9 +176,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACA89FD41E68354F00AE700D /* Main.storyboard in Resources */,
-				ACF096A01E8EC72E008294A4 /* GameScene.sks in Resources */,
 				ACA89FD61E68354F00AE700D /* Assets.xcassets in Resources */,
 				ACA89FD91E68354F00AE700D /* LaunchScreen.storyboard in Resources */,
+				AC3C89D71EA5665F0011455C /* GameScene.sks in Resources */,
 				ACA89FCD1E68354F00AE700D /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,7 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACB03B081E76B4CD00CD016A /* DataBase.swift in Sources */,
-				ACF0969D1E8EC716008294A4 /* GameEngine.swift in Sources */,
+				AC3C89DB1EA566930011455C /* GameEngine.swift in Sources */,
 				ACA89FD11E68354F00AE700D /* GameViewController.swift in Sources */,
 				ACA89FC91E68354F00AE700D /* AppDelegate.swift in Sources */,
 				AC9809151E891CB600DD26B1 /* SelectRandomWord.swift in Sources */,
@@ -201,7 +201,7 @@
 				C4C7A32E1E6D6CD80088B3F0 /* LevelViewController.swift in Sources */,
 				D2F2EA891E812AFA00218FFE /* EnterName.swift in Sources */,
 				D23BA9191E696C9300FB33FD /* Game.swift in Sources */,
-				ACF096A11E8EC72E008294A4 /* GameScene.swift in Sources */,
+				AC3C89D91EA5667E0011455C /* GameScene.swift in Sources */,
 				D2F2EA8D1E812C8F00218FFE /* EnterWord.swift in Sources */,
 				AC3A663F1E76A6B900A2BE78 /* SelectPreviousWordTableViewController.swift in Sources */,
 				C4C7A3301E6D92300088B3F0 /* ConfigJeuViewController.swift in Sources */,
