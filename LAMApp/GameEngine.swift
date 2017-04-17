@@ -22,17 +22,9 @@ protocol GameEngineDelegate
     func gameTerminated()
 }
 
-/*class Game : NSObject
- {
- static var shared = Game()
- var nbPlayer = 4
- 
- }*/
-
 //enumeration des états du jeux
 enum GameState
 {
-    case Start
     case Manche
     case End
     
@@ -67,27 +59,20 @@ class GameEngine: NSObject
         
         
         switch etatJeux {
-            //etat voué a reinitialiser le jeux
-            //Nouveau tour
-            /*
-             case .Start:
-             
-             idManche = 0
-             idJoueur = 0
-             idEquipe = 0
-             */
         //Nouvelle manche
         case .Manche:
             //cas de fin de manche lorsque la liste de mot est vide
             if (Game.shared.Words_Current_List.isEmpty )
             {
+                  score()
                 idManche += 1
                 delegate?.mancheDidEnd()
+              
                 equipe()
-                
-                printState()
+            
+
                 //cas ou l'on est a la troisieme manche et que le jeux est fini
-                if(idManche >= 2)
+                if(idManche >= 3)
                 {
                     etatJeux = .End
                 }
@@ -96,8 +81,7 @@ class GameEngine: NSObject
             else
             {
                 
-                //delegate?.mancheDidEnd()
-                printState()
+                score()
                 equipe()
                 delegate?.updatePlayer()
                 
@@ -105,9 +89,8 @@ class GameEngine: NSObject
             
         //fin
         case .End:
-            print ("fin !")
+            
             delegate?.gameTerminated()
-            //etatJeux = Start
             break
             
             
@@ -126,7 +109,6 @@ class GameEngine: NSObject
     func nextWord()
     {
         
-        //GameEngine.shared.nextWord()
         Game.shared.posTab += 1
         //reinitialise la liste de mot (courante)
         
@@ -143,17 +125,16 @@ class GameEngine: NSObject
     {
         Game.shared.Words_Current_List.remove(at : Game.shared.posTab)
         Game.shared.NbPointsTurn += 1
-        // print("Points engine \(Game.shared.NbPointsTurn) point eqA \(Game.shared.NbPointsRoundTeamA) point eqB \(Game.shared.NbPointsRoundTeamB)" )
         //si la liste est vide, ordonne a gameScene d'afficher les scores
+        
         if(Game.shared.Words_Current_List.isEmpty)
         {
-            //delegate?.gameDidEnd()
-            delegate?.finTour()
+            
             endManche()
+            delegate?.mancheDidEnd()
             Game.shared.posTab = 0
-            score()
             Game.shared.copyWordList()
-
+            
         }
             //ordonne a gameScene d'afficher le prochain mot
         else
@@ -170,21 +151,7 @@ class GameEngine: NSObject
             
         }
     }
-    //met a jour le score des equipes
-    func score()
-    {
-        print("Id equipe  \(idEquipe)")
-        if idEquipe == 0{
-            print (" Eq 1 : \(Game.shared.NbPointsTurn)")
-            Game.shared.NbPointsRoundTeamA = Game.shared.NbPointsRoundTeamA + Game.shared.NbPointsTurn
-        }
-        else{
-            print (" Eq 2 : \(Game.shared.NbPointsTurn)")
-            Game.shared.NbPointsRoundTeamB = Game.shared.NbPointsRoundTeamB + Game.shared.NbPointsTurn
-        }
-        delegate?.updateView()
-        
-    }
+    
     
     //incremente le num d'équipe et de joueur
     func equipe()
@@ -202,15 +169,29 @@ class GameEngine: NSObject
         }
         
     }
+    
+    
+    func score()
+    {
+        print("Id equipe  \(idEquipe)")
+        if (idEquipe == 1){
+            print (" Eq 1 : \(Game.shared.NbPointsTurn)")
+            Game.shared.NbPointsRoundTeamA = Game.shared.NbPointsRoundTeamA + Game.shared.NbPointsTurn
+        }
+        else{
+            print (" Eq 2 : \(Game.shared.NbPointsTurn)")
+            Game.shared.NbPointsRoundTeamB = Game.shared.NbPointsRoundTeamB + Game.shared.NbPointsTurn
+        }
+        delegate?.updateView()
+        
+    }
+    
+    
+    //melange la liste de mot
+    func randomArray(array : [String]) -> [String]{
+        return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: array) as! [String]
+    }
+    
+    
+    
 }
-
-
-
-//melange la liste de mot
-func randomArray(array : [String]) -> [String]{
-    return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: array) as! [String]
-}
-
-
-
-

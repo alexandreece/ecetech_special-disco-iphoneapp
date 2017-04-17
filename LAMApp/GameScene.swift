@@ -40,6 +40,7 @@ class GameScene: SKScene , GameEngineDelegate
     var joueurName : SKLabelNode?
     var teamName : SKLabelNode?
     var nbManche : SKLabelNode?
+    var winTeam : SKLabelNode?
     
     //variable pour le chrono
     var timer = Timer()
@@ -121,7 +122,10 @@ class GameScene: SKScene , GameEngineDelegate
         {
             nbManche = nmanche
         }
-        
+        if let wint = childNode(withName: "//winteam") as? SKLabelNode
+        {
+            winTeam = wint
+        }
         
         
         
@@ -150,6 +154,7 @@ class GameScene: SKScene , GameEngineDelegate
     {
         if let touch = touches.first
         {
+            updateView()
             if(groupeJeux?.isHidden == false){
                 let location = touch.location(in: self)
                 
@@ -164,7 +169,6 @@ class GameScene: SKScene , GameEngineDelegate
             /*
              Regles
              */
-            
             //cas1 : regle premiere manche
             if(groupe1?.position == pointZero){
                 mouveGrp(grp: groupe1!)
@@ -183,20 +187,26 @@ class GameScene: SKScene , GameEngineDelegate
             }
                 //cas4 : affichage des scores
             else if(finTourG?.position == pointZero){
-                print("fin tour")
                 
-                if(mancheShow == 2){
+                if(mancheShow == 1){
                     finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5))
                     groupe2?.run(SKAction.move(to: pointZero, duration: 0.7), completion:
+                        {
+                            self.mancheShow = 0
+                    })}
+                else if(mancheShow == 2){
+                    finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5))
+                    groupe3?.run(SKAction.move(to: pointZero, duration: 0.7), completion:
                         {
                             self.mancheShow = 0
                     })}
                 else if(mancheShow == 3){
                     finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5))
-                    groupe2?.run(SKAction.move(to: pointZero, duration: 0.7), completion:
+                    finJeux?.run(SKAction.move(to: pointZero, duration: 0.7), completion:
                         {
                             self.mancheShow = 0
                     })}
+
                 else{
                     mouveGrp(grp: finTourG!)
                 }
@@ -213,6 +223,7 @@ class GameScene: SKScene , GameEngineDelegate
     //fait apparaitre le jeux et demarre le timer
     func gameStart()
     {
+        updateView()
         self.groupeJeux?.isHidden = false
         self.startTimer()
         
@@ -232,9 +243,6 @@ class GameScene: SKScene , GameEngineDelegate
         } else {
             // Fallback on earlier versions
         }
-        
-        print("start timer")
-        print("val count \(count)")
         timer.fire()
         
     }
@@ -324,7 +332,7 @@ class GameScene: SKScene , GameEngineDelegate
     //update le numbre de mot
     func updateNumText()
     {
-        numWord?.text = "\(Game.shared.Words_List.count - Game.shared.Words_Current_List.count) / \(Game.shared.Words_Current_List.count)"
+        numWord?.text = "\(Game.shared.Words_List.count - Game.shared.Words_Current_List.count) / \(Game.shared.Words_List.count)"
     }
     
     // met a jour le numero de la manche, le nom du joueur et le nom de l'équipe
@@ -364,20 +372,17 @@ class GameScene: SKScene , GameEngineDelegate
         
         
     }
-    
-    func gameDidEnd(){
-        
-    }
-    
-    /*
-     -
-     -protocol gameEngine
-     -
-     */
+ 
     //fin de jeux
     func gameTerminated() {
-        print("game terminated ")
-        manche = 3
+        if(Game.shared.NbPointsRoundTeamA > Game.shared.NbPointsRoundTeamB){
+            winTeam?.text = "L'équipe \(Game.shared.TeamA) remporte avec \(Game.shared.NbPointsRoundTeamA) LAMAs"
+        }
+        else if(Game.shared.NbPointsRoundTeamB > Game.shared.NbPointsRoundTeamA){
+            winTeam?.text = "L'équipe \(Game.shared.TeamB) remporte avec \(Game.shared.NbPointsRoundTeamB) LAMAs"
+        }
+        mancheShow = 3
+        
     }
     
     
@@ -396,319 +401,4 @@ class GameScene: SKScene , GameEngineDelegate
         
     }
     
-    // fonction valider un mot
-    
-    
-    
-    /*
-     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
-     {
-     
-     if let touch = touches.first
-     {
-     //change ecran premiere regle pour le jeux
-     if (groupe1?.position == pointZero){
-     groupe1?.run(SKAction.moveTo(y: -1900, duration: 0.5), completion:
-     {
-     gameStart()
-     })
-     
-     }
-     
-     if (mancheShow == 0 ){
-     print("if 0")
-     //change ecran deuxieme regle pour le jeux
-     if(groupe2?.position == pointZero){
-     groupe2?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
-     {
-     self.gameStart()
-     })
-     }
-     //change ecran troisieme regle pour le jeux
-     else if(groupe3?.position == pointZero){
-     groupe3?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
-     {
-     self.gameStart()
-     })
-     }
-     }
-     //gestion affichage en fin de tour :
-     if (finTourG?.position == pointZero && mancheShow != 0 ){
-     if(tour != 0){
-     //affiche les scores aprés la manche 1 puis affiche les regle de la deuxieme manche
-     if(mancheShow == 1){
-     finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
-     {
-     self.tour = 0
-     self.playing = 1
-     //self.jeux()
-     })
-     groupe2?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
-     {
-     self.mancheShow = 0
-     })}
-     
-     //affiche les scores aprés la manche 2 puis affiche les regle de la troisieme manche
-     else if(mancheShow == 2){
-     finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
-     {
-     self.tour = 0
-     self.playing = 1
-     //self.jeux()
-     })
-     groupe3?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
-     {
-     self.mancheShow = 0
-     })}
-     
-     //affiche les scores aprés la manche 3 puis termine le jeux
-     else if(mancheShow == 3){
-     finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
-     {
-     self.playing = 0
-     })
-     finJeux?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
-     {
-     self.groupeJeux?.isHidden = true
-     })}
-     }
-     else {
-     finTourG?.run(SKAction.moveTo(y: 1900, duration: 0.5), completion:
-     {
-     print else
-     })
-     
-     }
-     
-     }
-     
-     let location = touch.location(in: self)
-     
-     if nextButton!.contains(location) && playing != 0
-     {
-     nextWord()
-     }
-     if okButton!.contains(location) && playing != 0
-     {
-     print("playing \(playing)")
-     validWord()
-     }
-     
-     }
-     
-     
-     }
-     
-     //met fin au jeux
-     func gameTerminated() {
-     print("game terminated ")
-     manche = 3
-     }
-     
-     
-     //affiche l'éceran entre les joueurs
-     func scoreScreen()
-     {
-     //si l'écran de score n'est pas la, met l'écran de score
-     if(finTourG?.position.y == -900 && playing != 0){
-     finTourG?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
-     {
-     print("showscreen else")
-     self.groupeJeux?.isHidden = true
-     })
-     }
-     }
-     
-     override func update(_ currentTime: TimeInterval) {
-     // Called before each frame is rendered
-     }
-     //fait apparaitre le jeux et demarre le timer
-     func gameStart()
-     {
-     //si l'écran de score est la, lance le jeux
-     if(finTourG?.position == pointZero){
-     self.playing = 1
-     finTourG?.run(SKAction.moveTo(y: -900, duration: 0.5), completion:
-     {
-     self.groupeJeux?.isHidden = false
-     self.startTimer()
-     print("gameStart if")
-     
-     
-     })
-     }
-     }
-     
-     //fonction mot suivant
-     func nextWord()
-     {
-     GameEngine.shared.nextWord()
-     mot?.text = Game.shared.getNextWord()
-     
-     }
-     
-     // fonction valider un mot
-     func validWord()
-     {
-     GameEngine.shared.validWord()
-     }
-     //appelé par game engine pour terminer le tour
-     func gameDidEnd()
-     {
-     playing = 0
-     
-     groupeJeux?.isHidden = true
-     finTourG?.run(SKAction.move(to: pointZero, duration: 0.5), completion:
-     {
-     print("point \(Game.shared.NbPointsTurn)")
-     self.nbLama?.text = "L'équipe adverse reçois \(Game.shared.NbPointsTurn) LAMA"
-     Game.shared.NbPointsTurn = 0
-     self.updateNumText()
-     
-     })
-     
-     //GameEngine.shared.score()
-     
-     }
-     
-     //fonction appelé par le game engine pour mettre a jour l'affichage de la manche
-     func mancheDidEnd() {
-     if (GameEngine.shared.idManche == 1)
-     {
-     mancheShow = 1
-     tour = 1
-     }
-     if (GameEngine.shared.idManche == 2)
-     {
-     mancheShow = 2
-     tour = 1
-     }
-     if (GameEngine.shared.idManche == 3)
-     {
-     mancheShow = 3
-     tour = 1
-     
-     }
-     print (GameEngine.shared.idManche)
-     
-     }
-     
-     //appel update text et update num (met a jour le mot et le compteur de mot)
-     func updateView()
-     {
-     updateNumText()
-     updateNomText()
-     
-     }
-     
-     
-     //met a jours le mot a deviner
-     func updateNomText()
-     {
-     mot?.text = Game.shared.Words_Current_List[Game.shared.posTab]
-     }
-     
-     //update le numbre de mot
-     func updateNumText()
-     {
-     numWord?.text = "\(Game.shared.NbPointsTurn) / \(Game.shared.Words_List.count)"
-     }
-     
-     // met a jour le numero de la manche, le nom du joueur et le nom de l'équipe
-     func updatePlayer()
-     {
-     if(GameEngine.shared.idEquipe == 0){
-     joueurName?.text = Game.shared.TeamA_List_Joueurs[GameEngine.shared.idJoueur].GetNomJoueur()
-     
-     }
-     else if(GameEngine.shared.idEquipe == 1){
-     joueurName?.text = Game.shared.TeamB_List_Joueurs[GameEngine.shared.idJoueur].GetNomJoueur()
-     
-     }
-     
-     if(GameEngine.shared.idManche == 0)
-     {
-     nbManche?.text = ("Manche  1")
-     }
-     else if(GameEngine.shared.idManche == 1)
-     {
-     nbManche?.text = ("Manche  2")
-     }
-     else if(GameEngine.shared.idManche == 2)
-     {
-     nbManche?.text = ("Manche  3")
-     }
-     
-     if(GameEngine.shared.idEquipe == 0) {
-     teamName?.text = Game.shared.TeamA
-     }
-     else
-     {
-     teamName?.text = Game.shared.TeamB
-     }
-     
-     
-     
-     }
-     
-     
-     //fonction fin de manche
-     func finManche(){
-     groupeJeux?.isHidden = true
-     
-     }
-     
-     
-     //termine le tour
-     func finTour()
-     {
-     timer.invalidate()
-     GameEngine.shared.endManche()
-     }
-     
-     //met fin au jeux
-     func gameTerminated() {
-     print("game terminated ")
-     manche = 3
-     }
-     
-     
-     
-     //timer
-     func startTimer()
-     {
-     count = GameScene.TimeCount
-     
-     if #available(iOS 10.0, *) {
-     timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
-     { (timer) in
-     self.updateTime()
-     })
-     } else {
-     // Fallback on earlier versions
-     }
-     
-     print("start timer")
-     print("val count \(count)")
-     timer.fire()
-     
-     }
-     //met a jour la variable count
-     func updateTime(){
-     
-     if(count > 0)
-     {
-     print(count)
-     count -= 1
-     self.chrono!.text = String (count)
-     
-     } else {
-     timer.invalidate()
-     finTour()
-     
-     }
-     }
-     */
-    
-    
-}
+  }
