@@ -31,7 +31,7 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
         margin = margin + 65
         
         let TeamALabel = UITextView(frame: CGRect(x: 40.0, y: Double(margin), width: 300.0, height: 80.0))
-        TeamALabel.text = "Equipe A"
+        TeamALabel.text = "\(Game.shared.TeamA)"
         TeamALabel.textAlignment = NSTextAlignment.center
         TeamALabel.font = UIFont.boldSystemFont(ofSize: 30)
         TeamALabel.textColor = UIColor.white
@@ -47,7 +47,7 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
             
             let btn: UIButton = UIButton(frame: CGRect(x: 100, y: margin, width: 200, height: 35))
             btn.backgroundColor = UIColor.white
-            btn.setTitle("Joueur \(i+1) -> \(Game.shared.NbWords - Game.shared.WordTeamA[i]) / \(Game.shared.NbWords)", for: .normal)
+            btn.setTitle("\(Game.shared.TeamA_List_Joueurs[i].GetNomJoueur()) -> \(Game.shared.NbWords - Game.shared.WordTeamA[i]) / \(Game.shared.NbWords)", for: .normal)
             btn.setTitleColor(UIColor.black, for: .normal)
             btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             btn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
@@ -62,7 +62,7 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
         margin = margin + 15
         
         let TeamBLabel = UITextView(frame: CGRect(x: 40.0, y: Double(margin), width: 300.0, height: 80.0))
-        TeamBLabel.text = "Equipe B"
+        TeamBLabel.text = "\(Game.shared.TeamB)"
         TeamBLabel.textAlignment = NSTextAlignment.center
         TeamBLabel.font = UIFont.boldSystemFont(ofSize: 30)
         TeamBLabel.textColor = UIColor.white
@@ -78,7 +78,7 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
             
             let btn: UIButton = UIButton(frame: CGRect(x: 100, y: margin, width: 200, height: 35))
             btn.backgroundColor = UIColor.white
-            btn.setTitle("Joueur \(i+1) -> \(Game.shared.NbWords - Game.shared.WordTeamB[i]) / \(Game.shared.NbWords)", for: .normal)
+            btn.setTitle("\(Game.shared.TeamB_List_Joueurs[i].GetNomJoueur()) -> \(Game.shared.NbWords - Game.shared.WordTeamB[i]) / \(Game.shared.NbWords)", for: .normal)
             btn.setTitleColor(UIColor.black, for: .normal)
             btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             btn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
@@ -142,10 +142,9 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
             Game.shared.copyWordList()
             print(Game.shared.Words_Current_List)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "MainID") as UIViewController //SKViewID
+            let vc = storyboard.instantiateViewController(withIdentifier: "SKViewID") as UIViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
 }
-

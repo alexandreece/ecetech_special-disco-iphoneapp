@@ -16,6 +16,9 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var TeamA:Int
+        TeamA = 10
+        
         view.backgroundColor = UIColor(red:0.00, green:0.49, blue:0.50, alpha:1.0)
         
         self.Scroll.frame = CGRect(x:0, y:0, width:self.view.frame.width, height:self.view.frame.height)
@@ -37,11 +40,14 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
         nameTeamAField.borderStyle = UITextBorderStyle.roundedRect
         nameTeamAField.backgroundColor = UIColor.white
         nameTeamAField.textColor = UIColor.black
+        nameTeamAField.tag = TeamA
         self.Scroll.addSubview(nameTeamAField)
         
         var margin = 150
         
         for i in 0...Game.shared.NbPlayers-1 {
+            
+            TeamA += 1
             
             let playerLabel = UITextView(frame: CGRect(x: 10, y: Double(margin), width: 150.0, height: 80.0))
             playerLabel.text = "Joueur \(i+1) :"
@@ -57,12 +63,16 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
             playerField.borderStyle = UITextBorderStyle.roundedRect
             playerField.backgroundColor = UIColor.white
             playerField.textColor = UIColor.black
+            playerField.tag = TeamA
             self.Scroll.addSubview(playerField)
             
             margin = margin + 40
         }
         
         margin = margin + 20
+        
+        var TeamB:Int
+        TeamB = 20
         
         let nameTeamBLabel = UITextView(frame: CGRect(x: 40.0, y: Double(margin), width: 300.0, height: 80.0))
         nameTeamBLabel.text = "Nommez l'équipe B :"
@@ -80,11 +90,14 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
         nameTeamBField.borderStyle = UITextBorderStyle.roundedRect
         nameTeamBField.backgroundColor = UIColor.white
         nameTeamBField.textColor = UIColor.black
+        nameTeamBField.tag = TeamB
         self.Scroll.addSubview(nameTeamBField)
         
         margin = margin + 60
         
         for i in 0...Game.shared.NbPlayers-1 {
+            
+            TeamB += 1
             
             let playerLabel = UITextView(frame: CGRect(x: 10, y: Double(margin), width: 150.0, height: 80.0))
             playerLabel.text = "Joueur \(i+1) :"
@@ -100,6 +113,7 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
             playerField.borderStyle = UITextBorderStyle.roundedRect
             playerField.backgroundColor = UIColor.white
             playerField.textColor = UIColor.black
+            playerField.tag = TeamB
             self.Scroll.addSubview(playerField)
             
             margin = margin + 40
@@ -122,10 +136,38 @@ class EnterName : UIViewController, UITextViewDelegate , UIScrollViewDelegate {
     }
     
     func buttonAction(sender: UIButton!) {
+        
+        if let txtField = self.view.viewWithTag(10) as? UITextField {
+            if txtField.text != "" {
+                Game.shared.TeamA = txtField.text!
+            }
+        }
+        if let txtField = self.view.viewWithTag(20) as? UITextField {
+            if txtField.text != "" {
+                Game.shared.TeamB = txtField.text!
+            }
+        }
+        
+        for i in 1...Game.shared.NbPlayers {
+            if let txtField = self.view.viewWithTag(10+i) as? UITextField {
+                if txtField.text != "" {
+                    let newJoueur = Joueur()
+                    newJoueur.SetNomJoueur(pNomJoueur: txtField.text!)
+                    Game.shared.TeamA_List_Joueurs.append(newJoueur)
+                }
+            }
+            if let txtField = self.view.viewWithTag(20+i) as? UITextField {
+                if txtField.text != "" {
+                    let newJoueur = Joueur()
+                    newJoueur.SetNomJoueur(pNomJoueur: txtField.text!)
+                    Game.shared.TeamB_List_Joueurs.append(newJoueur)
+                }
+            }
+        }
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PlayerListID") as UIViewController
         self.navigationController?.pushViewController(vc, animated: true)
+        
     }
-    
 }
-

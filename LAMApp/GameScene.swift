@@ -30,6 +30,7 @@ class GameScene: SKScene , GameEngineDelegate
     var finJeux : SKNode?
     
     //node groupe jeux
+    var home : SKNode?
     var groupeJeux : SKNode?
     var chrono : SKLabelNode?
     var mot : SKLabelNode?
@@ -59,7 +60,6 @@ class GameScene: SKScene , GameEngineDelegate
     override func didMove(to view: SKView)
     {
         GameEngine.shared.delegate = self
-        Game.shared.copyWordList()
         //groupe
         if let g1 = childNode(withName: "//PremiereManche")
         {
@@ -86,6 +86,10 @@ class GameScene: SKScene , GameEngineDelegate
         if let finJ = childNode(withName: "//FinJeux")
         {
             finJeux = finJ
+        }
+        if let h = childNode(withName: "//home")
+        {
+            home = h
         }
         assert((finJeux != nil))
         
@@ -129,7 +133,6 @@ class GameScene: SKScene , GameEngineDelegate
         
         
         
-        Game.shared.copyWordList()
         groupeJeux?.isHidden = true
         updateNumText()
         updatePlayer()
@@ -165,7 +168,8 @@ class GameScene: SKScene , GameEngineDelegate
                 if okButton!.contains(location)
                 {
                     GameEngine.shared.validWord()
-                }}
+                }
+            }
             /*
              Regles
              */
@@ -206,7 +210,7 @@ class GameScene: SKScene , GameEngineDelegate
                         {
                             self.mancheShow = 0
                     })}
-
+                    
                 else{
                     mouveGrp(grp: finTourG!)
                 }
@@ -285,7 +289,7 @@ class GameScene: SKScene , GameEngineDelegate
         Game.shared.Words_Current_List.removeAll()
         Game.shared.copyWordList()
         GameEngine.shared.endManche()
-
+        
         
     }
     
@@ -372,7 +376,7 @@ class GameScene: SKScene , GameEngineDelegate
         
         
     }
- 
+    
     //fin de jeux
     func gameTerminated() {
         if(Game.shared.NbPointsRoundTeamA > Game.shared.NbPointsRoundTeamB){
@@ -400,5 +404,5 @@ class GameScene: SKScene , GameEngineDelegate
         mot?.text = Game.shared.getNextWord()
         
     }
-    
-  }
+       
+}
