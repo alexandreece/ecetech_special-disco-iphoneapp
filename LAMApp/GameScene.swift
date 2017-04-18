@@ -129,7 +129,7 @@ class GameScene: SKScene , GameEngineDelegate
         
         
         
-        
+        Game.shared.copyWordList()
         groupeJeux?.isHidden = true
         updateNumText()
         updatePlayer()
