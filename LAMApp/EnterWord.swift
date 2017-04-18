@@ -75,11 +75,10 @@ class EnterWord : UIViewController, UIScrollViewDelegate, DataBaseDelegate {
             self.Scroll.addSubview(btnDico)
             
             let btnPrev: UIButton = UIButton(frame: CGRect(x: 219, y: margin, width: 90, height: 30))
-            btnPrev.backgroundColor = UIColor.white
+            btnPrev.backgroundColor = UIColor.black
             btnPrev.setTitle("Précédents", for: .normal)
-            btnPrev.setTitleColor(UIColor.black, for: .normal)
+            btnPrev.setTitleColor(UIColor.white, for: .normal)
             btnPrev.titleLabel?.font = UIFont.boldSystemFont(ofSize: 10)
-            btnPrev.addTarget(self, action: #selector(PrevWord), for: .touchUpInside)
             n = n + 1
             btnPrev.tag = n
             self.Scroll.addSubview(btnPrev)
@@ -88,8 +87,7 @@ class EnterWord : UIViewController, UIScrollViewDelegate, DataBaseDelegate {
         }
         
         var heightmargin = -120
-        
-        if WordField - 1 >= 7 { heightmargin = 70*(WordField - 6) }
+                if WordField - 1 >= 7 { heightmargin = 70*(WordField - 6) }
         
         self.Scroll.contentSize = CGSize(width:self.Scroll.frame.width, height:self.Scroll.frame.height + CGFloat(heightmargin))
         self.Scroll.delegate = self

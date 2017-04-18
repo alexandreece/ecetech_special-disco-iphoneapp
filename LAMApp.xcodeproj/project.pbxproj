@@ -106,10 +106,10 @@
 				ACA89FDA1E68354F00AE700D /* Info.plist */,
 				D23BA9181E696C9300FB33FD /* Game.swift */,
 				D23BA91A1E698DCA00FB33FD /* Joueur.swift */,
-				D2F2EA881E812AFA00218FFE /* EnterName.swift */,
 				D2F2EA8A1E812B8E00218FFE /* PlayerList.swift */,
 				D2F2EA8C1E812C8F00218FFE /* EnterWord.swift */,
 				ACDA8D571E8ACB79001ADAB7 /* ScorePoster.swift */,
+				D2F2EA881E812AFA00218FFE /* EnterName.swift */,
 				AC3C89DA1EA566930011455C /* GameEngine.swift */,
 			);
 			path = LAMApp;
