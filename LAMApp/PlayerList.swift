@@ -39,23 +39,22 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
         TeamALabel.isEditable = false
         self.Scroll.addSubview(TeamALabel)
         
-        
         margin = margin + 60
         
         var TeamA = 10
         
         for i in 0...Game.shared.NbPlayers-1 {
             
-            TeamA += 1
-            
             let btn: UIButton = UIButton(frame: CGRect(x: 100, y: margin, width: 200, height: 35))
             btn.backgroundColor = UIColor.white
-            btn.setTitle("Joueur \(i+1)", for: .normal)
+            btn.setTitle("Joueur \(i+1) -> \(Game.shared.NbWords - Game.shared.WordTeamA[i]) / \(Game.shared.NbWords)", for: .normal)
             btn.setTitleColor(UIColor.black, for: .normal)
             btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             btn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
             btn.tag = TeamA
             self.Scroll.addSubview(btn)
+            
+            TeamA += 1
             
             margin = margin + 50
         }
@@ -71,23 +70,22 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
         TeamBLabel.isEditable = false
         self.Scroll.addSubview(TeamBLabel)
         
-        
         margin = margin + 60
         
         var TeamB = 20
         
         for i in 0...Game.shared.NbPlayers-1 {
             
-            TeamB += 1
-            
             let btn: UIButton = UIButton(frame: CGRect(x: 100, y: margin, width: 200, height: 35))
             btn.backgroundColor = UIColor.white
-            btn.setTitle("Joueur \(i+1)", for: .normal)
+            btn.setTitle("Joueur \(i+1) -> \(Game.shared.NbWords - Game.shared.WordTeamB[i]) / \(Game.shared.NbWords)", for: .normal)
             btn.setTitleColor(UIColor.black, for: .normal)
             btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             btn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
             btn.tag = TeamB
             self.Scroll.addSubview(btn)
+            
+            TeamB += 1
             
             margin = margin + 50
         }
@@ -103,21 +101,50 @@ class PlayerList : UIViewController, UIScrollViewDelegate {
         btn.tag = 1
         self.Scroll.addSubview(btn)
         
-        self.Scroll.contentSize = CGSize(width:self.Scroll.frame.width, height:self.Scroll.frame.height + 150)
+        switch Game.shared.NbPlayers{
+        case 2 :
+            self.Scroll.contentSize = CGSize(width:self.Scroll.frame.width, height:self.Scroll.frame.height - 150)
+        case 3 :
+            self.Scroll.contentSize = CGSize(width:self.Scroll.frame.width, height:self.Scroll.frame.height + 0)
+        case 4 :
+            self.Scroll.contentSize = CGSize(width:self.Scroll.frame.width, height:self.Scroll.frame.height + 100)
+        case 5 :
+            self.Scroll.contentSize = CGSize(width:self.Scroll.frame.width, height:self.Scroll.frame.height + 150)
+        default :
+            self.Scroll.contentSize = CGSize(width:self.Scroll.frame.width, height:self.Scroll.frame.height + 300)
+        }
         self.Scroll.delegate = self
     }
     
     func buttonAction(sender: UIButton!) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EnterWordID") as UIViewController
+        
+        var WordNb = 0
+        
         Game.shared.WordPlayer = sender.tag
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        if Game.shared.WordPlayer >= 10 && Game.shared.WordPlayer <= 14 {
+            WordNb = Game.shared.WordTeamA[Game.shared.WordPlayer - 10]
+        } else if Game.shared.WordPlayer >= 20 && Game.shared.WordPlayer <= 24 {
+            WordNb = Game.shared.WordTeamB[Game.shared.WordPlayer - 20]
+        }
+        
+        if WordNb > 0 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "EnterWordID") as UIViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func playGame(sender: UIButton!) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "EnterWordID") as UIViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        print("WordListCount = \(Game.shared.Words_List.count)")
+        print("NbWords*NbPlayers = \(Game.shared.NbWords*Game.shared.NbPlayers)")
+        if Game.shared.Words_List.count == Game.shared.NbWords*Game.shared.NbPlayers*2 {
+            Game.shared.copyWordList()
+            print(Game.shared.Words_Current_List)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "MainID") as UIViewController //SKViewID
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

@@ -66,7 +66,7 @@ class SelectWordDicoTableViewController: UITableViewController, DataBaseDelegate
                     people.append(item)
                 }
             }
-            print(people[Int(arc4random_uniform(UInt32(people.count)))].word)
+            Game.shared.WordRndm = people[Int(arc4random_uniform(UInt32(people.count)))].word
         }
         else if sender === fauneButton {
             var faune=[Word]()
@@ -76,7 +76,7 @@ class SelectWordDicoTableViewController: UITableViewController, DataBaseDelegate
                     faune.append(item)
                 }
             }
-            print(faune[Int(arc4random_uniform(UInt32(faune.count)))].word)
+            Game.shared.WordRndm = faune[Int(arc4random_uniform(UInt32(faune.count)))].word
         }
         else if sender === floreButton {
             var flore=[Word]()
@@ -86,7 +86,7 @@ class SelectWordDicoTableViewController: UITableViewController, DataBaseDelegate
                     flore.append(item)
                 }
             }
-            print(flore[Int(arc4random_uniform(UInt32(flore.count)))].word)
+            Game.shared.WordRndm = flore[Int(arc4random_uniform(UInt32(flore.count)))].word
         }
         else if sender === fictifButton {
             var fictif=[Word]()
@@ -96,7 +96,7 @@ class SelectWordDicoTableViewController: UITableViewController, DataBaseDelegate
                     fictif.append(item)
                 }
             }
-            print(fictif[Int(arc4random_uniform(UInt32(fictif.count)))].word)
+            Game.shared.WordRndm = fictif[Int(arc4random_uniform(UInt32(fictif.count)))].word
         }
         else if sender === objetButton {
             var objet=[Word]()
@@ -108,5 +108,10 @@ class SelectWordDicoTableViewController: UITableViewController, DataBaseDelegate
             }
             Game.shared.WordRndm = objet[Int(arc4random_uniform(UInt32(objet.count)))].word
         }
+        print("Word = " + Game.shared.WordRndm)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "EnterWordID") as UIViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
